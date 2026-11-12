@@ -85,7 +85,11 @@ def costruisci(log=print):
             vecchio_conv = "convalid" in vecchio["file"].lower()
             tieni_nuovo = (nuovo_conv and not vecchio_conv) or (nuovo_conv == vecchio_conv)
             perso = vecchio if tieni_nuovo else doc
-            esclusi.append(dict(file=perso["file"], motivo=f"stessa data di riferimento ({d}) di un altro file: scartato"))
+            tenuto = doc if tieni_nuovo else vecchio
+            if perso["serie"] == tenuto["serie"]:
+                log(f"  doppione (stessi dati) scartato: {perso['file']}")  # innocuo: non è un problema
+            else:  # stessa data ma numeri diversi (rettifica?): va guardato a mano
+                esclusi.append(dict(file=perso["file"], motivo=f"stessa data di riferimento ({d}) di {tenuto['file']} ma con numeri diversi: scartato"))
             documenti.append(dict(file=perso["file"], data_rif=d, formato=perso["formato"], stato="scartato",
                                   nota="stessa data di riferimento di un altro file"))
             if not tieni_nuovo:

@@ -8,6 +8,7 @@
   var NF = new Intl.NumberFormat("it-IT", { useGrouping: "always" });
   var NF1 = new Intl.NumberFormat("it-IT", { maximumFractionDigits: 1, useGrouping: "always" });
 
+  var FONT = '"Plex Sans", -apple-system, "Segoe UI", Roboto, sans-serif';
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var css = function (n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); };
 
@@ -145,7 +146,7 @@
       });
       items.sort(function (a, b) { return a.y - b.y; });
       for (var j = 1; j < items.length; j++) if (items[j].y - items[j - 1].y < 14) items[j].y = items[j - 1].y + 14;
-      ctx.save(); ctx.font = "12px -apple-system, Segoe UI, Roboto, sans-serif"; ctx.textBaseline = "middle";
+      ctx.save(); ctx.font = "12px " + FONT; ctx.textBaseline = "middle";
       items.forEach(function (it) {
         ctx.fillStyle = it.c; ctx.fillRect(ca.right + 6, it.y - 4, 8, 8);
         ctx.fillStyle = css("--ink2"); ctx.fillText(it.t, ca.right + 18, it.y);
@@ -169,7 +170,7 @@
     afterDatasetsDraw: function (chart, args, opts) {
       if (!opts || !opts.on) return;
       var ctx = chart.ctx, horiz = chart.options.indexAxis === "y", small = window.innerWidth < 600;
-      ctx.save(); ctx.fillStyle = css("--ink"); ctx.font = "600 " + (small ? 11 : 12) + "px -apple-system, Segoe UI, Roboto, sans-serif";
+      ctx.save(); ctx.fillStyle = css("--ink"); ctx.font = "600 " + (small ? 11 : 12) + "px " + FONT;
       chart.data.datasets.forEach(function (ds, i) {
         if (chart.getDatasetMeta(i).hidden) return;
         chart.getDatasetMeta(i).data.forEach(function (bar, j) {
@@ -184,6 +185,7 @@
     }
   };
   Chart.register(crosshair, endLabels, ref100, barLabels);
+  Chart.defaults.font.family = FONT;
 
   function baseOptions(o) {
     var grid = css("--grid"), muted = css("--muted");
@@ -653,6 +655,7 @@
     });
     function drawAll() { drawPresenze(); drawIngressi(); drawEta(); drawChi(); drawDel(); drawConf(); drawOne(); }
     drawAll();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
     if (window.matchMedia) {
       var mq = matchMedia("(prefers-color-scheme: dark)");
       (mq.addEventListener ? mq.addEventListener.bind(mq, "change") : mq.addListener.bind(mq))(function () { drawAll(); });

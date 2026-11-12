@@ -41,6 +41,12 @@ def scrivi_csv(path, rows, campi=None):
         w.writerows(rows)
 
 
+# Cadenza dei dati mostrati: fino a quest'anno (compreso) solo i documenti semestrali (30 giugno e 31 dicembre);
+# dopo, tutti i documenti disponibili (quindicinali). I documenti fuori cadenza restano in archivio ma non nei grafici.
+ULTIMO_ANNO_SEMESTRALE = 2025
+DATE_SEMESTRALI = ("06-30", "12-31")
+
+
 def costruisci(log=print):
     """Legge tutti i PDF in data/pdf e scrive i CSV in docs/data. Restituisce (n_inclusi, esclusi)."""
     OUT.mkdir(parents=True, exist_ok=True)
@@ -95,6 +101,13 @@ def costruisci(log=print):
             if not tieni_nuovo:
                 continue
         validi[d] = doc
+
+    for d in sorted(validi):
+        if int(d[:4]) <= ULTIMO_ANNO_SEMESTRALE and d[5:] not in DATE_SEMESTRALI:
+            doc = validi.pop(d)
+            log(f"  fuori cadenza (non mostrato): {doc['file']} ({d})")
+            documenti.append(dict(file=doc["file"], data_rif=d, formato=doc["formato"], stato="fuori cadenza",
+                                  nota="fino al %d si usano solo i documenti semestrali" % ULTIMO_ANNO_SEMESTRALE))
 
     date = sorted(validi)
     serie, presenze, eta, ns, dl_full, dl_target = [], [], [], [], [], []

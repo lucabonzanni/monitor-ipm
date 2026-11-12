@@ -4058,6 +4058,213 @@ data_rif,anno,delitto,livello,nazionalita,sesso,delitti
 2026-01-31,2026,Totale DELITTI,totale,totale,m,217
 2026-01-31,2026,Totale DELITTI,totale,totale,f,6
 2026-01-31,2026,Totale DELITTI,totale,totale,mf,223
+2026-02-15,2026,Contro la persona,categoria,italiani,m,57
+2026-02-15,2026,Contro la persona,categoria,italiani,f,0
+2026-02-15,2026,Contro la persona,categoria,italiani,mf,57
+2026-02-15,2026,Contro la persona,categoria,stranieri,m,20
+2026-02-15,2026,Contro la persona,categoria,stranieri,f,0
+2026-02-15,2026,Contro la persona,categoria,stranieri,mf,20
+2026-02-15,2026,Contro la persona,categoria,totale,m,77
+2026-02-15,2026,Contro la persona,categoria,totale,f,0
+2026-02-15,2026,Contro la persona,categoria,totale,mf,77
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,italiani,m,8
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,italiani,f,0
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,italiani,mf,8
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,stranieri,m,1
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,stranieri,f,0
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,stranieri,mf,1
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,totale,m,9
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,totale,f,0
+2026-02-15,2026,Omicidio volontario tentato,dettaglio,totale,mf,9
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,italiani,m,29
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,italiani,f,0
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,italiani,mf,29
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,stranieri,m,13
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,stranieri,f,0
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,stranieri,mf,13
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,totale,m,42
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,totale,f,0
+2026-02-15,2026,Lesioni personali volontarie,dettaglio,totale,mf,42
+2026-02-15,2026,Percosse,dettaglio,italiani,m,2
+2026-02-15,2026,Percosse,dettaglio,italiani,f,0
+2026-02-15,2026,Percosse,dettaglio,italiani,mf,2
+2026-02-15,2026,Percosse,dettaglio,stranieri,m,1
+2026-02-15,2026,Percosse,dettaglio,stranieri,f,0
+2026-02-15,2026,Percosse,dettaglio,stranieri,mf,1
+2026-02-15,2026,Percosse,dettaglio,totale,m,3
+2026-02-15,2026,Percosse,dettaglio,totale,f,0
+2026-02-15,2026,Percosse,dettaglio,totale,mf,3
+2026-02-15,2026,Minaccia,dettaglio,italiani,m,10
+2026-02-15,2026,Minaccia,dettaglio,italiani,f,0
+2026-02-15,2026,Minaccia,dettaglio,italiani,mf,10
+2026-02-15,2026,Minaccia,dettaglio,stranieri,m,1
+2026-02-15,2026,Minaccia,dettaglio,stranieri,f,0
+2026-02-15,2026,Minaccia,dettaglio,stranieri,mf,1
+2026-02-15,2026,Minaccia,dettaglio,totale,m,11
+2026-02-15,2026,Minaccia,dettaglio,totale,f,0
+2026-02-15,2026,Minaccia,dettaglio,totale,mf,11
+2026-02-15,2026,Sequestro di persona,dettaglio,italiani,m,4
+2026-02-15,2026,Sequestro di persona,dettaglio,italiani,f,0
+2026-02-15,2026,Sequestro di persona,dettaglio,italiani,mf,4
+2026-02-15,2026,Sequestro di persona,dettaglio,stranieri,m,2
+2026-02-15,2026,Sequestro di persona,dettaglio,stranieri,f,0
+2026-02-15,2026,Sequestro di persona,dettaglio,stranieri,mf,2
+2026-02-15,2026,Sequestro di persona,dettaglio,totale,m,6
+2026-02-15,2026,Sequestro di persona,dettaglio,totale,f,0
+2026-02-15,2026,Sequestro di persona,dettaglio,totale,mf,6
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,italiani,m,6
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,italiani,f,0
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,italiani,mf,6
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,stranieri,m,0
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,stranieri,f,0
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,stranieri,mf,0
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,totale,m,6
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,totale,f,0
+2026-02-15,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,totale,mf,6
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,italiani,m,6
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,italiani,f,0
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,italiani,mf,6
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,stranieri,m,0
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,stranieri,f,0
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,stranieri,mf,0
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,totale,m,6
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,totale,f,0
+2026-02-15,2026,Maltrattamenti in famiglia,dettaglio,totale,mf,6
+2026-02-15,2026,Contro il patrimonio,categoria,italiani,m,65
+2026-02-15,2026,Contro il patrimonio,categoria,italiani,f,0
+2026-02-15,2026,Contro il patrimonio,categoria,italiani,mf,65
+2026-02-15,2026,Contro il patrimonio,categoria,stranieri,m,64
+2026-02-15,2026,Contro il patrimonio,categoria,stranieri,f,8
+2026-02-15,2026,Contro il patrimonio,categoria,stranieri,mf,72
+2026-02-15,2026,Contro il patrimonio,categoria,totale,m,129
+2026-02-15,2026,Contro il patrimonio,categoria,totale,f,8
+2026-02-15,2026,Contro il patrimonio,categoria,totale,mf,137
+2026-02-15,2026,Furto,dettaglio,italiani,m,7
+2026-02-15,2026,Furto,dettaglio,italiani,f,0
+2026-02-15,2026,Furto,dettaglio,italiani,mf,7
+2026-02-15,2026,Furto,dettaglio,stranieri,m,7
+2026-02-15,2026,Furto,dettaglio,stranieri,f,4
+2026-02-15,2026,Furto,dettaglio,stranieri,mf,11
+2026-02-15,2026,Furto,dettaglio,totale,m,14
+2026-02-15,2026,Furto,dettaglio,totale,f,4
+2026-02-15,2026,Furto,dettaglio,totale,mf,18
+2026-02-15,2026,Rapina,dettaglio,italiani,m,47
+2026-02-15,2026,Rapina,dettaglio,italiani,f,0
+2026-02-15,2026,Rapina,dettaglio,italiani,mf,47
+2026-02-15,2026,Rapina,dettaglio,stranieri,m,52
+2026-02-15,2026,Rapina,dettaglio,stranieri,f,4
+2026-02-15,2026,Rapina,dettaglio,stranieri,mf,56
+2026-02-15,2026,Rapina,dettaglio,totale,m,99
+2026-02-15,2026,Rapina,dettaglio,totale,f,4
+2026-02-15,2026,Rapina,dettaglio,totale,mf,103
+2026-02-15,2026,Estorsione,dettaglio,italiani,m,5
+2026-02-15,2026,Estorsione,dettaglio,italiani,f,0
+2026-02-15,2026,Estorsione,dettaglio,italiani,mf,5
+2026-02-15,2026,Estorsione,dettaglio,stranieri,m,1
+2026-02-15,2026,Estorsione,dettaglio,stranieri,f,0
+2026-02-15,2026,Estorsione,dettaglio,stranieri,mf,1
+2026-02-15,2026,Estorsione,dettaglio,totale,m,6
+2026-02-15,2026,Estorsione,dettaglio,totale,f,0
+2026-02-15,2026,Estorsione,dettaglio,totale,mf,6
+2026-02-15,2026,Danni,dettaglio,italiani,m,1
+2026-02-15,2026,Danni,dettaglio,italiani,f,0
+2026-02-15,2026,Danni,dettaglio,italiani,mf,1
+2026-02-15,2026,Danni,dettaglio,stranieri,m,4
+2026-02-15,2026,Danni,dettaglio,stranieri,f,0
+2026-02-15,2026,Danni,dettaglio,stranieri,mf,4
+2026-02-15,2026,Danni,dettaglio,totale,m,5
+2026-02-15,2026,Danni,dettaglio,totale,f,0
+2026-02-15,2026,Danni,dettaglio,totale,mf,5
+2026-02-15,2026,Ricettazione,dettaglio,italiani,m,4
+2026-02-15,2026,Ricettazione,dettaglio,italiani,f,0
+2026-02-15,2026,Ricettazione,dettaglio,italiani,mf,4
+2026-02-15,2026,Ricettazione,dettaglio,stranieri,m,0
+2026-02-15,2026,Ricettazione,dettaglio,stranieri,f,0
+2026-02-15,2026,Ricettazione,dettaglio,stranieri,mf,0
+2026-02-15,2026,Ricettazione,dettaglio,totale,m,4
+2026-02-15,2026,Ricettazione,dettaglio,totale,f,0
+2026-02-15,2026,Ricettazione,dettaglio,totale,mf,4
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,italiani,m,28
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,italiani,f,0
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,italiani,mf,28
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,stranieri,m,6
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,stranieri,f,0
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,stranieri,mf,6
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,totale,m,34
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,totale,f,0
+2026-02-15,2026,Contro l'incolumità pubblica,categoria,totale,mf,34
+2026-02-15,2026,Stupefacenti,dettaglio,italiani,m,28
+2026-02-15,2026,Stupefacenti,dettaglio,italiani,f,0
+2026-02-15,2026,Stupefacenti,dettaglio,italiani,mf,28
+2026-02-15,2026,Stupefacenti,dettaglio,stranieri,m,6
+2026-02-15,2026,Stupefacenti,dettaglio,stranieri,f,0
+2026-02-15,2026,Stupefacenti,dettaglio,stranieri,mf,6
+2026-02-15,2026,Stupefacenti,dettaglio,totale,m,34
+2026-02-15,2026,Stupefacenti,dettaglio,totale,f,0
+2026-02-15,2026,Stupefacenti,dettaglio,totale,mf,34
+2026-02-15,2026,Contro la fede pubblica,categoria,italiani,m,0
+2026-02-15,2026,Contro la fede pubblica,categoria,italiani,f,0
+2026-02-15,2026,Contro la fede pubblica,categoria,italiani,mf,0
+2026-02-15,2026,Contro la fede pubblica,categoria,stranieri,m,5
+2026-02-15,2026,Contro la fede pubblica,categoria,stranieri,f,0
+2026-02-15,2026,Contro la fede pubblica,categoria,stranieri,mf,5
+2026-02-15,2026,Contro la fede pubblica,categoria,totale,m,5
+2026-02-15,2026,Contro la fede pubblica,categoria,totale,f,0
+2026-02-15,2026,Contro la fede pubblica,categoria,totale,mf,5
+2026-02-15,2026,Falsità in atti e persone,dettaglio,italiani,m,0
+2026-02-15,2026,Falsità in atti e persone,dettaglio,italiani,f,0
+2026-02-15,2026,Falsità in atti e persone,dettaglio,italiani,mf,0
+2026-02-15,2026,Falsità in atti e persone,dettaglio,stranieri,m,5
+2026-02-15,2026,Falsità in atti e persone,dettaglio,stranieri,f,0
+2026-02-15,2026,Falsità in atti e persone,dettaglio,stranieri,mf,5
+2026-02-15,2026,Falsità in atti e persone,dettaglio,totale,m,5
+2026-02-15,2026,Falsità in atti e persone,dettaglio,totale,f,0
+2026-02-15,2026,Falsità in atti e persone,dettaglio,totale,mf,5
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,italiani,m,10
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,italiani,f,0
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,italiani,mf,10
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,stranieri,m,12
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,stranieri,f,2
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,stranieri,mf,14
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,totale,m,22
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,totale,f,2
+2026-02-15,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,totale,mf,24
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,italiani,m,5
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,italiani,f,0
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,italiani,mf,5
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,stranieri,m,10
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,stranieri,f,2
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,stranieri,mf,12
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,totale,m,15
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,totale,f,2
+2026-02-15,2026,"Violenza, resistenza, oltraggio",dettaglio,totale,mf,17
+2026-02-15,2026,Altri delitti,categoria,italiani,m,12
+2026-02-15,2026,Altri delitti,categoria,italiani,f,0
+2026-02-15,2026,Altri delitti,categoria,italiani,mf,12
+2026-02-15,2026,Altri delitti,categoria,stranieri,m,1
+2026-02-15,2026,Altri delitti,categoria,stranieri,f,0
+2026-02-15,2026,Altri delitti,categoria,stranieri,mf,1
+2026-02-15,2026,Altri delitti,categoria,totale,m,13
+2026-02-15,2026,Altri delitti,categoria,totale,f,0
+2026-02-15,2026,Altri delitti,categoria,totale,mf,13
+2026-02-15,2026,Armi,dettaglio,italiani,m,11
+2026-02-15,2026,Armi,dettaglio,italiani,f,0
+2026-02-15,2026,Armi,dettaglio,italiani,mf,11
+2026-02-15,2026,Armi,dettaglio,stranieri,m,1
+2026-02-15,2026,Armi,dettaglio,stranieri,f,0
+2026-02-15,2026,Armi,dettaglio,stranieri,mf,1
+2026-02-15,2026,Armi,dettaglio,totale,m,12
+2026-02-15,2026,Armi,dettaglio,totale,f,0
+2026-02-15,2026,Armi,dettaglio,totale,mf,12
+2026-02-15,2026,Totale DELITTI,totale,italiani,m,178
+2026-02-15,2026,Totale DELITTI,totale,italiani,f,0
+2026-02-15,2026,Totale DELITTI,totale,italiani,mf,178
+2026-02-15,2026,Totale DELITTI,totale,stranieri,m,108
+2026-02-15,2026,Totale DELITTI,totale,stranieri,f,10
+2026-02-15,2026,Totale DELITTI,totale,stranieri,mf,118
+2026-02-15,2026,Totale DELITTI,totale,totale,m,286
+2026-02-15,2026,Totale DELITTI,totale,totale,f,10
+2026-02-15,2026,Totale DELITTI,totale,totale,mf,296
 2026-02-28,2026,Contro la persona,categoria,italiani,m,68
 2026-02-28,2026,Contro la persona,categoria,italiani,f,1
 2026-02-28,2026,Contro la persona,categoria,italiani,mf,69
@@ -5570,6 +5777,285 @@ data_rif,anno,delitto,livello,nazionalita,sesso,delitti
 2026-05-15,2026,Totale DELITTI,totale,totale,m,813
 2026-05-15,2026,Totale DELITTI,totale,totale,f,49
 2026-05-15,2026,Totale DELITTI,totale,totale,mf,862
+2026-05-31,2026,Contro la persona,categoria,italiani,m,160
+2026-05-31,2026,Contro la persona,categoria,italiani,f,5
+2026-05-31,2026,Contro la persona,categoria,italiani,mf,165
+2026-05-31,2026,Contro la persona,categoria,stranieri,m,72
+2026-05-31,2026,Contro la persona,categoria,stranieri,f,5
+2026-05-31,2026,Contro la persona,categoria,stranieri,mf,77
+2026-05-31,2026,Contro la persona,categoria,totale,m,232
+2026-05-31,2026,Contro la persona,categoria,totale,f,10
+2026-05-31,2026,Contro la persona,categoria,totale,mf,242
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,italiani,m,7
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,italiani,f,0
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,italiani,mf,7
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,stranieri,m,0
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,stranieri,f,0
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,stranieri,mf,0
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,totale,m,7
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,totale,f,0
+2026-05-31,2026,Omicidio volontario consumato,dettaglio,totale,mf,7
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,italiani,m,32
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,italiani,f,0
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,italiani,mf,32
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,stranieri,m,10
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,stranieri,f,0
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,stranieri,mf,10
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,totale,m,42
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,totale,f,0
+2026-05-31,2026,Omicidio volontario tentato,dettaglio,totale,mf,42
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,italiani,m,73
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,italiani,f,3
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,italiani,mf,76
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,stranieri,m,43
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,stranieri,f,5
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,stranieri,mf,48
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,totale,m,116
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,totale,f,8
+2026-05-31,2026,Lesioni personali volontarie,dettaglio,totale,mf,124
+2026-05-31,2026,Percosse,dettaglio,italiani,m,3
+2026-05-31,2026,Percosse,dettaglio,italiani,f,0
+2026-05-31,2026,Percosse,dettaglio,italiani,mf,3
+2026-05-31,2026,Percosse,dettaglio,stranieri,m,1
+2026-05-31,2026,Percosse,dettaglio,stranieri,f,0
+2026-05-31,2026,Percosse,dettaglio,stranieri,mf,1
+2026-05-31,2026,Percosse,dettaglio,totale,m,4
+2026-05-31,2026,Percosse,dettaglio,totale,f,0
+2026-05-31,2026,Percosse,dettaglio,totale,mf,4
+2026-05-31,2026,Violenze sessuali,dettaglio,italiani,m,10
+2026-05-31,2026,Violenze sessuali,dettaglio,italiani,f,0
+2026-05-31,2026,Violenze sessuali,dettaglio,italiani,mf,10
+2026-05-31,2026,Violenze sessuali,dettaglio,stranieri,m,4
+2026-05-31,2026,Violenze sessuali,dettaglio,stranieri,f,0
+2026-05-31,2026,Violenze sessuali,dettaglio,stranieri,mf,4
+2026-05-31,2026,Violenze sessuali,dettaglio,totale,m,14
+2026-05-31,2026,Violenze sessuali,dettaglio,totale,f,0
+2026-05-31,2026,Violenze sessuali,dettaglio,totale,mf,14
+2026-05-31,2026,Sequestro di persona,dettaglio,italiani,m,4
+2026-05-31,2026,Sequestro di persona,dettaglio,italiani,f,0
+2026-05-31,2026,Sequestro di persona,dettaglio,italiani,mf,4
+2026-05-31,2026,Sequestro di persona,dettaglio,stranieri,m,4
+2026-05-31,2026,Sequestro di persona,dettaglio,stranieri,f,0
+2026-05-31,2026,Sequestro di persona,dettaglio,stranieri,mf,4
+2026-05-31,2026,Sequestro di persona,dettaglio,totale,m,8
+2026-05-31,2026,Sequestro di persona,dettaglio,totale,f,0
+2026-05-31,2026,Sequestro di persona,dettaglio,totale,mf,8
+2026-05-31,2026,Violenza privata,dettaglio,italiani,m,3
+2026-05-31,2026,Violenza privata,dettaglio,italiani,f,0
+2026-05-31,2026,Violenza privata,dettaglio,italiani,mf,3
+2026-05-31,2026,Violenza privata,dettaglio,stranieri,m,2
+2026-05-31,2026,Violenza privata,dettaglio,stranieri,f,0
+2026-05-31,2026,Violenza privata,dettaglio,stranieri,mf,2
+2026-05-31,2026,Violenza privata,dettaglio,totale,m,5
+2026-05-31,2026,Violenza privata,dettaglio,totale,f,0
+2026-05-31,2026,Violenza privata,dettaglio,totale,mf,5
+2026-05-31,2026,Minaccia,dettaglio,italiani,m,15
+2026-05-31,2026,Minaccia,dettaglio,italiani,f,1
+2026-05-31,2026,Minaccia,dettaglio,italiani,mf,16
+2026-05-31,2026,Minaccia,dettaglio,stranieri,m,2
+2026-05-31,2026,Minaccia,dettaglio,stranieri,f,0
+2026-05-31,2026,Minaccia,dettaglio,stranieri,mf,2
+2026-05-31,2026,Minaccia,dettaglio,totale,m,17
+2026-05-31,2026,Minaccia,dettaglio,totale,f,1
+2026-05-31,2026,Minaccia,dettaglio,totale,mf,18
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,italiani,m,7
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,italiani,f,1
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,italiani,mf,8
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,stranieri,m,3
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,stranieri,f,0
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,stranieri,mf,3
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,totale,m,10
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,totale,f,1
+2026-05-31,2026,Atti persecutori (stalking),dettaglio,totale,mf,11
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,italiani,m,27
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,italiani,f,2
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,italiani,mf,29
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,stranieri,m,3
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,stranieri,f,1
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,stranieri,mf,4
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,totale,m,30
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,totale,f,3
+2026-05-31,2026,"Contro la famiglia, la moralità pubblica, il buon costume",categoria,totale,mf,33
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,italiani,m,27
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,italiani,f,2
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,italiani,mf,29
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,stranieri,m,3
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,stranieri,f,1
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,stranieri,mf,4
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,totale,m,30
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,totale,f,3
+2026-05-31,2026,Maltrattamenti in famiglia,dettaglio,totale,mf,33
+2026-05-31,2026,Contro il patrimonio,categoria,italiani,m,217
+2026-05-31,2026,Contro il patrimonio,categoria,italiani,f,5
+2026-05-31,2026,Contro il patrimonio,categoria,italiani,mf,222
+2026-05-31,2026,Contro il patrimonio,categoria,stranieri,m,212
+2026-05-31,2026,Contro il patrimonio,categoria,stranieri,f,22
+2026-05-31,2026,Contro il patrimonio,categoria,stranieri,mf,234
+2026-05-31,2026,Contro il patrimonio,categoria,totale,m,429
+2026-05-31,2026,Contro il patrimonio,categoria,totale,f,27
+2026-05-31,2026,Contro il patrimonio,categoria,totale,mf,456
+2026-05-31,2026,Furto,dettaglio,italiani,m,38
+2026-05-31,2026,Furto,dettaglio,italiani,f,0
+2026-05-31,2026,Furto,dettaglio,italiani,mf,38
+2026-05-31,2026,Furto,dettaglio,stranieri,m,37
+2026-05-31,2026,Furto,dettaglio,stranieri,f,9
+2026-05-31,2026,Furto,dettaglio,stranieri,mf,46
+2026-05-31,2026,Furto,dettaglio,totale,m,75
+2026-05-31,2026,Furto,dettaglio,totale,f,9
+2026-05-31,2026,Furto,dettaglio,totale,mf,84
+2026-05-31,2026,Rapina,dettaglio,italiani,m,123
+2026-05-31,2026,Rapina,dettaglio,italiani,f,2
+2026-05-31,2026,Rapina,dettaglio,italiani,mf,125
+2026-05-31,2026,Rapina,dettaglio,stranieri,m,141
+2026-05-31,2026,Rapina,dettaglio,stranieri,f,13
+2026-05-31,2026,Rapina,dettaglio,stranieri,mf,154
+2026-05-31,2026,Rapina,dettaglio,totale,m,264
+2026-05-31,2026,Rapina,dettaglio,totale,f,15
+2026-05-31,2026,Rapina,dettaglio,totale,mf,279
+2026-05-31,2026,Estorsione,dettaglio,italiani,m,18
+2026-05-31,2026,Estorsione,dettaglio,italiani,f,1
+2026-05-31,2026,Estorsione,dettaglio,italiani,mf,19
+2026-05-31,2026,Estorsione,dettaglio,stranieri,m,13
+2026-05-31,2026,Estorsione,dettaglio,stranieri,f,0
+2026-05-31,2026,Estorsione,dettaglio,stranieri,mf,13
+2026-05-31,2026,Estorsione,dettaglio,totale,m,31
+2026-05-31,2026,Estorsione,dettaglio,totale,f,1
+2026-05-31,2026,Estorsione,dettaglio,totale,mf,32
+2026-05-31,2026,Danni,dettaglio,italiani,m,10
+2026-05-31,2026,Danni,dettaglio,italiani,f,1
+2026-05-31,2026,Danni,dettaglio,italiani,mf,11
+2026-05-31,2026,Danni,dettaglio,stranieri,m,11
+2026-05-31,2026,Danni,dettaglio,stranieri,f,0
+2026-05-31,2026,Danni,dettaglio,stranieri,mf,11
+2026-05-31,2026,Danni,dettaglio,totale,m,21
+2026-05-31,2026,Danni,dettaglio,totale,f,1
+2026-05-31,2026,Danni,dettaglio,totale,mf,22
+2026-05-31,2026,Ricettazione,dettaglio,italiani,m,22
+2026-05-31,2026,Ricettazione,dettaglio,italiani,f,0
+2026-05-31,2026,Ricettazione,dettaglio,italiani,mf,22
+2026-05-31,2026,Ricettazione,dettaglio,stranieri,m,9
+2026-05-31,2026,Ricettazione,dettaglio,stranieri,f,0
+2026-05-31,2026,Ricettazione,dettaglio,stranieri,mf,9
+2026-05-31,2026,Ricettazione,dettaglio,totale,m,31
+2026-05-31,2026,Ricettazione,dettaglio,totale,f,0
+2026-05-31,2026,Ricettazione,dettaglio,totale,mf,31
+2026-05-31,2026,Truffa,dettaglio,italiani,m,4
+2026-05-31,2026,Truffa,dettaglio,italiani,f,0
+2026-05-31,2026,Truffa,dettaglio,italiani,mf,4
+2026-05-31,2026,Truffa,dettaglio,stranieri,m,1
+2026-05-31,2026,Truffa,dettaglio,stranieri,f,0
+2026-05-31,2026,Truffa,dettaglio,stranieri,mf,1
+2026-05-31,2026,Truffa,dettaglio,totale,m,5
+2026-05-31,2026,Truffa,dettaglio,totale,f,0
+2026-05-31,2026,Truffa,dettaglio,totale,mf,5
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,italiani,m,68
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,italiani,f,1
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,italiani,mf,69
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,stranieri,m,29
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,stranieri,f,0
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,stranieri,mf,29
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,totale,m,97
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,totale,f,1
+2026-05-31,2026,Contro l'incolumità pubblica,categoria,totale,mf,98
+2026-05-31,2026,Stupefacenti,dettaglio,italiani,m,67
+2026-05-31,2026,Stupefacenti,dettaglio,italiani,f,0
+2026-05-31,2026,Stupefacenti,dettaglio,italiani,mf,67
+2026-05-31,2026,Stupefacenti,dettaglio,stranieri,m,29
+2026-05-31,2026,Stupefacenti,dettaglio,stranieri,f,0
+2026-05-31,2026,Stupefacenti,dettaglio,stranieri,mf,29
+2026-05-31,2026,Stupefacenti,dettaglio,totale,m,96
+2026-05-31,2026,Stupefacenti,dettaglio,totale,f,0
+2026-05-31,2026,Stupefacenti,dettaglio,totale,mf,96
+2026-05-31,2026,Contro la fede pubblica,categoria,italiani,m,5
+2026-05-31,2026,Contro la fede pubblica,categoria,italiani,f,0
+2026-05-31,2026,Contro la fede pubblica,categoria,italiani,mf,5
+2026-05-31,2026,Contro la fede pubblica,categoria,stranieri,m,6
+2026-05-31,2026,Contro la fede pubblica,categoria,stranieri,f,1
+2026-05-31,2026,Contro la fede pubblica,categoria,stranieri,mf,7
+2026-05-31,2026,Contro la fede pubblica,categoria,totale,m,11
+2026-05-31,2026,Contro la fede pubblica,categoria,totale,f,1
+2026-05-31,2026,Contro la fede pubblica,categoria,totale,mf,12
+2026-05-31,2026,Falsità in atti e persone,dettaglio,italiani,m,5
+2026-05-31,2026,Falsità in atti e persone,dettaglio,italiani,f,0
+2026-05-31,2026,Falsità in atti e persone,dettaglio,italiani,mf,5
+2026-05-31,2026,Falsità in atti e persone,dettaglio,stranieri,m,6
+2026-05-31,2026,Falsità in atti e persone,dettaglio,stranieri,f,1
+2026-05-31,2026,Falsità in atti e persone,dettaglio,stranieri,mf,7
+2026-05-31,2026,Falsità in atti e persone,dettaglio,totale,m,11
+2026-05-31,2026,Falsità in atti e persone,dettaglio,totale,f,1
+2026-05-31,2026,Falsità in atti e persone,dettaglio,totale,mf,12
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,italiani,m,43
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,italiani,f,2
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,italiani,mf,45
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,stranieri,m,35
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,stranieri,f,2
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,stranieri,mf,37
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,totale,m,78
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,totale,f,4
+2026-05-31,2026,"Contro Stato, altre istituzioni, ordine pubblico",categoria,totale,mf,82
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,italiani,m,2
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,italiani,f,1
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,italiani,mf,3
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,stranieri,m,0
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,stranieri,f,0
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,stranieri,mf,0
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,totale,m,2
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,totale,f,1
+2026-05-31,2026,Contro la personalità internazionale dello Stato,dettaglio,totale,mf,3
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,italiani,m,32
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,italiani,f,0
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,italiani,mf,32
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,stranieri,m,32
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,stranieri,f,2
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,stranieri,mf,34
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,totale,m,64
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,totale,f,2
+2026-05-31,2026,"Violenza, resistenza, oltraggio",dettaglio,totale,mf,66
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,italiani,m,3
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,italiani,f,0
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,italiani,mf,3
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,stranieri,m,0
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,stranieri,f,0
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,stranieri,mf,0
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,totale,m,3
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,totale,f,0
+2026-05-31,2026,Altri contro l'ordine pubblico,dettaglio,totale,mf,3
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,italiani,m,4
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,italiani,f,0
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,italiani,mf,4
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,stranieri,m,0
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,stranieri,f,0
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,stranieri,mf,0
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,totale,m,4
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,totale,f,0
+2026-05-31,2026,Associazione di tipo mafioso,dettaglio,totale,mf,4
+2026-05-31,2026,Altri delitti,categoria,italiani,m,35
+2026-05-31,2026,Altri delitti,categoria,italiani,f,1
+2026-05-31,2026,Altri delitti,categoria,italiani,mf,36
+2026-05-31,2026,Altri delitti,categoria,stranieri,m,5
+2026-05-31,2026,Altri delitti,categoria,stranieri,f,1
+2026-05-31,2026,Altri delitti,categoria,stranieri,mf,6
+2026-05-31,2026,Altri delitti,categoria,totale,m,40
+2026-05-31,2026,Altri delitti,categoria,totale,f,2
+2026-05-31,2026,Altri delitti,categoria,totale,mf,42
+2026-05-31,2026,Armi,dettaglio,italiani,m,33
+2026-05-31,2026,Armi,dettaglio,italiani,f,1
+2026-05-31,2026,Armi,dettaglio,italiani,mf,34
+2026-05-31,2026,Armi,dettaglio,stranieri,m,4
+2026-05-31,2026,Armi,dettaglio,stranieri,f,1
+2026-05-31,2026,Armi,dettaglio,stranieri,mf,5
+2026-05-31,2026,Armi,dettaglio,totale,m,37
+2026-05-31,2026,Armi,dettaglio,totale,f,2
+2026-05-31,2026,Armi,dettaglio,totale,mf,39
+2026-05-31,2026,Totale DELITTI,totale,italiani,m,555
+2026-05-31,2026,Totale DELITTI,totale,italiani,f,16
+2026-05-31,2026,Totale DELITTI,totale,italiani,mf,571
+2026-05-31,2026,Totale DELITTI,totale,stranieri,m,362
+2026-05-31,2026,Totale DELITTI,totale,stranieri,f,32
+2026-05-31,2026,Totale DELITTI,totale,stranieri,mf,394
+2026-05-31,2026,Totale DELITTI,totale,totale,m,917
+2026-05-31,2026,Totale DELITTI,totale,totale,f,48
+2026-05-31,2026,Totale DELITTI,totale,totale,mf,965
 2026-06-15,2026,Contro la persona,categoria,italiani,m,171
 2026-06-15,2026,Contro la persona,categoria,italiani,f,5
 2026-06-15,2026,Contro la persona,categoria,italiani,mf,176

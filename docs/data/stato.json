@@ -2,16 +2,8 @@
   "verificato_il": "2026-11-12",
   "ultimo_dato_riferito_al": "2026-10-15",
   "primo_dato_riferito_al": "2020-12-31",
-  "documenti_inclusi": 30,
+  "documenti_inclusi": 32,
   "documenti_con_problemi": [
-    {
-      "file": "Analisi_Servizi_minorili_15.02.2026.pdf",
-      "motivo": "non leggibile: tabella età/nazionalità/sesso incompleta"
-    },
-    {
-      "file": "Analisi_Servizi_minorili_31.05.2026_G.pdf",
-      "motivo": "controlli sui presenti falliti: tab età: somma righe = Totale (); IPM con presenti ma senza riga nella tab età ()"
-    },
     {
       "file": "Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf",
       "motivo": "stessa data di riferimento (2020-12-31) di un altro file: scartato"

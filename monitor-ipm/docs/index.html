@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monitor IPM – Istituti penali per minorenni in Italia</title>
+<meta name="description" content="Presenze e ingressi negli istituti penali per minorenni (IPM) italiani, ricostruiti dai dati del Ministero della Giustizia.">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Monitor IPM</h1>
+    <p class="sub">Presenze e ingressi negli istituti penali per minorenni italiani, ricostruiti dai PDF del Ministero della Giustizia.</p>
+    <p class="stamp" id="stamp">Caricamento dati…</p>
+    <div class="alert" id="alert" hidden></div>
+  </header>
+
+  <main>
+    <section class="kpis" id="kpis" aria-label="Indicatori principali"></section>
+
+    <h2>Quadro nazionale</h2>
+
+    <article class="card" id="c-presenze">
+      <h3>Presenti negli IPM</h3>
+      <p class="desc">Ragazzi presenti negli istituti alla data di riferimento di ciascun documento.</p>
+      <div class="plot"><canvas role="img" aria-label="Presenti negli IPM nel tempo"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+    </article>
+
+    <article class="card" id="c-ingressi">
+      <h3>Ingressi da inizio anno</h3>
+      <p class="desc">Dato cumulato: riparte da zero a gennaio. Un punto per ogni documento pubblicato, sul giorno dell’anno.</p>
+      <div class="controls"><div class="seg" data-ctl="misura"></div></div>
+      <div class="legend"></div>
+      <div class="plot"><canvas role="img" aria-label="Ingressi cumulati da inizio anno, un anno per linea"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="foot-note" id="n-ingressi"></p>
+    </article>
+
+    <article class="card" id="c-eta">
+      <h3>Presenti per fascia d’età</h3>
+      <p class="desc">Fasce 14-15, 16-17, 18-20 e 21-24 anni. Nei “giovani adulti” restano in IPM i maggiorenni che hanno commesso il reato da minori.</p>
+      <div class="controls"><div class="seg" data-ctl="modo"></div></div>
+      <div class="legend"></div>
+      <div class="plot"><canvas role="img" aria-label="Presenti per fascia d’età nel tempo"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+    </article>
+
+    <article class="card" id="c-chi">
+      <h3>Chi è dentro: nazionalità e sesso</h3>
+      <p class="desc">Presenti alla data di riferimento.</p>
+      <div class="controls">
+        <div class="seg" data-ctl="dim"></div>
+        <div class="seg" data-ctl="modo"></div>
+      </div>
+      <div class="legend"></div>
+      <div class="plot"><canvas role="img" aria-label="Presenti per nazionalità o sesso nel tempo"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+    </article>
+
+    <h2>Reati degli ingressi</h2>
+
+    <article class="card" id="c-delitti">
+      <h3>Reati per cui i ragazzi sono entrati in IPM</h3>
+      <p class="desc">Un valore per anno: l’ultimo documento disponibile (per l’anno in corso è il dato da gennaio alla data indicata). I numeri contano i <strong>reati</strong>, non le persone: chi entra per più reati compare più volte.</p>
+      <div class="controls">
+        <label>Reato <select data-ctl="reato"></select></label>
+        <div class="seg" data-ctl="scomp"></div>
+      </div>
+      <div class="legend"></div>
+      <div class="plot"><canvas role="img" aria-label="Reati degli ingressi per anno"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="foot-note" id="n-delitti"></p>
+    </article>
+
+    <h2>Istituto per istituto</h2>
+
+    <article class="card" id="c-ipm-conf">
+      <h3>Tutti gli istituti all’ultima data</h3>
+      <p class="desc" id="d-ipm-conf"></p>
+      <div class="controls"><div class="seg" data-ctl="misura"></div></div>
+      <div class="plot" id="p-ipm-conf"><canvas role="img" aria-label="Confronto tra istituti"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+    </article>
+
+    <article class="card" id="c-ipm-one">
+      <h3>Un istituto nel tempo</h3>
+      <div class="controls"><label>Istituto <select data-ctl="ipm"></select></label></div>
+      <p class="desc" id="d-ipm-one"></p>
+      <div class="plot"><canvas role="img" aria-label="Presenti nell’istituto scelto nel tempo"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="foot-note" id="n-ipm-one"></p>
+    </article>
+
+    <details>
+      <summary>Metodo e avvertenze</summary>
+      <ul>
+        <li><strong>Fonte.</strong> Ministero della Giustizia, Dipartimento per la giustizia minorile e di comunità, <a href="https://www.giustizia.it/giustizia/it/mg_1_14.page">“Minorenni e giovani adulti in carico ai Servizi minorili”</a>. I PDF escono circa due volte al mese, con un ritardo di circa tre settimane rispetto alla data di riferimento: questa pagina non è in tempo reale.</li>
+        <li><strong>Aggiornamento.</strong> Uno script controlla il sito ogni giorno, scarica i PDF nuovi, li legge e ricalcola i grafici. Ogni documento supera una serie di controlli di coerenza (somme per istituto, totali tra tabelle diverse); se un controllo fallisce il documento viene escluso e segnalato in alto.</li>
+        <li><strong>Flussi cumulati.</strong> Gli ingressi sono conteggiati da inizio anno e ripartono a gennaio. Confrontare documenti di mesi diversi non ha senso senza guardare la data.</li>
+        <li><strong>Reati.</strong> Le tabelle contano i reati per cui avviene l’ingresso, non le persone. Le righe sotto una certa soglia possono non essere riportate nel PDF: in quel caso il grafico mostra “non riportato”, non zero.</li>
+        <li><strong>Istituti che cambiano.</strong> L’elenco non è stabile: ad esempio dal 28 dicembre 2025 è attivo Lecce, mentre dal 23 febbraio 2026 l’attività di Treviso è sospesa ed è attivato Rovigo. Gli istituti non più attivi restano nei grafici storici.</li>
+        <li><strong>Ingressi e trasferimenti.</strong> Per confrontare nel tempo si usa il totale degli ingressi, che comprende i trasferimenti tra istituti. Dai documenti del 31/12/2024 il Ministero distingue anche gli ingressi esclusi i trasferimenti.</li>
+        <li><strong>Errori della fonte.</strong> I PDF contengono a volte refusi (titoli di tabella non aggiornati, numerazioni sbagliate). Quando i numeri non tornano, il documento non viene incluso.</li>
+        <li><strong>Perimetro.</strong> Solo istituti penali per minorenni. Centri di prima accoglienza, comunità e misure di comunità non sono inclusi.</li>
+      </ul>
+    </details>
+  </main>
+
+  <footer>
+    <p>Dati in formato aperto (CSV), aggiornati a ogni nuova pubblicazione:</p>
+    <p class="dl" id="dl"></p>
+    <p>Progetto di Luca Bonzanni · newsletter “La legge dei grandi numeri”.</p>
+  </footer>
+</div>
+<script src="vendor/chart.umd.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

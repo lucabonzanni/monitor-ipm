@@ -1,4 +1,20 @@
 data_rif,file,gruppo,controllo,esito,dettaglio
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,579 vs 579
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,72 vs 72
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,579 vs 579
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-01-15,Analisi_Servizi_minorili_15.01.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2026-03-15,Analisi_Servizi_minorili_15.03.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,545 vs 545
 2026-03-15,Analisi_Servizi_minorili_15.03.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,332 vs 332
 2026-03-15,Analisi_Servizi_minorili_15.03.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
@@ -15,6 +31,38 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2026-03-15,Analisi_Servizi_minorili_15.03.2026_G.pdf,delitti,delitti: tabella con righe,OK,
 2026-03-15,Analisi_Servizi_minorili_15.03.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2026-03-15,Analisi_Servizi_minorili_15.03.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,568 vs 568
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,486 vs 486
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,568 vs 568
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-04-15,Analisi_Servizi_minorili_15.04.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,578 vs 578
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,776 vs 776
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,578 vs 578
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-06-15,Analisi_Servizi_minorili_15.06.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2022-07-15,Analisi_Servizi_minorili_15.07.2022_1_1.pdf,presenti,tab IPM: somma presenti = Totale,OK,381 vs 381
 2022-07-15,Analisi_Servizi_minorili_15.07.2022_1_1.pdf,presenti,tab IPM: somma ingressi = Totale,OK,686 vs 686
 2022-07-15,Analisi_Servizi_minorili_15.07.2022_1_1.pdf,presenti,tab età: somma fasce = totale riga,OK,
@@ -29,6 +77,38 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2022-07-15,Analisi_Servizi_minorili_15.07.2022_1_1.pdf,delitti,delitti: tabella con righe,OK,
 2022-07-15,Analisi_Servizi_minorili_15.07.2022_1_1.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2022-07-15,Analisi_Servizi_minorili_15.07.2022_1_1.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,542 vs 542
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,910 vs 910
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,542 vs 542
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-07-15,Analisi_Servizi_minorili_15.07.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab IPM: somma presenti = Totale,OK,550 vs 550
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1046 vs 1046
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,550 vs 550
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,delitti,delitti: tabella con righe,OK,
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-08-15,Analisi_Servizi_minorili_15.08.2026.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2026-09-15,Analisi_Servizi_minorili_15.09.2026G.pdf,presenti,tab IPM: somma presenti = Totale,OK,568 vs 568
 2026-09-15,Analisi_Servizi_minorili_15.09.2026G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1177 vs 1177
 2026-09-15,Analisi_Servizi_minorili_15.09.2026G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
@@ -45,6 +125,22 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2026-09-15,Analisi_Servizi_minorili_15.09.2026G.pdf,delitti,delitti: tabella con righe,OK,
 2026-09-15,Analisi_Servizi_minorili_15.09.2026G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2026-09-15,Analisi_Servizi_minorili_15.09.2026G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab IPM: somma presenti = Totale,OK,570 vs 570
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,640 vs 640
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,570 vs 570
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,delitti,delitti: tabella con righe,OK,
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-05-15,Analisi_Servizi_minorili_15052026G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2026-10-15,Analisi_Servizi_minorili_15102026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,563 vs 563
 2026-10-15,Analisi_Servizi_minorili_15102026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1311 vs 1311
 2026-10-15,Analisi_Servizi_minorili_15102026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
@@ -61,6 +157,20 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2026-10-15,Analisi_Servizi_minorili_15102026_G.pdf,delitti,delitti: tabella con righe,OK,
 2026-10-15,Analisi_Servizi_minorili_15102026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2026-10-15,Analisi_Servizi_minorili_15102026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,409 vs 409
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,841 vs 841
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,409 vs 409
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,delitti,delitti: tabella con righe,OK,
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2023-06-30,Analisi_Servizi_minorili_1sem2023_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2026-02-28,Analisi_Servizi_minorili_28022026G.pdf,presenti,tab IPM: somma presenti = Totale,OK,547 vs 547
 2026-02-28,Analisi_Servizi_minorili_28022026G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,266 vs 266
 2026-02-28,Analisi_Servizi_minorili_28022026G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
@@ -77,6 +187,80 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2026-02-28,Analisi_Servizi_minorili_28022026G.pdf,delitti,delitti: tabella con righe,OK,
 2026-02-28,Analisi_Servizi_minorili_28022026G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2026-02-28,Analisi_Servizi_minorili_28022026G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,581 vs 581
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,579 vs 579
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,581 vs 581
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-04-30,Analisi_Servizi_minorili_30.04.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab IPM: somma presenti = Totale,OK,331 vs 331
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab IPM: somma ingressi = Totale,OK,448 vs 448
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab età: somma righe = Totale,OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,331 vs 331
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,delitti,delitti: tabella con righe,OK,
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2021-06-30,Analisi_Servizi_minorili_30.06.2021CONVALIDATO_novembre2021_giustizia.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab IPM: somma presenti = Totale,OK,374 vs 374
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab IPM: somma ingressi = Totale,OK,620 vs 620
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab età: somma righe = Totale,OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,374 vs 374
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,delitti,delitti: tabella con righe,OK,
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2022-06-30,Analisi_Servizi_minorili_30.06.2022dati_convalidati_rettificati.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,543 vs 543
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,997 vs 997
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,543 vs 543
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,delitti,delitti: tabella con righe,OK,
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2024-06-30,Analisi_Servizi_minorili_30.06.2024_dati_convalidatiok_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,572 vs 572
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,856 vs 856
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,572 vs 572
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-06-30,Analisi_Servizi_minorili_30.06.2026dati_provvisori_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2026-09-30,Analisi_Servizi_minorili_30.09.2026G.pdf,presenti,tab IPM: somma presenti = Totale,OK,557 vs 557
 2026-09-30,Analisi_Servizi_minorili_30.09.2026G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1247 vs 1247
 2026-09-30,Analisi_Servizi_minorili_30.09.2026G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
@@ -93,6 +277,70 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2026-09-30,Analisi_Servizi_minorili_30.09.2026G.pdf,delitti,delitti: tabella con righe,OK,
 2026-09-30,Analisi_Servizi_minorili_30.09.2026G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2026-09-30,Analisi_Servizi_minorili_30.09.2026G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,559 vs 559
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,827 vs 827
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,559 vs 559
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,delitti,delitti: tabella con righe,OK,
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2025-06-30,Analisi_Servizi_minorili_30_giugno_2025_dati_convalidati_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,574 vs 574
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,154 vs 154
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,574 vs 574
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-01-31,Analisi_Servizi_minorili_31.01.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,587 vs 587
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,712 vs 712
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab età: somma righe = Totale,FALLITO,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,FALLITO,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,587 vs 587
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,delitti,delitti: tabella con righe,OK,
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-05-31,Analisi_Servizi_minorili_31.05.2026_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab IPM: somma presenti = Totale,OK,534 vs 534
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab IPM: somma ingressi = Totale,OK,975 vs 975
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,534 vs 534
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,delitti,delitti: tabella con righe,OK,
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-07-31,Analisi_Servizi_minorili_31.07.2026.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2026-08-31,Analisi_Servizi_minorili_31.08.2026Gult.pdf,presenti,tab IPM: somma presenti = Totale,OK,572 vs 572
 2026-08-31,Analisi_Servizi_minorili_31.08.2026Gult.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1118 vs 1118
 2026-08-31,Analisi_Servizi_minorili_31.08.2026Gult.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
@@ -123,6 +371,62 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,delitti,delitti: tabella con righe,OK,
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab IPM: somma presenti = Totale,OK,278 vs 278
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab IPM: somma ingressi = Totale,OK,896 vs 896
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab età: somma righe = Totale,OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,278 vs 278
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,delitti,delitti: tabella con righe,OK,
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab IPM: somma presenti = Totale,OK,318 vs 318
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1019 vs 1019
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab età: somma righe = Totale,OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,318 vs 318
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,delitti,delitti: tabella con righe,OK,
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab IPM: somma presenti = Totale,OK,381 vs 381
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1526 vs 1526
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab età: somma righe = Totale,OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,381 vs 381
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,delitti,delitti: tabella con righe,OK,
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,495 vs 495
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1806 vs 1806
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab età: somma righe = Totale,OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,495 vs 495
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,delitti,delitti: tabella con righe,OK,
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,587 vs 587
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,1910 vs 1910
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
@@ -155,6 +459,22 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,delitti,delitti: tabella con righe,OK,
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab IPM: somma presenti = Totale,OK,557 vs 557
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,408 vs 408
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (per IPM),OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab IPM: esclusi + trasferimenti = totale (Totale),OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab età: somma fasce = totale riga,OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab età: somma righe = Totale,OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,presenti per età = presenti per IPM (per istituto),OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,presenti per età = presenti per IPM (totale),OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,IPM con presenti ma senza riga nella tab età,OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab nazionalità/sesso: Totale = presenti,OK,557 vs 557
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab nazionalità/sesso: coerenza m+f e it+st,OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab nazionalità/sesso: somma fasce = Totale,OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,delitti,delitti: tabella con righe,OK,
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
+2026-03-31,Analisi_Servizi_minorili_31032026G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
 2024-01-31,Analisi_Servizi_minorili_al_31.01.2024_G.pdf,presenti,tab IPM: somma presenti = Totale,OK,516 vs 516
 2024-01-31,Analisi_Servizi_minorili_al_31.01.2024_G.pdf,presenti,tab IPM: somma ingressi = Totale,OK,206 vs 206
 2024-01-31,Analisi_Servizi_minorili_al_31.01.2024_G.pdf,presenti,tab età: somma fasce = totale riga,OK,

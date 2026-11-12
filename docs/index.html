@@ -25,7 +25,7 @@
 
     <article class="card" id="c-presenze">
       <h3>Presenti negli Ipm</h3>
-      <p class="desc">Detenuti presenti negli istituti alla data di riferimento di ciascun documento.</p>
+      <p class="desc">Detenuti presenti negli istituti alla data di riferimento di ciascun documento</p>
       <div class="plot"><canvas role="img" aria-label="Presenti negli Ipm nel tempo"></canvas></div>
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
@@ -43,7 +43,7 @@
     </article>
 
     <article class="card" id="c-ipm-one">
-      <h3>Un istituto nel tempo</h3>
+      <h3>La situazione nel tempo, istituto per istituto</h3>
       <div class="controls"><label>Istituto <select data-ctl="ipm"></select></label></div>
       <p class="desc" id="d-ipm-one"></p>
       <div class="plot"><canvas role="img" aria-label="Presenti nell’istituto scelto nel tempo"></canvas></div>
@@ -55,11 +55,11 @@
     <h2>Ingressi e profilo dei detenuti</h2>
 
     <article class="card" id="c-ingressi">
-      <h3>Ingressi da inizio anno</h3>
-      <p class="desc">Ingressi cumulati dal 1° gennaio. Per gli anni conclusi è il totale annuo; per l’anno in corso è il dato all’ultimo aggiornamento.</p>
+      <h3>Ingressi per anno</h3>
+      <p class="desc" id="d-ingressi">Totale degli ingressi di ciascun anno</p>
       <div class="controls"><div class="seg" data-ctl="misura"></div></div>
       <div class="legend"></div>
-      <div class="plot"><canvas role="img" aria-label="Ingressi cumulati da inizio anno, una barra per anno"></canvas></div>
+      <div class="plot"><canvas role="img" aria-label="Totale degli ingressi per anno, una colonna per anno"></canvas></div>
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-ingressi"></p>
@@ -67,7 +67,7 @@
 
     <article class="card" id="c-eta">
       <h3>Presenti per fascia d’età</h3>
-      <p class="desc">Fasce 14-15, 16-17, 18-20 e 21-24 anni. Nei “giovani adulti” restano in Ipm i maggiorenni che hanno commesso il reato da minori.</p>
+      <p class="desc">Classi d’età dei detenuti. I “giovani adulti” comprendono i maggiorenni che hanno commesso il reato da minori e restano negli Ipm</p>
       <div class="controls"><div class="seg" data-ctl="modo"></div></div>
       <div class="legend"></div>
       <div class="plot"><canvas role="img" aria-label="Presenti per fascia d’età nel tempo"></canvas></div>
@@ -76,14 +76,14 @@
     </article>
 
     <article class="card" id="c-chi">
-      <h3>Chi è dentro: nazionalità e sesso</h3>
-      <p class="desc">Presenti alla data di riferimento.</p>
+      <h3>Chi è dentro: nazionalità e genere</h3>
+      <p class="desc">Presenti alla data di riferimento</p>
       <div class="controls">
         <div class="seg" data-ctl="dim"></div>
         <div class="seg" data-ctl="modo"></div>
       </div>
       <div class="legend"></div>
-      <div class="plot"><canvas role="img" aria-label="Presenti per nazionalità o sesso nel tempo"></canvas></div>
+      <div class="plot"><canvas role="img" aria-label="Presenti per nazionalità o genere nel tempo"></canvas></div>
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
     </article>
@@ -92,7 +92,7 @@
 
     <article class="card" id="c-delitti">
       <h3>Principali reati contestati al momento dell’ingresso</h3>
-      <p class="desc">Un valore per anno: l’ultimo documento disponibile (per l’anno in corso è il dato da gennaio alla data indicata). I numeri contano i <strong>reati</strong>, non le persone: chi entra per più reati compare più volte.</p>
+      <p class="desc">Un valore per anno: l’ultimo documento disponibile (per l’anno in corso è il dato da gennaio alla data indicata). I numeri contano i <strong>reati</strong>, non le persone: chi entra per più reati compare più volte</p>
       <div class="controls">
         <label>Reato <select data-ctl="reato"></select></label>
         <div class="seg" data-ctl="scomp"></div>
@@ -123,7 +123,7 @@
   <footer>
     <p>Dati in formato aperto (CSV), aggiornati a ogni nuova pubblicazione:</p>
     <p class="dl" id="dl"></p>
-    <p>Progetto di Luca Bonzanni · newsletter “La legge dei grandi numeri”.</p>
+    <p>Progetto a cura di Luca Bonzanni | <a href="https://www.linkedin.com/in/bonzanni/">LinkedIn</a> | <a href="https://leggegrandinumeri.substack.com/">La legge dei grandi numeri</a>, una newsletter su dati, criminalità e giustizia</p>
   </footer>
 </div>
 <script src="vendor/chart.umd.js"></script>

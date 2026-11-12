@@ -13,7 +13,7 @@
   <header>
     <h1>LA SITUAZIONE DELLE CARCERI MINORILI ITALIANE</h1>
     <p class="sub">Una fotografia, numeri alla mano, sulle condizioni degli Ipm, gli istituti penali per minorenni</p>
-    <p class="sub"><em>Un portale data-driven sulla base dei dati periodici del ministero della Giustizia. Aggiornamenti a cadenza semestrale per il periodo 2021-2025 e quindicinale dal 2026</em></p>
+    <p class="sub"><em>Portale data-driven sulla base dei dati periodici del ministero della Giustizia. Aggiornamenti a cadenza semestrale per il periodo 2020-2025 e quindicinale dal 2026</em></p>
     <p class="stamp" id="stamp">Caricamento dati…</p>
     <div class="alert" id="alert" hidden></div>
   </header>
@@ -109,6 +109,7 @@
       <ul>
         <li><strong>Fonte.</strong> Ministero della Giustizia, Dipartimento per la Giustizia minorile e di Comunità, report periodico <a href="https://www.giustizia.it/giustizia/it/mg_1_14.page">“Minorenni e giovani adulti in carico ai Servizi minorili”</a>. I documenti sono pubblicati circa due volte al mese, con un ritardo attorno alle tre settimane rispetto alla data di riferimento: questa pagina non è in tempo reale.</li>
         <li><strong>Aggiornamento.</strong> Uno script – sviluppato attraverso Claude Sonnet 5.5 – controlla il sito del ministero della Giustizia ogni giorno, scarica gli eventuali nuovi file .pdf, li legge e ricalcola i grafici. Ogni documento supera una serie di controlli di coerenza (somme per istituto, totali tra tabelle diverse); se un controllo fallisce il documento viene escluso e segnalato in alto.</li>
+        <li><strong>Copertura.</strong> <span id="m-docs"></span>.</li>
         <li><strong>Cadenza.</strong> Fino al 2025 il sito usa solo i documenti semestrali (30 giugno e 31 dicembre); dal 2026 tutti quelli quindicinali disponibili. I documenti intermedi restano nell’archivio del progetto ma non compaiono nei grafici.</li>
         <li><strong>Flussi cumulati.</strong> Gli ingressi sono conteggiati da inizio anno e ripartono a gennaio. Confrontare documenti di mesi diversi non ha senso senza guardare la data.</li>
         <li><strong>Reati.</strong> Le tabelle contano i reati per cui avviene l’ingresso, non le persone. Le righe sotto una certa soglia possono non essere riportate nel file .pdf: in quel caso il grafico mostra “non riportato”, non zero.</li>
@@ -121,8 +122,6 @@
   </main>
 
   <footer>
-    <p>Dati in formato aperto (CSV), aggiornati a ogni nuova pubblicazione:</p>
-    <p class="dl" id="dl"></p>
     <p>Progetto a cura di Luca Bonzanni | <a href="https://www.linkedin.com/in/bonzanni/">LinkedIn</a> | <a href="https://leggegrandinumeri.substack.com/">La legge dei grandi numeri</a>, una newsletter su dati, criminalità e giustizia</p>
   </footer>
 </div>

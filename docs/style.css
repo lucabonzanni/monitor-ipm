@@ -1,37 +1,37 @@
 :root {
   color-scheme: light dark;
-  --surface: #fcfcfb;
-  --card: #ffffff;
-  --ink: #1a1a19;
-  --ink2: #4a4a47;
-  --muted: #6b6b66;
-  --grid: #e4e4df;
-  --border: #d9d9d3;
-  --accent: #2a78d6;
+  --surface: #E6EAE3;
+  --card: #F4F6F1;
+  --ink: #16244A;
+  --ink2: #3B4A6E;
+  --muted: #5C6786;
+  --grid: #CDD3C8;
+  --border: #C3CABD;
+  --accent: #2D4C8C;
   --warn-bg: #fff4e0;
   --warn-ink: #6a4300;
-  --c1: #2a78d6;
-  --c2: #eb6834;
+  --c1: #2D4C8C;
+  --c2: #E39A1F;
   --y-old: #9a9a94;
-  --o1: #86b6ef;
-  --o2: #5598e7;
-  --o3: #2a78d6;
-  --o4: #184f95;
+  --o1: #8FA6D1;
+  --o2: #5A78B5;
+  --o3: #2D4C8C;
+  --o4: #16244A;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --surface: #1a1a19;
-    --card: #222221;
-    --ink: #f1f1ee;
-    --ink2: #c9c9c4;
-    --muted: #9b9b95;
-    --grid: #343432;
-    --border: #3a3a37;
-    --accent: #3987e5;
+    --surface: #0F1730;
+    --card: #16244A;
+    --ink: #E6EAE3;
+    --ink2: #C3CBDD;
+    --muted: #97A2BF;
+    --grid: #2A3A66;
+    --border: #2F4170;
+    --accent: #5B7CC4;
     --warn-bg: #3a2c10;
     --warn-ink: #f2d9a6;
-    --c1: #3987e5;
-    --c2: #d95926;
+    --c1: #5B7CC4;
+    --c2: #E39A1F;
     --y-old: #77776f;
   }
 }
@@ -57,10 +57,11 @@ header .sub { color: var(--ink2); margin: 0 0 12px; }
 }
 .alert[hidden] { display: none; }
 .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 20px 0 8px; }
-.kpi { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
-.kpi .label { color: var(--ink2); font-size: .85rem; }
+.kpi { text-align: center; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; }
+.kpi .label { color: var(--ink); font-size: .9rem; font-weight: 700; }
 .kpi .value { font-size: 2rem; font-weight: 650; line-height: 1.15; font-variant-numeric: tabular-nums; }
 .kpi .note { color: var(--muted); font-size: .8rem; }
+.kpi .note.conf { font-style: italic; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
 h2 { font-size: 1.2rem; margin: 36px 0 8px; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 14px 0; }
 .card h3 { margin: 0 0 2px; font-size: 1.05rem; }
@@ -97,7 +98,7 @@ details summary { cursor: pointer; font-weight: 600; }
 details ul { padding-left: 20px; }
 details li { margin: 4px 0; font-size: .92rem; color: var(--ink2); }
 a { color: var(--accent); }
-footer { color: var(--muted); font-size: .85rem; margin-top: 32px; }
+footer { color: var(--muted); font-size: .85rem; margin-top: 32px; text-align: center; }
 .dl { display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .err { background: var(--warn-bg); color: var(--warn-ink); padding: 14px; border-radius: 8px; }
 @media (max-width: 560px) { .plot { height: 300px; } .kpi .value { font-size: 1.7rem; } }

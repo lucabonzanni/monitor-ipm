@@ -57,8 +57,8 @@
 
   /* ---------- palette (colori validati: vedi README) ---------- */
   var CAT = [
-    ["#2a78d6", "#3987e5"], ["#eb6834", "#d95926"], ["#1baf7a", "#199e70"],
-    ["#eda100", "#c98500"], ["#e87ba4", "#d55181"]
+    ["#2D4C8C", "#5B7CC4"], ["#E39A1F", "#E39A1F"], ["#8FA6D1", "#C3D0EA"],
+    ["#D9482B", "#D9482B"], ["#86AE95", "#86AE95"]
   ];
   function isDark() { return window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches; }
   function cat(i) { return CAT[i][isDark() ? 1 : 0]; }
@@ -193,12 +193,13 @@
     var old = charts.get(id); if (old) old.destroy();
     charts.set(id, new Chart(canvas, cfg));
   }
+  var zoomPeriodo = false; /* true = solo l’anno in corso */
   function lineDs(label, pts, color, o) {
     o = o || {};
     return {
       label: label, data: pts, borderColor: color, backgroundColor: color,
-      borderWidth: o.w || 2, pointRadius: o.r === undefined ? 4 : o.r, pointHoverRadius: 6,
-      pointBackgroundColor: color, pointBorderColor: css("--card"), pointBorderWidth: 2,
+      borderWidth: o.w || 2, pointRadius: o.r !== undefined ? o.r : (zoomPeriodo ? 4 : (window.innerWidth < 600 ? 2 : 3)), pointHoverRadius: 6,
+      pointBackgroundColor: color, pointBorderColor: css("--card"), pointBorderWidth: zoomPeriodo ? 2 : 1,
       pointHitRadius: 14, tension: 0, spanGaps: false, order: o.order || 0
     };
   }
@@ -208,7 +209,7 @@
       ticks: { color: muted, maxRotation: 0, callback: function (v) { return v.__l || ""; } },
       afterBuildTicks: function (axis) {
         var t = [], y0 = new Date(min).getUTCFullYear(), y1 = new Date(max).getUTCFullYear(), y, m, v;
-        var step = window.innerWidth < 600 ? 12 : 6;
+        var step = (max - min) < 500 * 864e5 ? (window.innerWidth < 600 ? 2 : 1) : (window.innerWidth < 600 ? 12 : 6);
         for (y = y0; y <= y1; y++) for (m = 0; m < 12; m += step) {
           v = Date.UTC(y, m, 1);
           if (v >= min && v <= max) t.push({ value: v, label: m === 0 ? String(y) : "luglio" });
@@ -259,12 +260,12 @@
 
     /* testata */
     var st = $("#stamp"); st.textContent = "";
-    [["Dati riferiti al ", fmtData(stato.ultimo_dato_riferito_al)], ["Ultima verifica del sito: ", fmtData(stato.verificato_il)],
-      ["Documenti inclusi: ", String(stato.documenti_inclusi) + " (dal " + fmtData(stato.primo_dato_riferito_al) + ")"]]
+    [["Dati riferiti al ", fmtData(stato.ultimo_dato_riferito_al)], ["Ultima verifica del sito: ", fmtData(stato.verificato_il)]]
       .forEach(function (p) {
         var s = document.createElement("span"); s.appendChild(document.createTextNode(p[0]));
         var b = document.createElement("strong"); b.textContent = p[1]; s.appendChild(b); st.appendChild(s);
       });
+    $("#m-docs").textContent = "Documenti inclusi: " + stato.documenti_inclusi + " (dal " + fmtData(stato.primo_dato_riferito_al) + " al " + fmtData(stato.ultimo_dato_riferito_al) + ")";
     var probs = (stato.documenti_con_problemi || []);
     var al = $("#alert");
     var msg = [];
@@ -305,22 +306,21 @@
         varTxt(c.r[campo], c.p[campo]) + " rispetto al " + fmtData(c.p.d);
     }
     var kp = $("#kpis"); kp.textContent = "";
-    function kpi(label, value, notes) {
+    function kpi(label, value, notes, conf) {
       var k = document.createElement("div"); k.className = "kpi";
       var l = document.createElement("div"); l.className = "label"; l.textContent = label; k.appendChild(l);
       var v = document.createElement("div"); v.className = "value"; v.textContent = value; k.appendChild(v);
       notes.forEach(function (t) { var n = document.createElement("div"); n.className = "note"; n.textContent = t; k.appendChild(n); });
+      if (conf) { var f = document.createElement("div"); f.className = "note conf"; f.textContent = conf; k.appendChild(f); }
       kp.appendChild(k);
     }
     kpi("Presenti negli Ipm", fmtN(ultimo.presenti), [
       "al " + fmtData(ultimo.d),
-      prec ? sg(ultimo.presenti - prec.presenti) + " rispetto al " + fmtData(prec.d) + ", aggiornamento precedente" : "",
-      notaAnno("presenti")
-    ].filter(Boolean));
+      prec ? sg(ultimo.presenti - prec.presenti) + " rispetto al " + fmtData(prec.d) + ", aggiornamento precedente" : ""
+    ].filter(Boolean), notaAnno("presenti"));
     kpi("Ingressi da inizio " + ultimo.anno, fmtN(ultimo.ingressi_totale), [
-      "dal 1° gennaio al " + fmtData(ultimo.d) + ", compresi i trasferimenti",
-      notaAnno("ingressi_totale")
-    ]);
+      "dal 1° gennaio al " + fmtData(ultimo.d) + ", compresi i trasferimenti"
+    ], notaAnno("ingressi_totale"));
     var str = ultimo.stranieri_m + ultimo.stranieri_f, tot = str + ultimo.italiani_m + ultimo.italiani_f;
     kpi("Stranieri tra i presenti", NF1.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + " · al " + fmtData(ultimo.d)]);
 
@@ -562,11 +562,22 @@
     selI.addEventListener("change", drawOne);
 
     /* download */
-    var dl = $("#dl");
-    ["serie_nazionale", "presenze_ipm", "ipm_eta", "nazionalita_sesso_eta", "delitti_selezionati", "delitti_completo", "controlli", "documenti"].forEach(function (n) {
-      var a = document.createElement("a"); a.href = "data/" + n + ".csv"; a.textContent = n + ".csv"; dl.appendChild(a);
-    });
 
+    /* selettore del periodo: "tutto" oppure solo l’anno in corso (utile per leggere i dati quindicinali) */
+    var segPeriodo = [];
+    function setPeriodo(zoom) {
+      zoomPeriodo = zoom;
+      tMin = zoom ? Date.UTC(ultimo.anno, 0, 1) - 10 * DAY : serie[0].t - 30 * DAY;
+      tMax = ultimo.t + (zoom ? 10 : 30) * DAY;
+      segPeriodo.forEach(function (s) { Array.prototype.forEach.call(s.children, function (b) { b.setAttribute("aria-pressed", String((b.dataset.v === "anno") === zoom)); }); });
+      drawPresenze(); drawEta(); drawChi(); drawOne();
+    }
+    ["c-presenze", "c-eta", "c-chi", "c-ipm-one"].forEach(function (id) {
+      var card = document.getElementById(id), ctl = $(".controls", card);
+      if (!ctl) { ctl = document.createElement("div"); ctl.className = "controls"; card.insertBefore(ctl, $(".legend", card) || $(".plot", card)); }
+      var s = document.createElement("div"); s.className = "seg"; ctl.appendChild(s); segPeriodo.push(s);
+      seg(s, [{ v: "tutto", label: "Tutto il periodo" }, { v: "anno", label: "Solo " + ultimo.anno }], "tutto", function (v) { setPeriodo(v === "anno"); });
+    });
     function drawAll() { drawPresenze(); drawIngressi(); drawEta(); drawChi(); drawDel(); drawConf(); drawOne(); }
     drawAll();
     if (window.matchMedia) {

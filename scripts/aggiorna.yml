@@ -1,0 +1,70 @@
+name: Aggiorna dati IPM
+
+on:
+  schedule:
+    - cron: "37 6 * * *"        # ogni giorno, circa le 7:37 italiane (UTC 6:37)
+  workflow_dispatch:
+    inputs:
+      backfill:
+        description: "Scarica TUTTO l'archivio (da usare solo la prima volta)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: aggiorna-ipm
+  cancel-in-progress: false
+
+jobs:
+  aggiorna:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Installa pdftotext
+        run: sudo apt-get update && sudo apt-get install -y poppler-utils
+
+      - name: Installa librerie Python
+        run: pip install -r requirements.txt
+
+      - name: Scarica i PDF nuovi e ricalcola i dati
+        id: run
+        continue-on-error: true
+        run: |
+          if [ "${{ inputs.backfill }}" = "true" ]; then
+            python scripts/aggiorna.py --backfill
+          else
+            python scripts/aggiorna.py
+          fi
+
+      - name: Salva le modifiche nel repository
+        run: |
+          git config user.name "monitor-ipm-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data docs/data
+          if git diff --cached --quiet; then
+            echo "Nessuna novità da salvare."
+          else
+            git commit -m "Aggiornamento dati $(date -u +%Y-%m-%d)"
+            # se nel frattempo il repository è cambiato (es. hai caricato file a mano),
+            # ci si riallinea e si riprova
+            for i in 1 2 3; do
+              git pull --rebase -X theirs origin main && git push && break
+              echo "Tentativo $i non riuscito, riprovo..."
+              sleep 5
+            done
+            git push --dry-run >/dev/null 2>&1 || { echo "Salvataggio non riuscito"; exit 1; }
+          fi
+
+      - name: Segnala se qualcosa non ha funzionato
+        if: steps.run.outcome == 'failure'
+        run: |
+          echo "::error::Lo script ha segnalato un problema (sito non raggiungibile o PDF che non supera i controlli). Guarda il log del passo precedente."
+          exit 1

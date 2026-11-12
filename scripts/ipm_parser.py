@@ -60,6 +60,43 @@ def split_row(line):
     return " ".join(toks), nums
 
 
+def split_row_pos(line):
+    """Come split_row, ma restituisce anche la colonna (posizione finale) di ogni numero."""
+    toks = [(m.group(), m.end()) for m in re.finditer(r"\S+", line)]
+    nums = []
+    while toks and NUM_FULL.fullmatch(toks[-1][0]):
+        t, e = toks.pop()
+        nums.append((parse_num(t), e))
+    nums.reverse()
+    return " ".join(t for t, _ in toks), nums
+
+
+def riempi_celle_vuote(rows, ncol):
+    """Nei PDF una cella a zero può essere lasciata vuota. Le righe con meno numeri del previsto vengono
+    completate (con 0) allineando ogni numero alla colonna più vicina, ricavata dalle righe complete.
+    Si procede solo se le colonne di riferimento esistono e l'attribuzione è univoca; altrimenti la riga
+    viene scartata (e i controlli di somma segnaleranno il problema)."""
+    full = [[e for _, e in nums] for _, nums in rows if len(nums) == ncol]
+    ref = None
+    if full:
+        ref = [sorted(col)[len(col) // 2] for col in zip(*full)]
+    out = []
+    for label, nums in rows:
+        if len(nums) == ncol:
+            out.append((label, [v for v, _ in nums]))
+        elif ref and ncol - 2 <= len(nums) < ncol:
+            cols = []
+            for _, e in nums:
+                d = [abs(e - r) for r in ref]
+                cols.append(d.index(min(d)))
+            if len(set(cols)) == len(cols) and cols == sorted(cols) and max(abs(e - ref[c]) for (_, e), c in zip(nums, cols)) <= 3:
+                vals = [0] * ncol
+                for (v, _), c in zip(nums, cols):
+                    vals[c] = v
+                out.append((label, vals))
+    return out
+
+
 def norm_ipm(label):
     label = MARKER_RE.sub("", label).strip()
     label = re.sub(r"\s*\([A-Z]{2}\)$", "", label)  # (MS), (NA), (BN), (CT), (CA)
@@ -134,23 +171,26 @@ def parse_ipm_sede(body):
 
 
 def parse_ipm_eta(body):
-    rows = []
+    cand = []
     for l in body:
-        label, nums = split_row(l)
-        if len(nums) == 5 and label:
-            rows.append(dict(ipm=norm_ipm(label), by_eta=dict(zip(ETA, nums[:4])), totale=nums[4]))
-            if label.startswith("Totale"):
-                break
+        label, nums = split_row_pos(l)
+        if label and len(nums) >= 3 and not label.startswith(("Tabella", "IPM")):
+            cand.append((label, nums))
+    rows = []
+    for label, nums in riempi_celle_vuote(cand, 5):
+        rows.append(dict(ipm=norm_ipm(label), by_eta=dict(zip(ETA, nums[:4])), totale=nums[4]))
+        if label.startswith("Totale"):
+            break
     return rows
 
 
 def parse_naz_sesso(body):
-    out = {}
+    cand = []
     for l in body:
-        label, nums = split_row(l)
-        if len(nums) == 9 and (label in ETA or label == "Totale"):
-            out[label] = nums
-    return out
+        label, nums = split_row_pos(l)
+        if (label in ETA or label == "Totale") and len(nums) >= 7:
+            cand.append((label, nums))
+    return {label: nums for label, nums in riempi_celle_vuote(cand, 9)}
 
 
 def parse_delitti(body):

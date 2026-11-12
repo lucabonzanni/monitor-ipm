@@ -92,7 +92,7 @@ table { border-collapse: collapse; font-size: .85rem; width: 100%; font-variant-
 th, td { text-align: right; padding: 4px 8px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
 th:first-child, td:first-child { text-align: left; }
 thead th { position: sticky; top: 0; background: var(--card); }
-.foot-note { color: var(--muted); font-size: .8rem; margin: 6px 0 0; }
+.foot-note { color: var(--muted); font-size: .8rem; margin: 6px 0 0; white-space: pre-line; }
 details { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; margin: 14px 0; }
 details summary { cursor: pointer; font-weight: 600; }
 details ul { padding-left: 20px; }

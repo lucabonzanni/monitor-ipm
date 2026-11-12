@@ -163,7 +163,27 @@
       ctx.beginPath(); ctx.moveTo(x, ca.top); ctx.lineTo(x, ca.bottom); ctx.stroke(); ctx.restore();
     }
   };
-  Chart.register(crosshair, endLabels, ref100);
+  /* etichette con il valore sulle barre */
+  var barLabels = {
+    id: "barLabels",
+    afterDatasetsDraw: function (chart, args, opts) {
+      if (!opts || !opts.on) return;
+      var ctx = chart.ctx, horiz = chart.options.indexAxis === "y", small = window.innerWidth < 600;
+      ctx.save(); ctx.fillStyle = css("--ink"); ctx.font = "600 " + (small ? 11 : 12) + "px -apple-system, Segoe UI, Roboto, sans-serif";
+      chart.data.datasets.forEach(function (ds, i) {
+        if (chart.getDatasetMeta(i).hidden) return;
+        chart.getDatasetMeta(i).data.forEach(function (bar, j) {
+          var v = ds.data[j]; if (v === null || v === undefined || isNaN(v)) return;
+          var t = opts.fmt ? opts.fmt(v, j, i) : NF.format(v);
+          ctx.strokeStyle = css("--card"); ctx.lineWidth = 4; ctx.lineJoin = "round";
+          if (horiz) { ctx.textAlign = "left"; ctx.textBaseline = "middle"; ctx.strokeText(t, bar.x + 6, bar.y); ctx.fillText(t, bar.x + 6, bar.y); }
+          else { ctx.textAlign = "center"; ctx.textBaseline = "bottom"; ctx.strokeText(t, bar.x, bar.y - 5); ctx.fillText(t, bar.x, bar.y - 5); }
+        });
+      });
+      ctx.restore();
+    }
+  };
+  Chart.register(crosshair, endLabels, ref100, barLabels);
 
   function baseOptions(o) {
     var grid = css("--grid"), muted = css("--muted");
@@ -312,20 +332,21 @@
       }
       return null;
     }
-    function notaAnno(campo) {
+    function notaAnno(campo, sing, plur) {
       var c = confronto(campo);
       if (!c) return "Confronto con lo stesso periodo dell’anno precedente non disponibile";
-      if (c.ultimo) return varTxt(c.r[campo], c.p[campo]) + " rispetto allo stesso periodo del " + c.p.anno + " (" + fmtData(c.p.d) + ")";
-      return "Ultimo confronto possibile con lo stesso periodo del " + c.p.anno + ": al " + fmtData(c.r.d) + " " +
-        varTxt(c.r[campo], c.p[campo]) + " rispetto al " + fmtData(c.p.d);
+      var d = c.r[campo] - c.p[campo];
+      var v = sg(d) + " " + (Math.abs(d) === 1 ? sing : plur) + (c.p[campo] ? " (" + sg(100 * d / c.p[campo], function (x) { return NF1.format(x) + "%"; }) + ")" : "");
+      if (c.ultimo) return "Rispetto allo stesso periodo del " + c.p.anno + ": " + v + " rispetto al " + fmtData(c.p.d);
+      return "Ultimo confronto possibile con lo stesso periodo del " + c.p.anno + ": al " + fmtData(c.r.d) + ", " + v + " rispetto al " + fmtData(c.p.d);
     }
     function notaQuota() {
       var c = confronto("quota_str");
       if (!c) return "Confronto con lo stesso periodo dell’anno precedente non disponibile";
       var d = c.r.quota_str - c.p.quota_str;
       var pp = (d > 0 ? "+" : d < 0 ? "−" : "") + NF1.format(Math.abs(d)) + " punti percentuali";
-      if (c.ultimo) return pp + " rispetto allo stesso periodo del " + c.p.anno + " (" + fmtData(c.p.d) + ": " + NF1.format(c.p.quota_str) + "%)";
-      return "Ultimo confronto possibile con lo stesso periodo del " + c.p.anno + ": al " + fmtData(c.r.d) + " " + NF1.format(c.r.quota_str) + "% contro il " + NF1.format(c.p.quota_str) + "% del " + fmtData(c.p.d) + " (" + pp + ")";
+      if (c.ultimo) return "Rispetto allo stesso periodo del " + c.p.anno + ": sono il " + NF1.format(c.r.quota_str) + "%, contro il " + NF1.format(c.p.quota_str) + "% del " + fmtData(c.p.d) + " (" + pp + ")";
+      return "Ultimo confronto possibile con lo stesso periodo del " + c.p.anno + ": al " + fmtData(c.r.d) + " erano il " + NF1.format(c.r.quota_str) + "%, contro il " + NF1.format(c.p.quota_str) + "% del " + fmtData(c.p.d) + " (" + pp + ")";
     }
     var kp = $("#kpis"); kp.textContent = "";
     function kpi(label, value, notes, conf) {
@@ -339,10 +360,10 @@
     kpi("Presenti negli Ipm", fmtN(ultimo.presenti), [
       "al " + fmtData(ultimo.d),
       prec ? sg(ultimo.presenti - prec.presenti) + " rispetto al " + fmtData(prec.d) + ", aggiornamento precedente" : ""
-    ].filter(Boolean), notaAnno("presenti"));
+    ].filter(Boolean), notaAnno("presenti", "detenuto", "detenuti"));
     kpi("Ingressi da inizio " + ultimo.anno, fmtN(ultimo.ingressi_totale), [
       "dal 1° gennaio al " + fmtData(ultimo.d) + ", compresi i trasferimenti"
-    ], notaAnno("ingressi_totale"));
+    ], notaAnno("ingressi_totale", "ingresso", "ingressi"));
     var str = ultimo.stranieri_m + ultimo.stranieri_f, tot = str + ultimo.italiani_m + ultimo.italiani_f;
     kpi("Stranieri tra i presenti", NF1.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + " · al " + fmtData(ultimo.d)], notaQuota());
 
@@ -394,6 +415,7 @@
               return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false } }, y: yScale(g, m, "ingressi nell’anno", {}) };
             }
           });
+          o.layout.padding.top = 22; o.plugins.barLabels = { on: true };
           return o;
         })()
       });
@@ -503,6 +525,8 @@
             }
           });
           o.datasets = { bar: { categoryPercentage: 0.8, barPercentage: 0.9 } };
+          o.layout.padding.top = 22;
+          if (ds.length === 1 || window.innerWidth >= 600) o.plugins.barLabels = { on: true };
           return o;
         })()
       });
@@ -547,8 +571,11 @@
       var nota = $("#n-ipm-conf");
       nota.textContent = aff ? FONTE_CAP : "";
       if (aff) {
+        if (!rows.length) nota.textContent = "Dati sulle capienze non trovati: carica il file capienze.csv nella cartella docs/data del repository";
+        else {
         var senza = attivi.filter(function (r) { return !cap[r.ipm]; }).map(function (r) { return r.ipm; });
         nota.textContent = (senza.length ? "Senza capienza indicata nella nota: " + senza.join(", ") + ". " : "") + "Per Roma i " + (cap.Roma ? cap.Roma.posti : "") + " posti comprendono sezione maschile e femminile (" + (cap.Roma ? cap.Roma.info : "") + "), i presenti sono quelli complessivi.\n" + FONTE_CAP;
+        }
       }
       var host = $("#p-ipm-conf"); host.style.height = (rows.length * 26 + 56) + "px";
       render("c-ipm-conf", {
@@ -571,6 +598,8 @@
             o.plugins.tooltip.callbacks.afterLabel = function (it) { var r = rows[it.dataIndex]; return " " + NF.format(r.presenti) + " presenti su " + NF.format(r.posti) + " posti"; };
             o.plugins.ref100 = { on: true };
           }
+          o.layout.padding.right = aff ? 120 : 46;
+          o.plugins.barLabels = { on: true, fmt: aff ? function (v, j) { var r = rows[j]; return NF1.format(v) + "% (" + NF.format(r.presenti) + " su " + NF.format(r.posti) + ")"; } : (k === "media" ? function (v) { return NF1.format(v); } : null) };
           o.indexAxis = "y"; o.interaction = { mode: "nearest", axis: "y", intersect: false };
           return o;
         })()
@@ -578,7 +607,7 @@
       if (aff) tableView(cConf, ["Istituto", "Posti", "Presenti", "Presenti su posti (%)"], rows.map(function (r) { return [r.ipm, r.posti, r.presenti, NF1.format(r.affollamento) + "%"]; }));
       else tableView(cConf, ["Istituto", MIS[k]], rows.map(function (r) { return [r.ipm, r[k]]; }));
     }
-    seg($('[data-ctl="misura"]', cConf), [{ v: "presenti", label: "Presenti" }, { v: "ingressi", label: "Ingressi da inizio anno" }, { v: "media", label: "Presenza media" }].concat(haCap ? [{ v: "affollamento", label: "Sovraffollamento" }] : []), "presenti",
+    seg($('[data-ctl="misura"]', cConf), [{ v: "presenti", label: "Presenti" }, { v: "ingressi", label: "Ingressi da inizio anno" }, { v: "media", label: "Presenza media" }].concat([{ v: "affollamento", label: "Sovraffollamento" }]), "presenti",
       function (v) { stConf.misura = v; drawConf(); });
 
     var cOne = document.getElementById("c-ipm-one"), selI = $('[data-ctl="ipm"]', cOne);

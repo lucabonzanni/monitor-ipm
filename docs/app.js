@@ -495,8 +495,10 @@
     };
     var stDel = { reato: "rapina", scomp: "tot" };
     function valDel(anno, reato, naz, sesso) {
+      /* il file ha 9 righe per reato (italiani/stranieri/totale x m/f/mf): se ne prende UNA sola, mai la somma */
+      var nz = naz || "totale", sx = sesso || "mf";
       var d = ultimoPerAnno[anno], rows = del.filter(function (r) {
-        return r.d === d && r.delitto === reato && (!naz || r.naz === naz) && (!sesso || r.sesso === sesso);
+        return r.d === d && r.delitto === reato && r.naz === nz && r.sesso === sx;
       });
       if (!rows.length || rows.some(function (r) { return !r.rip; })) return { v: null, d: d };
       return { v: rows.reduce(function (s, r) { return s + r.n; }, 0), d: d };

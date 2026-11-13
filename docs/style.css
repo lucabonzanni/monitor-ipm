@@ -1,11 +1,7 @@
-@font-face { font-family: "Plex Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Plex Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Plex Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/ibm-plex-sans-latin-700-normal.woff2") format("woff2"); }
-@font-face { font-family: "Plex Sans"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/ibm-plex-sans-latin-400-italic.woff2") format("woff2"); }
-@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/newsreader-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/newsreader-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Newsreader"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/newsreader-latin-700-normal.woff2") format("woff2"); }
-@font-face { font-family: "Newsreader"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/newsreader-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "Rethink Sans"; font-style: normal; font-weight: 400 800; font-display: swap; src: url("fonts/rethink-sans-latin-wght-normal.woff2") format("woff2"); }
+@font-face { font-family: "Lora"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/lora-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "Lora"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/lora-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "Lora"; font-style: italic; font-weight: 400; font-display: swap; src: url("fonts/lora-latin-400-italic.woff2") format("woff2"); }
 :root {
   color-scheme: light dark;
   --surface: #E6EAE3;
@@ -49,12 +45,17 @@ body {
   margin: 0;
   background: var(--surface);
   color: var(--ink);
-  font: 16px/1.5 "Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font: 16px/1.5 "Rethink Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
-h1, h2, h3, .kpi .value { font-family: "Newsreader", Georgia, "Times New Roman", serif; font-weight: 700; }
-header h1 { font-size: 2rem; line-height: 1.12; margin: 0 0 6px; letter-spacing: -.01em; }
-header .sub { color: var(--ink2); margin: 0 0 12px; }
+h1, h2, h3, .kpi .value { font-weight: 800; letter-spacing: -.02em; }
+.serif, .kpi .note.conf { font-family: "Lora", Georgia, "Times New Roman", serif; font-style: italic; }
+header { padding: 30px 0 8px; }
+.chip { display: inline-block; background: #F3E7A9; color: #16244A; font-weight: 700; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; padding: 4px 10px; border-radius: 4px; }
+header h1 { font-size: 3.1rem; line-height: 1.02; margin: 14px 0 14px; max-width: 760px; }
+header h1 em { font-style: normal; color: var(--accent); }
+header .sub { color: var(--ink2); font-size: 1.25rem; margin: 0 0 18px; max-width: 720px; }
+header .intro { max-width: 680px; color: var(--ink); font-size: 1.02rem; line-height: 1.55; border-left: 4px solid #F3E7A9; padding-left: 14px; margin: 0 0 16px; }
 .stamp {
   display: flex; flex-wrap: wrap; gap: 4px 16px;
   color: var(--ink2); font-size: .9rem; margin: 0 0 8px;
@@ -70,7 +71,7 @@ header .sub { color: var(--ink2); margin: 0 0 12px; }
 .kpi .label { color: var(--ink); font-size: .9rem; font-weight: 700; }
 .kpi .value { font-size: 2.4rem; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
 .kpi .note { color: var(--muted); font-size: .8rem; }
-.kpi .note.conf { font-style: italic; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
+.kpi .note.conf { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--border); }
 h2 { font-size: 1.45rem; margin: 36px 0 8px; }
 .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 14px 0; }
 .card h3 { margin: 0 0 2px; font-size: 1.25rem; }
@@ -110,7 +111,7 @@ a { color: var(--accent); }
 footer { color: var(--muted); font-size: .85rem; margin-top: 32px; text-align: center; }
 .dl { display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .err { background: var(--warn-bg); color: var(--warn-ink); padding: 14px; border-radius: 8px; }
-@media (max-width: 560px) { .plot { height: 300px; } .kpi .value { font-size: 2rem; } header h1 { font-size: 1.6rem; } }
+@media (max-width: 560px) { .plot { height: 300px; } .kpi .value { font-size: 2rem; } header { padding-top: 18px; } header h1 { font-size: 2.1rem; } header .sub { font-size: 1.1rem; } }
 
 /* telefono: i pulsanti di selezione vanno a capo e restano interi, come bottoni separati */
 @media (max-width: 560px) {

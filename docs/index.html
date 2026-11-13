@@ -6,14 +6,15 @@
 <title>La situazione delle carceri minorili italiane</title>
 <meta name="description" content="Una fotografia, numeri alla mano, sulle condizioni degli istituti penali per minorenni (Ipm). Dati periodici del ministero della Giustizia.">
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="style.css?v=13">
+<link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>LA SITUAZIONE DELLE CARCERI MINORILI ITALIANE</h1>
-    <p class="sub">Una fotografia, numeri alla mano, sulle condizioni degli istituti penali per minorenni (Ipm)</p>
-    <p class="sub"><em>Portale data-driven sulla base dei dati periodici del ministero della Giustizia. Aggiornamenti a cadenza semestrale per il periodo 2020-2025 e quindicinale dal 2026</em></p>
+    <span class="chip">Giustizia e data journalism</span>
+    <h1>La situazione delle <em>carceri minorili</em> italiane</h1>
+    <p class="sub serif">Una fotografia, numeri alla mano, sulle condizioni degli istituti penali per minorenni (Ipm)</p>
+    <p class="intro">Quanti detenuti ci sono nei “minorili”? Quanti ne entrano e per quali reati? Chi sono questi ragazzi? Un data-driven sulla base dei dati periodici del ministero della Giustizia.</p>
     <p class="stamp" id="stamp">Caricamento dati…</p>
     <div class="alert" id="alert" hidden></div>
   </header>
@@ -37,7 +38,7 @@
     <h2>Istituto per istituto</h2>
 
     <article class="card" id="c-ipm-conf">
-      <h3>Tutti gli istituti all’ultima data</h3>
+      <h3>Tutti gli istituti all’ultima data disponibile</h3>
       <p class="desc" id="d-ipm-conf"></p>
       <div class="controls"><div class="seg" data-ctl="misura"></div></div>
       <div class="legend"></div>
@@ -105,11 +106,11 @@
       <p class="foot-note" id="n-chi"></p>
     </article>
 
-    <h2>Reati degli ingressi</h2>
+    <h2>Per quali reati si entra in Ipm?</h2>
 
     <article class="card" id="c-delitti">
       <h3>Principali reati contestati al momento dell’ingresso</h3>
-      <p class="desc">Un valore per anno: l’ultimo documento disponibile (per l’anno in corso è il dato da gennaio alla data indicata). I numeri contano i <strong>reati</strong>, non le persone: chi entra per più reati compare più volte</p>
+      <p class="desc">Per l’anno in corso si intende il dato parziale all’ultimo aggiornamento disponibile</p>
       <div class="controls">
         <label>Reato <select data-ctl="reato"></select></label>
         <div class="seg" data-ctl="scomp"></div>
@@ -144,6 +145,6 @@
   </footer>
 </div>
 <script src="vendor/chart.umd.js"></script>
-<script src="app.js?v=13"></script>
+<script src="app.js?v=14"></script>
 </body>
 </html>

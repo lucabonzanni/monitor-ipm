@@ -32,7 +32,7 @@
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { msg("Link copiato"); }, alt);
       else alt();
     });
-    Array.prototype.forEach.call(document.querySelectorAll(".nav a"), function (a) {
+    Array.prototype.forEach.call(document.querySelectorAll(".topnav a"), function (a) {
       a.addEventListener("click", function () {
         var t = document.getElementById(a.getAttribute("href").slice(1));
         if (t && t.tagName === "DETAILS") t.open = true;
@@ -430,14 +430,14 @@
       var l = document.createElement("div"); l.className = "label"; l.textContent = label; k.appendChild(l);
       var v = document.createElement("div"); v.className = "value"; v.textContent = value; k.appendChild(v);
       contatore(v, value);
-      notes.forEach(function (t) { var n = document.createElement("div"); n.className = "note"; n.textContent = t; k.appendChild(n); });
+      var nb = document.createElement("div"); nb.className = "notes"; k.appendChild(nb);
+      notes.forEach(function (t) { var n = document.createElement("div"); n.className = "note"; n.textContent = t; nb.appendChild(n); });
       if (conf) { var f = document.createElement("div"); f.className = "note conf"; f.textContent = conf; k.appendChild(f); }
       kp.appendChild(k);
     }
     kpi("Presenti negli Ipm", fmtN(ultimo.presenti), [
       "al " + fmtData(ultimo.d),
-      prec ? sg(ultimo.presenti - prec.presenti) + " rispetto al " + fmtData(prec.d) + ", aggiornamento precedente" : ""
-    ].filter(Boolean), notaAnno("presenti", "detenuto", "detenuti"));
+    ], notaAnno("presenti", "detenuto", "detenuti"));
     /* stesso metro della serie storica: ingressi esclusi i trasferimenti tra istituti (se il documento non li distingue, totale) */
     var ingK = ultimo.ingressi_esclusi_trasf !== null ? "ingressi_esclusi_trasf" : "ingressi_totale";
     kpi("Ingressi da inizio " + ultimo.anno, fmtN(ultimo[ingK]), [

@@ -296,7 +296,7 @@
     var serie = sortBy(serieRaw, "data_rif").map(function (r) {
       var o = { d: r.data_rif, anno: +r.anno, t: ts(r.data_rif) };
       ["presenti", "ingressi_totale", "ingressi_esclusi_trasf", "trasferimenti", "presenza_media_giornaliera",
-        "trasf_adulti", "eta_14_15", "eta_16_17", "eta_18_20", "eta_21_24", "italiani_m", "italiani_f", "stranieri_m", "stranieri_f"]
+        "trasf_adulti", "ingressi_italiani", "ingressi_stranieri", "eta_14_15", "eta_16_17", "eta_18_20", "eta_21_24", "italiani_m", "italiani_f", "stranieri_m", "stranieri_f"]
         .forEach(function (k) { o[k] = num(r[k]); });
       var s = (o.stranieri_m === null || o.stranieri_f === null) ? null : o.stranieri_m + o.stranieri_f;
       var tt = s === null || o.italiani_m === null || o.italiani_f === null ? null : s + o.italiani_m + o.italiani_f;
@@ -511,26 +511,36 @@
     function drawIngNaz() {
       if (!haSS) return;
       var pct = stIN.modo === "pct", small = window.innerWidth < 600;
+      var parz = ultimo.anno > ssA1 && ultimo.ingressi_italiani !== null && ultimo.ingressi_stranieri !== null;
+      var ult = parz ? ultimo.anno : ssA1;
       var defs = [["Italiani", function (r) { return r.ii; }], ["Stranieri", function (r) { return r.is; }]];
+      var base = ss.map(function (r) { return { a: r.a, ii: r.ii, is: r.is, it: r.it }; });
+      if (parz) base.push({ a: ultimo.anno, ii: ultimo.ingressi_italiani, is: ultimo.ingressi_stranieri, it: ultimo.ingressi_italiani + ultimo.ingressi_stranieri, p: true });
       var ds = defs.map(function (d, i) {
-        return lineDs(d[0], ss.map(function (r) { return { x: r.a, y: pct ? 100 * d[1](r) / r.it : d[1](r) }; }), cat(i), { r: small ? 2 : 3 });
+        var x = lineDs(d[0], base.map(function (r) { return { x: r.a, y: pct ? 100 * d[1](r) / r.it : d[1](r) }; }), cat(i), { r: small ? 2 : 3 });
+        if (parz) {
+          var n = base.length - 1;
+          x.segment = { borderDash: function (c) { return c.p1DataIndex === n ? [4, 4] : undefined; } };
+          x.pointRadius = base.map(function (_, k) { return k === n ? 6 : (small ? 2 : 3); });
+        }
+        return x;
       });
       legend(cIN, ds.map(function (d) { return { label: d.label, color: d.borderColor }; }));
       render("c-ingressi-naz", {
         type: "line", data: { datasets: ds },
         options: baseOptions({
           endLabels: true, fmt: pct ? function (v) { return NF1.format(v) + "%"; } : null,
-          title: function (it) { return "Anno " + it.parsed.x; },
+          title: function (it) { return it.parsed.x === ultimo.anno && parz ? "Anno " + it.parsed.x + " · dato parziale al " + fmtData(ultimo.d) : "Anno " + it.parsed.x; },
           scales: function (g, m) {
-            return { x: yearScale(ssA0 - 0.5, ssA1 + 0.5, g, m, ssA1), y: yScale(g, m, small ? "" : (pct ? "% sugli ingressi" : "ingressi nell’anno"), pct ? { max: 100, ticks: { color: m, callback: function (v) { return v + "%"; } } } : {}) };
+            return { x: yearScale(ssA0 - 0.5, ult + 0.5, g, m, ult), y: yScale(g, m, small ? "" : (pct ? "% sugli ingressi" : "ingressi nell’anno"), pct ? { max: 100, ticks: { color: m, callback: function (v) { return v + "%"; } } } : {}) };
           }
         })
       });
       tableView(cIN, ["Anno"].concat(defs.map(function (d) { return d[0] + (pct ? " (%)" : ""); })),
-        ss.map(function (r) { return [String(r.a)].concat(defs.map(function (d) { return pct ? Math.round(1000 * d[1](r) / r.it) / 10 : d[1](r); })); }));
-      $("#n-ingressi-naz").textContent = "Gli ingressi escludono i trasferimenti tra istituti. Il dettaglio per nazionalità del " + ultimo.anno + " non è ancora disponibile.";
+        base.map(function (r) { return [r.p ? r.a + " (parziale, al " + fmtData(ultimo.d) + ")" : String(r.a)].concat(defs.map(function (d) { return pct ? Math.round(1000 * d[1](r) / r.it) / 10 : d[1](r); })); }));
+      $("#n-ingressi-naz").textContent = "Gli ingressi escludono i trasferimenti tra istituti." + (parz ? " Il dato " + ultimo.anno + " è parziale: il tratteggio lo collega all’ultimo anno concluso e arriva fino al " + fmtData(ultimo.d) + "." : " Il dettaglio per nazionalità dell’anno in corso non è ancora disponibile.");
     }
-    seg($('[data-ctl="modo"]', cIN), [{ v: "ass", label: "Numeri" }, { v: "pct", label: "% sul totale" }], "ass", function (v) { stIN.modo = v; drawIngNaz(); });
+    seg($('[data-ctl="modo"]', cIN), [{ v: "ass", label: "Valori assoluti" }, { v: "pct", label: "% sul totale" }], "ass", function (v) { stIN.modo = v; drawIngNaz(); });
 
     /* 2c. trasferimenti verso strutture per adulti: serie annuale + parziale dell’anno in corso, oppure andamento cumulato dell’anno */
     var cTr = document.getElementById("c-trasf"), stTr = { vista: "storica" };
@@ -570,6 +580,13 @@
         $("#n-trasf").textContent = trUlt ? "Il dato " + trUlt.anno + " è cumulato da inizio anno fino al " + fmtData(trUlt.d) + ": non è ancora un anno completo." : "";
       } else {
         legend(cTr, []);
+        if (!recT.length) {
+          var vecchio = charts.get("c-trasf"); if (vecchio) { vecchio.destroy(); charts.delete("c-trasf"); }
+          tableView(cTr, ["Data di riferimento", "Trasferiti da inizio anno"], []);
+          $("#d-trasf").textContent = nota;
+          $("#n-trasf").textContent = "Dato in aggiornamento: non ancora disponibile per l’anno in corso.";
+          return;
+        }
         var pts = recT.map(function (r) { return { x: r.t, y: r.trasf_adulti }; });
         var t0 = Date.UTC(ANNO_Q, 0, 1) - 10 * DAY, t1 = ultimo.t + 10 * DAY;
         $("#d-trasf").textContent = nota + ": totale cumulato da inizio anno a ciascuna data di riferimento";
@@ -611,7 +628,7 @@
           return [fmtData(r.d)].concat(ETA.map(function (e) { return pct ? Math.round(1000 * r[e[0]] / tot) / 10 : r[e[0]]; }));
         }));
     }
-    seg($('[data-ctl="modo"]', cEta), [{ v: "ass", label: "Numeri" }, { v: "pct", label: "% sul totale" }], "ass", function (v) { stEta.modo = v; drawEta(); });
+    seg($('[data-ctl="modo"]', cEta), [{ v: "ass", label: "Valori assoluti" }, { v: "pct", label: "% sul totale" }], "ass", function (v) { stEta.modo = v; drawEta(); });
 
     /* 4. nazionalità / genere: serie storica (media annua, solo nazionalità) oppure dal 2020 alla data di riferimento */
     var cChi = document.getElementById("c-chi"), stChi = { dim: "naz", modo: "ass", fonte: haSS ? "storica" : "rec" };
@@ -680,7 +697,7 @@
       if (v === "sesso" && stChi.fonte === "storica") { stChi.fonte = "rec"; setPressed(segFonte, "rec"); }
       drawChi();
     });
-    seg($('[data-ctl="modo"]', cChi), [{ v: "ass", label: "Numeri" }, { v: "pct", label: "% sul totale" }], "ass", function (v) { stChi.modo = v; drawChi(); });
+    seg($('[data-ctl="modo"]', cChi), [{ v: "ass", label: "Valori assoluti" }, { v: "pct", label: "% sul totale" }], "ass", function (v) { stChi.modo = v; drawChi(); });
 
     /* 5. delitti: ultimo documento di ogni anno */
     var cDel = document.getElementById("c-delitti");

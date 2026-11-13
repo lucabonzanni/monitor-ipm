@@ -12,6 +12,38 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var css = function (n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); };
 
+  /* ---------- indice di navigazione e condivisione ---------- */
+  (function () {
+    var url = "https://lucabonzanni.github.io/monitor-ipm/", nat = $("#share-native"), cp = $("#share-copy"), ok = $("#share-ok");
+    function msg(t) { if (!ok) return; ok.textContent = t; setTimeout(function () { ok.textContent = ""; }, 3000); }
+    if (nat && navigator.share && window.matchMedia && matchMedia("(pointer: coarse)").matches) {
+      nat.hidden = false;
+      nat.addEventListener("click", function () { navigator.share({ title: document.title, url: url }).catch(function () {}); });
+    }
+    if (cp) cp.addEventListener("click", function () {
+      function alt() {
+        var ta = document.createElement("textarea"), done = false;
+        ta.value = url; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;opacity:0";
+        document.body.appendChild(ta); ta.select();
+        try { done = document.execCommand("copy"); } catch (e) { done = false; }
+        document.body.removeChild(ta);
+        msg(done ? "Link copiato" : "Copia non riuscita: " + url);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { msg("Link copiato"); }, alt);
+      else alt();
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".nav a"), function (a) {
+      a.addEventListener("click", function () {
+        var t = document.getElementById(a.getAttribute("href").slice(1));
+        if (t && t.tagName === "DETAILS") t.open = true;
+      });
+    });
+  })();
+
+  /* ---------- fonte sotto ogni grafico ---------- */
+  var FONTE_STD = "elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità";
+  function setFonte(card, t) { var sp = $(".fonte span", card); if (sp) sp.textContent = t || FONTE_STD; }
+
   /* ---------- utilità dati ---------- */
   function parseCSV(text) {
     var rows = [], row = [], cur = "", q = false, i, c;
@@ -330,6 +362,9 @@
     var msg = [];
     if (probs.length) msg.push(probs.length + " documento/i non incluso/i perché i controlli di coerenza non sono passati: " + probs.join("; ") + ".");
     if (stato.nota_sito) msg.push(stato.nota_sito);
+    if (haSS && ultimo.anno - ssA1 > 1) {
+      msg.push("La serie storica annuale è aggiornata al " + ssA1 + ": i dati definitivi degli anni successivi non sono ancora stati pubblicati dal ministero.");
+    }
     if (msg.length) { al.textContent = msg.join(" "); al.hidden = false; }
 
     /* variazioni: aggiornamento precedente e stesso periodo dell'anno prima */
@@ -362,6 +397,7 @@
       if (!c) return "Confronto con lo stesso periodo dell’anno precedente non disponibile";
       var d = c.r[campo] - c.p[campo];
       var v = sg(d) + " " + (Math.abs(d) === 1 ? sing : plur) + (c.p[campo] ? " (" + sg(100 * d / c.p[campo], function (x) { return NF1.format(x) + "%"; }) + ")" : "");
+      if (d === 0) v = "dato invariato";
       if (c.ultimo) return "Rispetto allo stesso periodo del " + c.p.anno + ": " + v + " rispetto al " + fmtData(c.p.d);
       return "Ultimo confronto possibile con lo stesso periodo del " + c.p.anno + ": al " + fmtData(c.r.d) + ", " + v + " rispetto al " + fmtData(c.p.d);
     }
@@ -402,9 +438,11 @@
       "al " + fmtData(ultimo.d),
       prec ? sg(ultimo.presenti - prec.presenti) + " rispetto al " + fmtData(prec.d) + ", aggiornamento precedente" : ""
     ].filter(Boolean), notaAnno("presenti", "detenuto", "detenuti"));
-    kpi("Ingressi da inizio " + ultimo.anno, fmtN(ultimo.ingressi_totale), [
-      "dal 1° gennaio al " + fmtData(ultimo.d) + ", compresi i trasferimenti"
-    ], notaAnno("ingressi_totale", "ingresso", "ingressi"));
+    /* stesso metro della serie storica: ingressi esclusi i trasferimenti tra istituti (se il documento non li distingue, totale) */
+    var ingK = ultimo.ingressi_esclusi_trasf !== null ? "ingressi_esclusi_trasf" : "ingressi_totale";
+    kpi("Ingressi da inizio " + ultimo.anno, fmtN(ultimo[ingK]), [
+      "al " + fmtData(ultimo.d) + (ingK === "ingressi_esclusi_trasf" ? ", esclusi i trasferimenti (" + fmtN(ultimo.ingressi_totale) + " con i trasferimenti)" : ", compresi i trasferimenti")
+    ], notaAnno(ingK, "ingresso", "ingressi"));
     var str = ultimo.stranieri_m + ultimo.stranieri_f, tot = str + ultimo.italiani_m + ultimo.italiani_f;
     kpi("Stranieri tra i presenti", NF1.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + " · al " + fmtData(ultimo.d)], notaQuota());
 
@@ -417,33 +455,48 @@
     var titleDate = function (it) { return fmtTs(it.parsed.x); };
 
     /* 1. presenze: serie storica (media annua) + situazione attuale, oppure solo i dati quindicinali del 2026 */
+    /* frase dinamica in coda al testo introduttivo: confronto tra la media da inizio anno e l’ultimo anno concluso */
+    var l26 = $("#lead-2026");
+    if (l26 && haSS && ultimo.anno > ssA1 && ultimo.presenza_media_giornaliera !== null) {
+      var mUlt = ss[ss.length - 1].mt, mCur = ultimo.presenza_media_giornaliera;
+      l26.textContent = " Nel " + ultimo.anno + " la media è finora " + (mCur < mUlt ? "inferiore" : mCur > mUlt ? "superiore" : "uguale") + " (" + NF1.format(mCur) + " al " + fmtData(ultimo.d) + ").";
+    }
     var cPres = document.getElementById("c-presenze"), stPres = { vista: haSS ? "storica" : "anno" };
     var rec = serie.filter(function (r) { return r.anno >= ANNO_Q; });
     function drawPresenze() {
       var st = stPres.vista === "storica", head, rows;
       if (st) {
         var med = ss.map(function (r) { return { x: r.a, y: r.mt }; });
-        var cur = [{ x: ultimo.anno, y: ultimo.presenti }];
+        var parz = ultimo.anno > ssA1;
+        /* pallino rosso: presenza media giornaliera da inizio anno dell’ultimo report (tabella 20); se manca, i presenti alla data */
+        var mediaCur = ultimo.presenza_media_giornaliera !== null ? ultimo.presenza_media_giornaliera : ultimo.presenti;
+        var cur = [{ x: ultimo.anno, y: mediaCur }];
         var d1 = lineDs("Media annua", med, cat(0), { r: window.innerWidth < 600 ? 2 : 3 });
-        var d2 = lineDs("Situazione al " + fmtData(ultimo.d), cur, cat(3), { r: 6 });
-        legend(cPres, [{ label: d1.label, color: cat(0) }, { label: d2.label, color: cat(3) }]);
-        /* tratteggio dall’ultimo dato consolidato alla situazione attuale */
-        var d3 = lineDs("raccordo", [med[med.length - 1], cur[0]], cat(0), { r: 0 });
-        d3.borderDash = [5, 4]; d3.pointHitRadius = 0; d3.pointHoverRadius = 0; d3.borderWidth = 1.5; d3.order = 2;
+        var dsP = [d1];
+        if (parz) {
+          var d2 = lineDs(ultimo.anno + ", da inizio anno (al " + fmtData(ultimo.d) + ")", cur, cat(3), { r: 6 });
+          legend(cPres, [{ label: "Media annua", color: cat(0) }, { label: d2.label, color: cat(3) }]);
+          /* tratteggio dall’ultimo dato consolidato al dato dell’anno in corso */
+          var d3 = lineDs("raccordo", [med[med.length - 1], cur[0]], cat(0), { r: 0 });
+          d3.borderDash = [5, 4]; d3.pointHitRadius = 0; d3.pointHoverRadius = 0; d3.borderWidth = 1.5; d3.order = 2;
+          dsP.push(d2, d3);
+        } else legend(cPres, []);
         var op = baseOptions({
           mode: "nearest",
           title: function () { return ""; },
-          scales: function (g, m) { return { x: yearScale(ssA0 - 0.5, ultimo.anno + 0.5, g, m, ultimo.anno), y: yScale(g, m, "presenti", { suggestedMax: 650 }) }; }
+          scales: function (g, m) { return { x: yearScale(ssA0 - 0.5, ultimo.anno + 0.5, g, m, ultimo.anno), y: yScale(g, m, "presenza media giornaliera", { suggestedMax: 650 }) }; }
         });
         op.plugins.tooltip.filter = function (it) { return it.datasetIndex !== 2; };
         op.plugins.tooltip.callbacks.label = function (it) {
-          return it.datasetIndex === 1 ? fmtData(ultimo.d) + ": " + NF.format(it.parsed.y) + " (presenti alla data)" : it.parsed.x + ": " + NF.format(it.parsed.y) + " (presenza media giornaliera)";
+          return it.datasetIndex === 1 ? it.parsed.x + ": " + NF1.format(it.parsed.y) + " (presenza media giornaliera da inizio anno, al " + fmtData(ultimo.d) + ")" : it.parsed.x + ": " + NF.format(it.parsed.y) + " (presenza media giornaliera)";
         };
-        render("c-presenze", { type: "line", data: { datasets: [d1, d2, d3] }, options: op });
+        render("c-presenze", { type: "line", data: { datasets: dsP }, options: op });
         head = ["Anno", "Presenza media giornaliera"];
-        rows = ss.map(function (r) { return [String(r.a), r.mt]; }).concat([["Situazione al " + fmtData(ultimo.d), ultimo.presenti]]);
-        $("#d-presenze").textContent = "Detenuti presenti negli istituti: media annua (" + ssA0 + "-" + ssA1 + ") e situazione attuale (all’ultimo aggiornamento)";
-        $("#n-presenze").textContent = "La media annua è la presenza media giornaliera di ciascun anno solare; la situazione attuale è il numero di presenti alla data del documento più recente. Sono due misure diverse e non si confrontano direttamente.";
+        rows = ss.map(function (r) { return [String(r.a), r.mt]; });
+        if (parz) rows.push([ultimo.anno + " (da inizio anno, al " + fmtData(ultimo.d) + ")", NF1.format(mediaCur)]);
+        $("#d-presenze").textContent = "Presenza media giornaliera negli istituti: serie annuale (" + ssA0 + "-" + ssA1 + ")" + (parz ? " e dato dell’anno in corso" : "");
+        $("#n-presenze").textContent = "La serie annuale è la presenza media giornaliera di ciascun anno solare." + (parz
+          ? " Il punto rosso è la presenza media giornaliera da inizio " + ultimo.anno + " al " + fmtData(ultimo.d) + " (ultimo report disponibile): si aggiorna a ogni documento e diventa definitiva a fine anno. Il tratteggio lo collega all’ultimo anno concluso." : "");
       } else {
         legend(cPres, []);
         var pts = rec.map(function (r) { return { x: r.t, y: r.presenti }; });
@@ -641,11 +694,13 @@
         var curV = [ultimo.italiani_m + ultimo.italiani_f, ultimo.stranieri_m + ultimo.stranieri_f], curT = curV[0] + curV[1];
         var ds = defs.map(function (d, i) {
           var pts = ss.map(function (r) { return { x: r.a, y: pct ? 100 * d[1](r) / r.mt : d[1](r) }; });
-          pts.push({ x: ultimo.anno, y: pct ? 100 * curV[i] / curT : curV[i] });
           var x = lineDs(d[0], pts, cat(i), { r: small ? 2 : 3 });
-          var n = pts.length - 1;
-          x.segment = { borderDash: function (c) { return c.p1DataIndex === n ? [4, 4] : undefined; } };
-          x.pointRadius = pts.map(function (_, k) { return k === n ? 6 : (small ? 2 : 3); });
+          if (ultimo.anno > ssA1) {
+            pts.push({ x: ultimo.anno, y: pct ? 100 * curV[i] / curT : curV[i] });
+            var n = pts.length - 1;
+            x.segment = { borderDash: function (c) { return c.p1DataIndex === n ? [4, 4] : undefined; } };
+            x.pointRadius = pts.map(function (_, k) { return k === n ? 6 : (small ? 2 : 3); });
+          }
           return x;
         });
         legend(cChi, ds.map(function (d) { return { label: d.label, color: d.borderColor }; }));
@@ -770,7 +825,7 @@
     var attivi = ipm.filter(function (r) { return r.d === ultimaData; });
     var cap = {}; capRaw.forEach(function (r) { cap[r.ipm] = { posti: num(r.posti), genere: r.genere, info: r.info }; });
     var haCap = Object.keys(cap).length > 0;
-    var FONTE_CAP = "Fonte: elaborazione sulla base delle capienze comunicate nella nota della Direzione generale del Personale e delle Risorse - Dipartimento per la Giustizia minorile e di Comunità, 9 ottobre 2026";
+    var FONTE_CAP = "elaborazione sulla base delle capienze comunicate nella nota della Direzione generale del Personale e delle Risorse – Dipartimento per la Giustizia minorile e di Comunità, 9 ottobre 2026";
     var cConf = document.getElementById("c-ipm-conf"), stConf = { misura: "presenti" };
     var MIS = { presenti: "Presenti", ingressi: "Ingressi da inizio anno", media: "Presenza media giornaliera", affollamento: "Presenti su posti disponibili" };
     function drawConf() {
@@ -786,12 +841,13 @@
       var cRosso = cat(3), cBlu = cat(0);
       legend(cConf, aff ? [{ label: "Entro i posti disponibili", color: cBlu }, { label: "Oltre i posti disponibili", color: cRosso }] : []);
       var nota = $("#n-ipm-conf");
-      nota.textContent = aff ? FONTE_CAP : "";
+      nota.textContent = "";
+      setFonte(cConf, aff ? FONTE_CAP : null);
       if (aff) {
         if (!rows.length) nota.textContent = "Dati sulle capienze non trovati: carica il file capienze.csv nella cartella docs/data del repository";
         else {
         var senza = attivi.filter(function (r) { return !cap[r.ipm]; }).map(function (r) { return r.ipm; });
-        nota.textContent = (senza.length ? "Senza capienza indicata nella nota: " + senza.join(", ") + ". " : "") + "Per Roma i " + (cap.Roma ? cap.Roma.posti : "") + " posti comprendono sezione maschile e femminile (" + (cap.Roma ? cap.Roma.info : "") + "), i presenti sono quelli complessivi.\n" + FONTE_CAP;
+        nota.textContent = (senza.length ? "Senza capienza indicata nella nota: " + senza.join(", ") + ". " : "") + "Per Roma i " + (cap.Roma ? cap.Roma.posti : "") + " posti comprendono sezione maschile e femminile (" + (cap.Roma ? cap.Roma.info : "") + "), i presenti sono quelli complessivi.";
         }
       }
       var host = $("#p-ipm-conf"); host.style.height = (rows.length * 26 + 56) + "px";

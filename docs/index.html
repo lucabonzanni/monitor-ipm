@@ -5,8 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>La situazione delle carceri minorili italiane</title>
 <meta name="description" content="Una fotografia, numeri alla mano, sulle condizioni degli istituti penali per minorenni (Ipm). Dati periodici del ministero della Giustizia.">
+<link rel="canonical" href="https://lucabonzanni.github.io/monitor-ipm/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="La legge dei grandi numeri">
+<meta property="og:title" content="La situazione delle carceri minorili italiane">
+<meta property="og:description" content="Quanti detenuti ci sono nei “minorili”? Quanti ne entrano e per quali reati? Un portale data-driven sui dati periodici del ministero della Giustizia.">
+<meta property="og:url" content="https://lucabonzanni.github.io/monitor-ipm/">
+<meta property="og:image" content="https://lucabonzanni.github.io/monitor-ipm/anteprima.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="La situazione delle carceri minorili italiane">
+<meta name="twitter:description" content="Quanti detenuti ci sono nei “minorili”? Quanti ne entrano e per quali reati? Un portale data-driven sui dati periodici del ministero della Giustizia.">
+<meta name="twitter:image" content="https://lucabonzanni.github.io/monitor-ipm/anteprima.png">
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="style.css?v=16">
+<link rel="stylesheet" href="style.css?v=17">
 </head>
 <body>
 <div class="wrap">
@@ -14,7 +28,29 @@
     <span class="chip">Giustizia e data journalism</span>
     <h1>La situazione delle <em>carceri minorili</em> italiane</h1>
     <p class="sub serif">Una fotografia, numeri alla mano, sulle condizioni degli istituti penali per minorenni (Ipm)</p>
-    <p class="intro">Quanti detenuti ci sono nei “minorili”? Quanti ne entrano e per quali reati? Chi sono questi ragazzi? Un portale data-driven sulla base dei dati periodici del ministero della Giustizia.</p>
+    <p class="intro">Quanti detenuti ci sono nei “minorili”? Quanti ne entrano e per quali reati? Chi sono questi ragazzi e queste ragazze? Un portale data-driven sulla base dei dati periodici del ministero della Giustizia.</p>
+    <div class="toolbar">
+      <nav class="nav" aria-label="Sezioni della pagina">
+        <span class="tb-l">Vai a</span>
+        <a href="#quadro-nazionale">Quadro nazionale</a>
+        <a href="#istituti">Istituti</a>
+        <a href="#ingressi-identikit">Ingressi e identikit</a>
+        <a href="#reati">Reati</a>
+        <a href="#trasferimenti">Trasferimenti</a>
+        <a href="#metodologia">Metodologia</a>
+      </nav>
+      <div class="share" id="share" role="group" aria-label="Condividi questa pagina">
+        <span class="tb-l">Condividi</span>
+        <button type="button" id="share-native" hidden>Condividi…</button>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Flucabonzanni.github.io%2Fmonitor-ipm%2F" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flucabonzanni.github.io%2Fmonitor-ipm%2F" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Flucabonzanni.github.io%2Fmonitor-ipm%2F&amp;text=La%20situazione%20delle%20carceri%20minorili%20italiane" target="_blank" rel="noopener">X</a>
+        <a href="https://wa.me/?text=La%20situazione%20delle%20carceri%20minorili%20italiane%20https%3A%2F%2Flucabonzanni.github.io%2Fmonitor-ipm%2F" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="mailto:?subject=La%20situazione%20delle%20carceri%20minorili%20italiane&amp;body=https%3A%2F%2Flucabonzanni.github.io%2Fmonitor-ipm%2F">E-mail</a>
+        <button type="button" id="share-copy">Copia il link</button>
+        <span class="share-ok" id="share-ok" role="status" aria-live="polite"></span>
+      </div>
+    </div>
     <p class="stamp" id="stamp">Caricamento dati…</p>
     <div class="alert" id="alert" hidden></div>
   </header>
@@ -22,7 +58,8 @@
   <main>
     <section class="kpis" id="kpis" aria-label="Indicatori principali"></section>
 
-    <h2>Quadro nazionale</h2>
+    <h2 id="quadro-nazionale">Quadro nazionale</h2>
+    <p class="lead">Come sono cambiati gli Ipm dagli anni Novanta a oggi? La presenza media giornaliera ha toccato il massimo nel 1994 (617 detenuti) e ha poi oscillato, tra il 1998 e il 2019, fra i 365 e i 510 circa, prima dei minimi del 2020 e del 2021 (320). Dal 2022 è tornata a crescere, arrivando a 588 nel 2025: il secondo valore più alto dal 1991.<span id="lead-2026"></span></p>
 
     <article class="card" id="c-presenze">
       <h3>Presenti negli Ipm, la serie storica</h3>
@@ -33,9 +70,11 @@
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-presenze"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
-    <h2>Istituto per istituto</h2>
+    <h2 id="istituti">Istituti</h2>
+    <p class="lead">A novembre 2026 gli Ipm sono una ventina, in prevalenza al Centro-Sud, con capienze molto diverse. Una nota del ministero di ottobre 2026 ha aggiornato la capienza complessiva a 686 posti (643 maschili e 43 femminili): confrontando i posti con le presenze dei report quindicinali è possibile stimare il grado di affollamento di ciascun istituto.</p>
 
     <article class="card" id="c-ipm-conf">
       <h3>Tutti gli istituti all’ultima data disponibile</h3>
@@ -46,6 +85,7 @@
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-ipm-conf"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
     <article class="card" id="c-ipm-one">
@@ -56,9 +96,11 @@
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-ipm-one"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
-    <h2>Ingressi e profilo dei detenuti</h2>
+    <h2 id="ingressi-identikit">Ingressi e identikit</h2>
+    <p class="lead">Rispetto agli anni Novanta gli ingressi negli Ipm sono diminuiti, sia tra gli italiani sia tra gli stranieri, anche se dal 2020 sono tornati a crescere. I dati del ministero permettono anche di vedere come cambiano la nazionalità, il genere e l’età dei detenuti presenti.</p>
 
     <article class="card" id="c-ingressi">
       <h3>Ingressi negli Ipm, la serie storica</h3>
@@ -68,6 +110,7 @@
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-ingressi"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
     <article class="card" id="c-ingressi-naz">
@@ -79,6 +122,7 @@
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-ingressi-naz"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
     <article class="card" id="c-eta">
@@ -89,6 +133,7 @@
       <div class="plot"><canvas role="img" aria-label="Presenti per fascia d’età nel tempo"></canvas></div>
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
     <article class="card" id="c-chi">
@@ -104,22 +149,11 @@
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-chi"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
-    <h2>Trasferimenti verso carceri per adulti</h2>
-
-    <article class="card" id="c-trasf">
-      <h3>Detenuti trasferiti dagli Ipm alle carceri “ordinarie”</h3>
-      <p class="desc" id="d-trasf">Detenuti maggiorenni che lasciano un Ipm per una struttura per adulti</p>
-      <div class="controls"><div class="seg" data-ctl="vista"></div></div>
-      <div class="legend"></div>
-      <div class="plot"><canvas role="img" aria-label="Detenuti trasferiti dagli Ipm a strutture per adulti, anno per anno"></canvas></div>
-      <div class="tablewrap" hidden></div>
-      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
-      <p class="foot-note" id="n-trasf"></p>
-    </article>
-
-    <h2>Per quali reati si entra in Ipm?</h2>
+    <h2 id="reati">Reati</h2>
+    <p class="lead">Quali sono i principali delitti contestati a chi entra negli Ipm? Tra il 2020 e il 2025 sono aumentate le rapine (da 406 a 674) e i reati legati agli stupefacenti (da 127 a 260), mentre sono diminuiti i furti (da 367 a 293). Crescono anche i tentati omicidi (da 23 a 65), ma su numeri piccoli, da leggere con cautela. Il 2020 è inoltre un anno anomalo, segnato dalla pandemia: rispetto al 2022 le rapine sono in calo (749 nel 2022).</p>
 
     <article class="card" id="c-delitti">
       <h3>Principali reati contestati al momento dell’ingresso</h3>
@@ -133,21 +167,38 @@
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-delitti"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
     </article>
 
-    <details>
-      <summary>Metodo e avvertenze</summary>
+    <h2 id="trasferimenti">Trasferimenti</h2>
+    <p class="lead">I trasferimenti dagli Ipm alle carceri per adulti sono passati dai 60 del 2021 ai 195 del 2025. Antigone e altri osservatori attribuiscono questo aumento agli effetti del decreto Caivano (D.L. 123/2023), che ha snellito le procedure per questi “passaggi”. Il ministero, invece, ha legato i trasferimenti a motivi di sicurezza.</p>
+
+    <article class="card" id="c-trasf">
+      <h3>Detenuti trasferiti dagli Ipm alle carceri “ordinarie”</h3>
+      <p class="desc" id="d-trasf">Detenuti maggiorenni che lasciano un Ipm per una struttura per adulti</p>
+      <div class="controls"><div class="seg" data-ctl="vista"></div></div>
+      <div class="legend"></div>
+      <div class="plot"><canvas role="img" aria-label="Detenuti trasferiti dagli Ipm a strutture per adulti, anno per anno"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="foot-note" id="n-trasf"></p>
+      <p class="fonte"><strong>Fonte:</strong> <span>elaborazione su dati ministero della Giustizia – Dipartimento per la Giustizia minorile e di Comunità</span></p>
+    </article>
+
+    <details id="metodologia">
+      <summary>Metodologia, note e avvertenze</summary>
       <ul>
         <li><strong>Fonte.</strong> Ministero della Giustizia, Dipartimento per la Giustizia minorile e di Comunità, report periodico <a href="https://www.giustizia.it/giustizia/it/mg_1_14.page">“Minorenni e giovani adulti in carico ai Servizi minorili”</a>. I documenti sono pubblicati circa due volte al mese, con un ritardo attorno alle tre settimane rispetto alla data di riferimento: questa pagina non è in tempo reale.</li>
         <li><strong>Aggiornamento.</strong> Uno script – sviluppato attraverso Claude Sonnet 5.5 – controlla il sito del ministero della Giustizia ogni giorno, scarica gli eventuali nuovi file .pdf, li legge e ricalcola i grafici. Ogni documento supera una serie di controlli di coerenza (somme per istituto, totali tra tabelle diverse); se un controllo fallisce il documento viene escluso e segnalato in alto.</li>
-        <li><strong>Serie storica.</strong> I dati annuali 1991-2025 (ingressi e presenza media giornaliera, per nazionalità) provengono dal report annuale del ministero della Giustizia, Dipartimento per la Giustizia minorile e di Comunità, “Analisi dei flussi di utenza dei Servizi della Giustizia minorile” (anno 2025, pubblicato il 2 ottobre 2026), e non dai report periodici: la presenza media giornaliera è la media dei detenuti presenti in ciascun giorno dell’anno, mentre i “presenti” del report sono una fotografia a una data precisa. Le due misure non sono confrontabili tra loro. Gli ingressi della serie storica escludono i trasferimenti tra Ipm.</li>
+        <li><strong>Serie storica.</strong> I dati annuali 1991-2025 (ingressi e presenza media giornaliera, per nazionalità) provengono dal report annuale del ministero della Giustizia, Dipartimento per la Giustizia minorile e di Comunità, “Analisi dei flussi di utenza dei Servizi della Giustizia minorile” (anno 2025, pubblicato il 2 ottobre 2026), e non dai report periodici. Gli ingressi della serie storica escludono i trasferimenti tra Ipm. La presenza media giornaliera è la media dei detenuti presenti in ciascun giorno dell’anno, mentre i “presenti” del report sono una fotografia a una data precisa: sono due misure diverse. Il punto rosso del grafico sulla serie storica è la presenza media giornaliera da inizio anno (tabella sugli ingressi e le presenze per istituto, riga Totale) dell’ultimo report disponibile: si aggiorna a ogni documento e diventa definitivo a fine anno.</li>
+        <li><strong>Aggiornamento delle serie annuali.</strong> Quando il ministero pubblica il bollettino del 31 dicembre con i dati convalidati, lo script aggiunge da solo l’anno concluso alle serie su ingressi, presenza media per nazionalità e trasferimenti verso strutture per adulti, dopo averne controllato la coerenza. Fino ad allora l’anno in corso resta un dato parziale. Gli anni fino al 2025 non vengono toccati.</li>
         <li><strong>Trasferimenti verso strutture per adulti.</strong> Sono i detenuti maggiorenni che lasciano un Ipm per un istituto per adulti. La serie 2011-2025 è annuale; per l’anno in corso il dato è la riga “A strutture per adulti” della tabella sulle uscite dagli Ipm dei report periodici, cumulata da inizio anno.</li>
         <li><strong>Copertura.</strong> <span id="m-docs"></span>.</li>
         <li><strong>Cadenza.</strong> Fino al 2025 il sito usa solo i documenti semestrali (30 giugno e 31 dicembre); dal 2026 tutti quelli quindicinali disponibili. I documenti intermedi restano nell’archivio del progetto ma non compaiono nei grafici.</li>
         <li><strong>Flussi cumulati.</strong> Gli ingressi sono conteggiati da inizio anno e ripartono a gennaio. Confrontare documenti di mesi diversi non ha senso senza guardare la data.</li>
         <li><strong>Reati.</strong> Le tabelle contano i reati per cui avviene l’ingresso, non le persone. Le righe sotto una certa soglia possono non essere riportate nel file .pdf: in quel caso il grafico mostra “non riportato”, non zero.</li>
         <li><strong>Istituti che cambiano.</strong> L’elenco non è stabile: ad esempio dal 28 dicembre 2025 è attivo Lecce, mentre dal 23 febbraio 2026 l’attività di Treviso è sospesa ed è attivato Rovigo. Gli istituti non più attivi restano nei grafici storici.</li>
-        <li><strong>Ingressi e trasferimenti.</strong> Nei grafici annuali gli ingressi escludono i trasferimenti tra istituti; il riquadro in alto, per confrontare i periodi dei singoli documenti, usa il totale che li comprende. Dai documenti del 31 dicembre 2024 il Ministero distingue anche gli ingressi esclusi i trasferimenti.</li>
+        <li><strong>Ingressi e trasferimenti.</strong> Sia nei grafici annuali sia nel riquadro in alto gli ingressi escludono i trasferimenti tra istituti; nel riquadro tra parentesi è indicato anche il totale che li comprende. Il ministero distingue le due voci dai documenti del 31 dicembre 2024: i confronti con l’anno precedente sono quindi possibili da allora.</li>
         <li><strong>Errori della fonte.</strong> I file .pdf contengono a volte refusi (titoli di tabella non aggiornati, numerazioni sbagliate). Quando i numeri non tornano, il documento non viene incluso.</li>
         <li><strong>Perimetro.</strong> Solo istituti penali per minorenni. Centri di prima accoglienza, comunità e misure di comunità non sono inclusi.</li>
       </ul>
@@ -159,6 +210,6 @@
   </footer>
 </div>
 <script src="vendor/chart.umd.js"></script>
-<script src="app.js?v=16"></script>
+<script src="app.js?v=17"></script>
 </body>
 </html>

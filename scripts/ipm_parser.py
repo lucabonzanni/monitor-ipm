@@ -136,6 +136,8 @@ def find_tables(text):
             kind = "uscite"
         elif re.search(r"Ingressi negli Istituti penali per i minorenni secondo l.et", title):
             kind = "ingressi_ns"
+        elif "Presenza media giornaliera negli Istituti penali per i minorenni" in title:
+            kind = "media_naz"
         if kind and kind not in tables:
             tables[kind] = {"num": num, "title": title, "body": body}
     return tables
@@ -216,6 +218,17 @@ def parse_ingressi_ns(body):
             label, nums = split_row(l)
             if label == "Totale" and len(nums) == 9:
                 return nums
+    return None
+
+
+def parse_media_naz(body, anno):
+    """Riga dell'anno corrente della tabella "Presenza media giornaliera negli Istituti penali per i minorenni nel periodo
+    dal ... al ..., secondo la nazionalità e il sesso" (presente nei bollettini annuali). Restituisce le 9 colonne
+    (italiani m/f/mf, stranieri m/f/mf, totale m/f/mf) oppure None se la riga dell'anno non c'è."""
+    for l in body:
+        label, nums = split_row(l)
+        if not label and len(nums) == 10 and nums[0] == anno:
+            return nums[1:]
     return None
 
 
@@ -341,6 +354,20 @@ def parse_pdf(path):
             chk("ingressi_naz", "ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti", ok, str(ig))
             if ok:
                 out["serie"]["ingressi_italiani"], out["serie"]["ingressi_stranieri"] = ig[2], ig[5]
+
+    # ---- presenza media per nazionalità (opzionale: serve ad aggiornare la serie storica annuale a fine anno)
+    out["_media_naz"] = None
+    if "media_naz" in tabs:
+        mn = parse_media_naz(tabs["media_naz"]["body"], anno)
+        if mn is not None:
+            # medie arrotondate: le somme possono differire di 1 (es. 2022: 178 + 7 = 185, ma la tabella riporta 184)
+            q = lambda a, b: abs(a - b) <= 1  # noqa: E731
+            ok = (q(mn[0] + mn[3], mn[6]) and q(mn[1] + mn[4], mn[7]) and q(mn[2] + mn[5], mn[8])
+                  and q(mn[0] + mn[1], mn[2]) and q(mn[3] + mn[4], mn[5]) and q(mn[6] + mn[7], mn[8])
+                  and abs(mn[8] - tot["pm"]) <= 0.5)
+            chk("media_naz", "presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale", ok, str(mn))
+            if ok:
+                out["_media_naz"] = dict(italiani=mn[2], stranieri=mn[5], totale=mn[8])
 
     # ---- delitti (parte separata)
     if "delitti" in tabs:

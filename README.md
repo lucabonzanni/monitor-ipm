@@ -16,9 +16,10 @@ nuovo; se sì lo scarica, lo legge, controlla che i numeri siano coerenti e aggi
 | `data/fonti.csv` | registro: quale PDF è stato scaricato, da quale pagina, quando |
 | `scripts/ipm_parser.py` | legge un PDF e controlla la coerenza interna dei numeri |
 | `scripts/scraper.py` | trova e scarica i PDF dal sito del Ministero |
+| `scripts/serie_annuali.py` | a fine anno aggiunge da solo l'anno concluso alle serie storiche annuali (vedi sotto) |
 | `scripts/aggiorna.py` | coordina tutto e scrive i CSV |
-| `docs/` | il sito: `index.html`, `app.js`, `style.css`, `vendor/` (Chart.js) e `data/` (i CSV) |
-| `tests/` | prova dello scaricatore su un sito simulato |
+| `docs/` | il sito: `index.html`, `app.js`, `style.css`, `anteprima.png` (immagine per i social), `vendor/` (Chart.js) e `data/` (i CSV) |
+| `tests/` | prova dello scaricatore su un sito simulato (`test_scraper_simulato.py`) e controlli sui dati (`test_dati.py`) |
 | `.github/workflows/aggiorna.yml` | l'automazione quotidiana |
 
 ## Controlli di qualità
@@ -26,6 +27,24 @@ nuovo; se sì lo scarica, lo legge, controlla che i numeri siano coerenti e aggi
 Ogni PDF deve superare, prima di entrare nei dati: somma dei presenti per istituto = totale; ingressi per istituto = totale;
 tabella per età coerente con quella per istituto; nazionalità e sesso coerenti con i totali; reati per categoria = totale reati.
 Se un controllo fallisce il documento **non** entra nei dati: finisce in `docs/data/controlli.csv` e in cima alla dashboard compare un avviso.
+
+## Serie storiche annuali (aggiornamento automatico a fine anno)
+
+Le serie 1991-2025 su ingressi, presenza media giornaliera e trasferimenti verso strutture per adulti (`docs/data/serie_storica.csv`,
+`docs/data/trasferimenti_adulti.csv`) vengono dal report annuale del Ministero e **non vengono mai toccate**. Dal 2026 ogni anno si aggiunge da solo
+quando esce il bollettino del 31 dicembre con i dati **convalidati** (nel nome del file compare "convalidat"), purché superi i controlli:
+ingressi italiani + stranieri = totale; presenza media per nazionalità coerente con il totale; trasferimenti verso adulti presenti.
+Se un controllo fallisce l'anno non viene aggiunto e compare un avviso (`PROBLEMA:` nell'esecuzione). Finché il bollettino convalidato non esce
+l'anno in corso resta un dato parziale. Se i bollettini del nuovo anno arrivano prima della serie annuale appare in cima alla pagina un avviso.
+
+## Prove automatiche
+
+    python3 tests/test_dati.py
+    python3 tests/test_scraper_simulato.py
+
+`test_dati.py` controlla, tra l'altro, che i reati non vengano moltiplicati, che italiani + stranieri = totale, i valori di riferimento
+(ingressi 2025 = 1.197, trasferimenti 2025 = 195, ingressi al 15 ottobre 2026 = 871) e che l'aggiornamento di fine anno funzioni.
+Se cambia la cifra di un riferimento perché la fonte è stata rettificata, il test va aggiornato a mano di proposito.
 
 ## Come leggere l'esito dell'automazione
 

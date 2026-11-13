@@ -23,6 +23,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ipm_parser as P  # noqa: E402
 import scraper as S  # noqa: E402
+import serie_annuali as SA  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 PDF_DIR = ROOT / "data" / "pdf"
@@ -108,6 +109,12 @@ def costruisci(log=print):
             log(f"  fuori cadenza (non mostrato): {doc['file']} ({d})")
             documenti.append(dict(file=doc["file"], data_rif=d, formato=doc["formato"], stato="fuori cadenza",
                                   nota="fino al %d si usano solo i documenti semestrali" % ULTIMO_ANNO_SEMESTRALE))
+
+    # serie storiche annuali: a fine anno si aggiungono da sole dal bollettino del 31 dicembre convalidato
+    righe_s, righe_t, problemi_annuali = SA.righe_da_documenti(validi)
+    esclusi.extend(problemi_annuali)
+    for anno in SA.aggiorna_file(OUT, righe_s, righe_t):
+        log(f"  serie annuale {anno} aggiornata dal bollettino del 31 dicembre")
 
     date = sorted(validi)
     serie, presenze, eta, ns, dl_full, dl_target = [], [], [], [], [], []

@@ -6,7 +6,7 @@
 <title>La situazione delle carceri minorili italiane</title>
 <meta name="description" content="Una fotografia, numeri alla mano, sulle condizioni degli istituti penali per minorenni (Ipm). Dati periodici del ministero della Giustizia.">
 <link rel="icon" href="data:,">
-<link rel="stylesheet" href="style.css?v=12">
+<link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 <div class="wrap">
@@ -24,11 +24,14 @@
     <h2>Quadro nazionale</h2>
 
     <article class="card" id="c-presenze">
-      <h3>Presenti negli Ipm</h3>
-      <p class="desc">Detenuti presenti negli istituti alla data di riferimento di ciascun documento</p>
-      <div class="plot"><canvas role="img" aria-label="Presenti negli Ipm nel tempo"></canvas></div>
+      <h3>Presenti negli Ipm, la serie storica</h3>
+      <p class="desc" id="d-presenze">Detenuti presenti negli istituti: media annua (1991-2025) e situazione attuale (all’ultimo aggiornamento)</p>
+      <div class="controls"><div class="seg" data-ctl="vista"></div></div>
+      <div class="legend"></div>
+      <div class="plot"><canvas role="img" aria-label="Presenti negli Ipm: media annua dal 1991 e situazione attuale"></canvas></div>
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="foot-note" id="n-presenze"></p>
     </article>
 
     <h2>Istituto per istituto</h2>
@@ -57,14 +60,24 @@
     <h2>Ingressi e profilo dei detenuti</h2>
 
     <article class="card" id="c-ingressi">
-      <h3>Ingressi per anno</h3>
-      <p class="desc" id="d-ingressi">Totale degli ingressi di ciascun anno</p>
-      <div class="controls"><div class="seg" data-ctl="misura"></div></div>
+      <h3>Ingressi negli Ipm, la serie storica</h3>
+      <p class="desc" id="d-ingressi">Ingressi di ciascun anno, esclusi i trasferimenti tra istituti</p>
       <div class="legend"></div>
       <div class="plot"><canvas role="img" aria-label="Totale degli ingressi per anno, una colonna per anno"></canvas></div>
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
       <p class="foot-note" id="n-ingressi"></p>
+    </article>
+
+    <article class="card" id="c-ingressi-naz">
+      <h3>Ingressi per nazionalità</h3>
+      <p class="desc" id="d-ingressi-naz">Ingressi di ciascun anno di detenuti italiani e stranieri, esclusi i trasferimenti tra istituti</p>
+      <div class="controls"><div class="seg" data-ctl="modo"></div></div>
+      <div class="legend"></div>
+      <div class="plot"><canvas role="img" aria-label="Ingressi per nazionalità, anno per anno"></canvas></div>
+      <div class="tablewrap" hidden></div>
+      <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="foot-note" id="n-ingressi-naz"></p>
     </article>
 
     <article class="card" id="c-eta">
@@ -79,8 +92,9 @@
 
     <article class="card" id="c-chi">
       <h3>Chi è dentro: nazionalità e genere</h3>
-      <p class="desc">Presenti alla data di riferimento</p>
+      <p class="desc" id="d-chi">Presenti alla data di riferimento</p>
       <div class="controls">
+        <div class="seg" data-ctl="fonte"></div>
         <div class="seg" data-ctl="dim"></div>
         <div class="seg" data-ctl="modo"></div>
       </div>
@@ -88,6 +102,7 @@
       <div class="plot"><canvas role="img" aria-label="Presenti per nazionalità o genere nel tempo"></canvas></div>
       <div class="tablewrap" hidden></div>
       <button class="tbl-btn" type="button" aria-expanded="false">Mostra come tabella</button>
+      <p class="foot-note" id="n-chi"></p>
     </article>
 
     <h2>Reati degli ingressi</h2>
@@ -111,12 +126,13 @@
       <ul>
         <li><strong>Fonte.</strong> Ministero della Giustizia, Dipartimento per la Giustizia minorile e di Comunità, report periodico <a href="https://www.giustizia.it/giustizia/it/mg_1_14.page">“Minorenni e giovani adulti in carico ai Servizi minorili”</a>. I documenti sono pubblicati circa due volte al mese, con un ritardo attorno alle tre settimane rispetto alla data di riferimento: questa pagina non è in tempo reale.</li>
         <li><strong>Aggiornamento.</strong> Uno script – sviluppato attraverso Claude Sonnet 5.5 – controlla il sito del ministero della Giustizia ogni giorno, scarica gli eventuali nuovi file .pdf, li legge e ricalcola i grafici. Ogni documento supera una serie di controlli di coerenza (somme per istituto, totali tra tabelle diverse); se un controllo fallisce il documento viene escluso e segnalato in alto.</li>
+        <li><strong>Serie storica.</strong> I dati annuali 1991-2025 (ingressi e presenza media giornaliera, per nazionalità) provengono da una serie storica fornita dal progetto e non dal report periodico: la presenza media giornaliera è la media dei detenuti presenti in ciascun giorno dell’anno, mentre i “presenti” del report sono una fotografia a una data precisa. Le due misure non sono confrontabili tra loro. Gli ingressi della serie storica escludono i trasferimenti tra istituti.</li>
         <li><strong>Copertura.</strong> <span id="m-docs"></span>.</li>
         <li><strong>Cadenza.</strong> Fino al 2025 il sito usa solo i documenti semestrali (30 giugno e 31 dicembre); dal 2026 tutti quelli quindicinali disponibili. I documenti intermedi restano nell’archivio del progetto ma non compaiono nei grafici.</li>
         <li><strong>Flussi cumulati.</strong> Gli ingressi sono conteggiati da inizio anno e ripartono a gennaio. Confrontare documenti di mesi diversi non ha senso senza guardare la data.</li>
         <li><strong>Reati.</strong> Le tabelle contano i reati per cui avviene l’ingresso, non le persone. Le righe sotto una certa soglia possono non essere riportate nel file .pdf: in quel caso il grafico mostra “non riportato”, non zero.</li>
         <li><strong>Istituti che cambiano.</strong> L’elenco non è stabile: ad esempio dal 28 dicembre 2025 è attivo Lecce, mentre dal 23 febbraio 2026 l’attività di Treviso è sospesa ed è attivato Rovigo. Gli istituti non più attivi restano nei grafici storici.</li>
-        <li><strong>Ingressi e trasferimenti.</strong> Per confrontare nel tempo si usa il totale degli ingressi, che comprende i trasferimenti tra istituti. Dai documenti del 31 dicembre 2024 il Ministero distingue anche gli ingressi esclusi i trasferimenti.</li>
+        <li><strong>Ingressi e trasferimenti.</strong> Nei grafici annuali gli ingressi escludono i trasferimenti tra istituti; il riquadro in alto, per confrontare i periodi dei singoli documenti, usa il totale che li comprende. Dai documenti del 31 dicembre 2024 il Ministero distingue anche gli ingressi esclusi i trasferimenti.</li>
         <li><strong>Errori della fonte.</strong> I file .pdf contengono a volte refusi (titoli di tabella non aggiornati, numerazioni sbagliate). Quando i numeri non tornano, il documento non viene incluso.</li>
         <li><strong>Perimetro.</strong> Solo istituti penali per minorenni. Centri di prima accoglienza, comunità e misure di comunità non sono inclusi.</li>
       </ul>
@@ -128,6 +144,6 @@
   </footer>
 </div>
 <script src="vendor/chart.umd.js"></script>
-<script src="app.js?v=12"></script>
+<script src="app.js?v=13"></script>
 </body>
 </html>

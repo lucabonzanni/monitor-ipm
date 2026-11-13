@@ -132,6 +132,8 @@ def find_tables(text):
             kind = "naz_sesso"
         elif "Delitti a carico" in title and "Istituti penali" in title:
             kind = "delitti"
+        elif "Uscite dagli Istituti penali" in title:
+            kind = "uscite"
         if kind and kind not in tables:
             tables[kind] = {"num": num, "title": title, "body": body}
     return tables
@@ -191,6 +193,17 @@ def parse_naz_sesso(body):
         if (label in ETA or label == "Totale") and len(nums) >= 7:
             cand.append((label, nums))
     return {label: nums for label, nums in riempi_celle_vuote(cand, 9)}
+
+
+def parse_trasf_adulti(body):
+    """Riga "A strutture per adulti" della tabella delle uscite dagli Ipm (dato cumulato da inizio anno).
+    Restituisce le 9 colonne (it m/f/mf, str m/f/mf, tot m/f/mf) oppure None se la riga non c'è."""
+    for l in body:
+        if l.strip().startswith("A strutture per adulti"):
+            label, nums = split_row(l)
+            if label == "A strutture per adulti" and len(nums) == 9:
+                return nums
+    return None
 
 
 def parse_delitti(body):
@@ -292,6 +305,17 @@ def parse_pdf(path):
         ingressi_esclusi_trasf=tot["ing_esclusi"], trasferimenti=tot["trasf"], presenza_media_giornaliera=tot["pm"],
         eta_14_15=ns["14-15 anni"][8], eta_16_17=ns["16-17 anni"][8], eta_18_20=ns["18-20 anni"][8], eta_21_24=ns["21-24 anni"][8],
         italiani_m=t[0], italiani_f=t[1], stranieri_m=t[3], stranieri_f=t[4])
+
+    # ---- trasferimenti verso strutture per adulti (opzionale: non blocca il documento se manca)
+    out["serie"]["trasf_adulti"] = None
+    if "uscite" in tabs:
+        ta = parse_trasf_adulti(tabs["uscite"]["body"])
+        if ta is not None:
+            ok = (ta[0] + ta[3] == ta[6] and ta[1] + ta[4] == ta[7] and ta[2] + ta[5] == ta[8]
+                  and ta[0] + ta[1] == ta[2] and ta[3] + ta[4] == ta[5] and ta[6] + ta[7] == ta[8])
+            chk("trasf_adulti", "uscite: riga 'A strutture per adulti' coerente (m+f, it+st)", ok, str(ta))
+            if ok:
+                out["serie"]["trasf_adulti"] = ta[8]
 
     # ---- delitti (parte separata)
     if "delitti" in tabs:

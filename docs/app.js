@@ -402,7 +402,7 @@
       render("c-ingressi", {
         type: "bar",
         data: {
-          labels: rows.map(function (r) { var p = r.d.split("-"); return r.corrente ? [String(r.a), "parziale, al " + (+p[2]) + " " + MESI_LUNGHI[+p[1] - 1]] : String(r.a); }),
+          labels: rows.map(function (r) { var p = r.d.split("-"); return r.corrente ? [String(r.a), window.innerWidth < 600 ? "parziale" : "parziale, al " + (+p[2]) + " " + MESI_LUNGHI[+p[1] - 1]] : String(r.a); }),
           datasets: [{
             label: "Ingressi", data: rows.map(function (r) { return r.v; }),
             backgroundColor: rows.map(function (r) { return r.corrente ? cCur : cClosed; }),
@@ -414,7 +414,7 @@
             mode: "index", vAxis: "y", nullText: "non disponibile",
             title: function (it) { return "Anno " + rows[it.dataIndex].a + " · dati al " + fmtData(rows[it.dataIndex].d); },
             scales: function (g, m) {
-              return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false } }, y: yScale(g, m, "ingressi nell’anno", {}) };
+              return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false, font: { size: window.innerWidth < 600 ? 11 : 12 } } }, y: yScale(g, m, window.innerWidth < 600 ? "" : "ingressi nell’anno", {}) };
             }
           });
           o.layout.padding.top = 22; o.plugins.barLabels = { on: true };
@@ -509,6 +509,7 @@
           : [["Maschi", null, "m"], ["Femmine", null, "f"]];
       var labels = anniDel.map(function (a) {
         var d = ultimoPerAnno[a], p = d.split("-");
+        if (window.innerWidth < 600) return (+p[1] === 12 && +p[2] === 31) ? String(a) : [String(a), "parziale"];
         return [String(a), "al " + (+p[2]) + " " + MESI_LUNGHI[+p[1] - 1]];
       });
       var ds = def.map(function (x, i) {
@@ -525,7 +526,7 @@
             mode: "index", vAxis: "y",
             title: function (it) { return "Anno " + anniDel[it.dataIndex] + " · dati al " + fmtData(ultimoPerAnno[anniDel[it.dataIndex]]); },
             scales: function (g, m) {
-              return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0 } }, y: yScale(g, m, "reati degli ingressi", {}) };
+              return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false, font: { size: window.innerWidth < 600 ? 11 : 12 } } }, y: yScale(g, m, window.innerWidth < 600 ? "" : "reati degli ingressi", {}) };
             }
           });
           o.datasets = { bar: { categoryPercentage: 0.8, barPercentage: 0.9 } };

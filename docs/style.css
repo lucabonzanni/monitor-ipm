@@ -111,3 +111,19 @@ footer { color: var(--muted); font-size: .85rem; margin-top: 32px; text-align: c
 .dl { display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .err { background: var(--warn-bg); color: var(--warn-ink); padding: 14px; border-radius: 8px; }
 @media (max-width: 560px) { .plot { height: 300px; } .kpi .value { font-size: 2rem; } header h1 { font-size: 1.6rem; } }
+
+/* telefono: i pulsanti di selezione vanno a capo e restano interi, come bottoni separati */
+@media (max-width: 560px) {
+  .seg { display: flex; flex-wrap: wrap; gap: 6px; border: 0; border-radius: 0; overflow: visible; width: 100%; }
+  .seg button { flex: 1 1 auto; border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; white-space: normal; line-height: 1.25; }
+  .seg button + button { border-left: 1px solid var(--border); }
+  .seg button[aria-pressed="true"] { border-color: var(--accent); }
+}
+
+/* telefono: tendine e selettori mai più larghi del riquadro */
+select { max-width: 100%; }
+.controls label { min-width: 0; max-width: 100%; }
+@media (max-width: 560px) {
+  .controls label { display: flex; flex-direction: column; align-items: stretch; gap: 4px; width: 100%; }
+  .controls select { width: 100%; box-sizing: border-box; }
+}

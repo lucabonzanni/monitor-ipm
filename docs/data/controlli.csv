@@ -434,6 +434,7 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,trasf_adulti,"uscite: riga 'A strutture per adulti' coerente (m+f, it+st)",OK,"[18, 2, 20, 22, 0, 22, 40, 2, 42]"
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,ingressi_naz,"ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti",OK,"[337, 18, 355, 310, 48, 358, 647, 66, 713]"
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,media_naz,"presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale",OK,"[169, 7, 176, 136, 8, 144, 305, 15, 320]"
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,delitti,delitti: tabella con righe,OK,
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
@@ -450,6 +451,7 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,trasf_adulti,"uscite: riga 'A strutture per adulti' coerente (m+f, it+st)",OK,"[18, 2, 20, 22, 0, 22, 40, 2, 42]"
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,ingressi_naz,"ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti",OK,"[337, 18, 355, 310, 48, 358, 647, 66, 713]"
+2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,media_naz,"presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale",OK,"[169, 7, 176, 136, 8, 144, 305, 15, 320]"
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,delitti,delitti: tabella con righe,OK,
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2020-12-31,Analisi_Servizi_minorili_31.12.2020_DATI_CONVALIDATI_31marzo2021.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
@@ -466,6 +468,7 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
 2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,trasf_adulti,"uscite: riga 'A strutture per adulti' coerente (m+f, it+st)",OK,"[34, 1, 35, 25, 0, 25, 59, 1, 60]"
 2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,ingressi_naz,"ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti",OK,"[450, 18, 468, 320, 47, 367, 770, 65, 835]"
+2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,media_naz,"presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale",OK,"[176, 6, 182, 130, 8, 138, 306, 14, 320]"
 2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,delitti,delitti: tabella con righe,OK,
 2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2021-12-31,Analisi_Servizi_minorili_31.12.2021convalidato.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
@@ -482,6 +485,7 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
 2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,trasf_adulti,"uscite: riga 'A strutture per adulti' coerente (m+f, it+st)",OK,"[60, 1, 61, 43, 1, 44, 103, 2, 105]"
 2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,ingressi_naz,"ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti",OK,"[491, 20, 511, 484, 56, 540, 975, 76, 1051]"
+2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,media_naz,"presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale",OK,"[193, 5, 198, 178, 7, 184, 370, 12, 382]"
 2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,delitti,delitti: tabella con righe,OK,
 2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2022-12-31,Analisi_Servizi_minorili_31.12.2022_dati_convalidati_23.8.2023__Copia_1.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
@@ -498,6 +502,7 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
 2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,trasf_adulti,"uscite: riga 'A strutture per adulti' coerente (m+f, it+st)",OK,"[78, 0, 78, 43, 1, 44, 121, 1, 122]"
 2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,ingressi_naz,"ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti",OK,"[561, 24, 585, 521, 36, 557, 1082, 60, 1142]"
+2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,media_naz,"presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale",OK,"[201, 9, 210, 211, 4, 215, 412, 13, 425]"
 2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,delitti,delitti: tabella con righe,OK,
 2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2023-12-31,Analisi_Servizi_minorili_31.12.2023dati_convalidati_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
@@ -516,6 +521,7 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,trasf_adulti,"uscite: riga 'A strutture per adulti' coerente (m+f, it+st)",OK,"[89, 4, 93, 94, 2, 96, 183, 6, 189]"
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,ingressi_naz,"ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti",OK,"[594, 30, 624, 585, 49, 634, 1179, 79, 1258]"
+2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,media_naz,"presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale",OK,"[268, 15, 283, 263, 10, 273, 531, 25, 556]"
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,delitti,delitti: tabella con righe,OK,
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2024-12-31,Analisi_Servizi_minorili_31.12.2024_dati_CONVALIDATI_G.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,
@@ -534,6 +540,7 @@ data_rif,file,gruppo,controllo,esito,dettaglio
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,presenti,tab nazionalità/sesso per fascia = tab età per fascia,OK,
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,trasf_adulti,"uscite: riga 'A strutture per adulti' coerente (m+f, it+st)",OK,"[113, 1, 114, 76, 5, 81, 189, 6, 195]"
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,ingressi_naz,"ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti",OK,"[618, 29, 647, 520, 30, 550, 1138, 59, 1197]"
+2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,media_naz,"presenza media per nazionalità: coerenza m+f, it+st e totale = presenza media del Totale",OK,"[298, 14, 312, 268, 8, 276, 566, 22, 588]"
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,delitti,delitti: tabella con righe,OK,
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,delitti,delitti: somma categorie = Totale DELITTI,OK,[]
 2025-12-31,Analisi_Servizi_minorili_31.12.2025Dati_convalidatiG.pdf,delitti,delitti: coerenza m+f e it+st (tutte le righe),OK,

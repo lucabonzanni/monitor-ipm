@@ -242,7 +242,7 @@ class TestPagina(unittest.TestCase):
 
     def test_i_link_dell_indice_puntano_a_sezioni_esistenti(self):
         import re
-        for href in re.findall(r'<nav class="nav".*?</nav>', self.html, re.S)[0].split('href="#')[1:]:
+        for href in re.findall(r'<nav class="topnav".*?</nav>', self.html, re.S)[0].split('href="#')[1:]:
             ident = href.split('"')[0]
             self.assertIn(f'id="{ident}"', self.html, ident)
 

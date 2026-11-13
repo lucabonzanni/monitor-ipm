@@ -282,8 +282,9 @@
     fetch("data/stato.json", { cache: "no-cache" }).then(function (r) { return r.json(); }),
     load("serie_nazionale.csv"), load("presenze_ipm.csv"), load("delitti_selezionati.csv"), load("documenti.csv"),
     load("capienze.csv").catch(function () { return []; }),
-    load("serie_storica.csv").catch(function () { return []; })
-  ]).then(function (res) { start(res[0], res[1], res[2], res[3], res[4], res[5], res[6]); })
+    load("serie_storica.csv").catch(function () { return []; }),
+    load("trasferimenti_adulti.csv").catch(function () { return []; })
+  ]).then(function (res) { start(res[0], res[1], res[2], res[3], res[4], res[5], res[6], res[7]); })
     .catch(function (e) {
       var s = $("#stamp"); s.textContent = "";
       var d = document.createElement("div"); d.className = "err";
@@ -291,11 +292,11 @@
       s.appendChild(d);
     });
 
-  function start(stato, serieRaw, ipmRaw, delRaw, docs, capRaw, storRaw) {
+  function start(stato, serieRaw, ipmRaw, delRaw, docs, capRaw, storRaw, trasfRaw) {
     var serie = sortBy(serieRaw, "data_rif").map(function (r) {
       var o = { d: r.data_rif, anno: +r.anno, t: ts(r.data_rif) };
       ["presenti", "ingressi_totale", "ingressi_esclusi_trasf", "trasferimenti", "presenza_media_giornaliera",
-        "eta_14_15", "eta_16_17", "eta_18_20", "eta_21_24", "italiani_m", "italiani_f", "stranieri_m", "stranieri_f"]
+        "trasf_adulti", "eta_14_15", "eta_16_17", "eta_18_20", "eta_21_24", "italiani_m", "italiani_f", "stranieri_m", "stranieri_f"]
         .forEach(function (k) { o[k] = num(r[k]); });
       var s = (o.stranieri_m === null || o.stranieri_f === null) ? null : o.stranieri_m + o.stranieri_f;
       var tt = s === null || o.italiani_m === null || o.italiani_f === null ? null : s + o.italiani_m + o.italiani_f;
@@ -407,7 +408,7 @@
     var str = ultimo.stranieri_m + ultimo.stranieri_f, tot = str + ultimo.italiani_m + ultimo.italiani_f;
     kpi("Stranieri tra i presenti", NF1.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + " · al " + fmtData(ultimo.d)], notaQuota());
 
-    ["c-presenze", "c-ingressi", "c-ingressi-naz", "c-eta", "c-chi", "c-delitti", "c-ipm-conf", "c-ipm-one"].forEach(function (id) { wireTableBtn(document.getElementById(id)); });
+    ["c-presenze", "c-ingressi", "c-ingressi-naz", "c-trasf", "c-eta", "c-chi", "c-delitti", "c-ipm-conf", "c-ipm-one"].forEach(function (id) { wireTableBtn(document.getElementById(id)); });
 
     var ultimoPerAnno = {};
     serie.forEach(function (r) { ultimoPerAnno[r.anno] = r.d; });
@@ -530,6 +531,57 @@
       $("#n-ingressi-naz").textContent = "Gli ingressi escludono i trasferimenti tra istituti. Il dettaglio per nazionalità del " + ultimo.anno + " non è ancora disponibile.";
     }
     seg($('[data-ctl="modo"]', cIN), [{ v: "ass", label: "Numeri" }, { v: "pct", label: "% sul totale" }], "ass", function (v) { stIN.modo = v; drawIngNaz(); });
+
+    /* 2c. trasferimenti verso strutture per adulti: serie annuale + parziale dell’anno in corso, oppure andamento cumulato dell’anno */
+    var cTr = document.getElementById("c-trasf"), stTr = { vista: "storica" };
+    var trasf = trasfRaw.map(function (r) { return { a: +r.anno, v: num(r.trasferimenti_adulti) }; }).sort(function (x, y) { return x.a - y.a; });
+    var recT = serie.filter(function (r) { return r.anno >= ANNO_Q && r.trasf_adulti !== null; });
+    var trUlt = recT.length ? recT[recT.length - 1] : null;
+    function drawTrasf() {
+      var small = window.innerWidth < 600, nota = "Detenuti maggiorenni che lasciano un Ipm per una struttura per adulti";
+      if (stTr.vista === "storica") {
+        var rows = trasf.map(function (r) { return { a: r.a, v: r.v, corrente: false }; });
+        if (trUlt && (!rows.length || trUlt.anno > rows[rows.length - 1].a)) rows.push({ a: trUlt.anno, v: trUlt.trasf_adulti, corrente: true });
+        if (!rows.length) { $("#n-trasf").textContent = "Dati non trovati: carica il file trasferimenti_adulti.csv nella cartella docs/data del repository"; return; }
+        var cC = cat(0), cP = cat(1);
+        legend(cTr, [{ label: "Anno concluso", color: cC }, { label: "Anno in corso (dato parziale)", color: cP }]);
+        var chiusi = rows.filter(function (r) { return !r.corrente; });
+        $("#d-trasf").textContent = nota + ": " + rows[0].a + "-" + chiusi[chiusi.length - 1].a + (trUlt ? " e dato parziale del " + trUlt.anno + " al " + fmtData(trUlt.d) : "");
+        render("c-trasf", {
+          type: "bar",
+          data: { labels: rows.map(function (r) { return String(r.a); }), datasets: [{
+            label: "Trasferiti", data: rows.map(function (r) { return r.v; }),
+            backgroundColor: rows.map(function (r) { return r.corrente ? cP : cC; }), borderWidth: 0, borderRadius: 3, borderSkipped: "bottom", maxBarThickness: 36 }] },
+          options: (function () {
+            var o = baseOptions({
+              mode: "index", vAxis: "y",
+              title: function (it) { var r = rows[it.dataIndex]; return r.corrente ? "Anno " + r.a + " · dato parziale al " + fmtData(trUlt.d) : "Anno " + r.a; },
+              scales: function (g, m) {
+                return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false, font: { size: small ? 10 : 12 },
+                  callback: function (v, i) { return small && rows[i].a % 4 !== 3 && !rows[i].corrente ? "" : String(rows[i].a); } } },
+                  y: yScale(g, m, small ? "" : "detenuti trasferiti nell’anno", {}) };
+              }
+            });
+            o.layout.padding.top = 22; o.plugins.barLabels = { on: true };
+            return o;
+          })()
+        });
+        tableView(cTr, ["Anno", "Trasferiti a strutture per adulti"], rows.map(function (r) { return [r.corrente ? r.a + " (parziale, al " + fmtData(trUlt.d) + ")" : String(r.a), r.v]; }));
+        $("#n-trasf").textContent = trUlt ? "Il dato " + trUlt.anno + " è cumulato da inizio anno fino al " + fmtData(trUlt.d) + ": non è ancora un anno completo." : "";
+      } else {
+        legend(cTr, []);
+        var pts = recT.map(function (r) { return { x: r.t, y: r.trasf_adulti }; });
+        var t0 = Date.UTC(ANNO_Q, 0, 1) - 10 * DAY, t1 = ultimo.t + 10 * DAY;
+        $("#d-trasf").textContent = nota + ": totale cumulato da inizio anno a ciascuna data di riferimento";
+        render("c-trasf", {
+          type: "line", data: { datasets: [lineDs("Trasferiti da inizio anno", pts, cat(1), { r: 4 })] },
+          options: baseOptions({ title: titleDate, scales: function (g, m) { return { x: dateScale(t0, t1, g, m), y: yScale(g, m, "trasferiti da inizio anno", {}) }; } })
+        });
+        tableView(cTr, ["Data di riferimento", "Trasferiti da inizio anno"], recT.map(function (r) { return [fmtData(r.d), r.trasf_adulti]; }));
+        $("#n-trasf").textContent = "Il dato è cumulato da inizio anno e riparte da zero a gennaio.";
+      }
+    }
+    seg($('[data-ctl="vista"]', cTr), [{ v: "storica", label: "Serie storica" }, { v: "anno", label: "Andamento " + (ultimo.anno > ANNO_Q ? "dal " : "") + ANNO_Q }], "storica", function (v) { stTr.vista = v; drawTrasf(); });
 
     /* 3. età */
     var cEta = document.getElementById("c-eta"), stEta = { modo: "ass" };
@@ -799,7 +851,7 @@
       var s = document.createElement("div"); s.className = "seg"; s.dataset.card = id; ctl.appendChild(s); segPeriodo.push(s);
       seg(s, [{ v: "tutto", label: "Tutto il periodo" }, { v: "anno", label: (ultimo.anno > ANNO_Q ? "Dal " : "Solo ") + ANNO_Q }], "tutto", function (v) { setPeriodo(v === "anno"); });
     });
-    function drawAll() { drawPresenze(); drawIngressi(); drawIngNaz(); drawEta(); drawChi(); drawDel(); drawConf(); drawOne(); }
+    function drawAll() { drawPresenze(); drawIngressi(); drawIngNaz(); drawTrasf(); drawEta(); drawChi(); drawDel(); drawConf(); drawOne(); }
     drawAll();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(drawAll);
     if (window.matchMedia) {

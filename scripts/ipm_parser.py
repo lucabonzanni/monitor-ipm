@@ -134,6 +134,8 @@ def find_tables(text):
             kind = "delitti"
         elif "Uscite dagli Istituti penali" in title:
             kind = "uscite"
+        elif re.search(r"Ingressi negli Istituti penali per i minorenni secondo l.et", title):
+            kind = "ingressi_ns"
         if kind and kind not in tables:
             tables[kind] = {"num": num, "title": title, "body": body}
     return tables
@@ -202,6 +204,17 @@ def parse_trasf_adulti(body):
         if l.strip().startswith("A strutture per adulti"):
             label, nums = split_row(l)
             if label == "A strutture per adulti" and len(nums) == 9:
+                return nums
+    return None
+
+
+def parse_ingressi_ns(body):
+    """Riga "Totale" della tabella ingressi per età, nazionalità e sesso (cumulato da inizio anno, esclusi i trasferimenti).
+    Restituisce le 9 colonne oppure None."""
+    for l in body:
+        if l.strip().startswith("Totale"):
+            label, nums = split_row(l)
+            if label == "Totale" and len(nums) == 9:
                 return nums
     return None
 
@@ -316,6 +329,18 @@ def parse_pdf(path):
             chk("trasf_adulti", "uscite: riga 'A strutture per adulti' coerente (m+f, it+st)", ok, str(ta))
             if ok:
                 out["serie"]["trasf_adulti"] = ta[8]
+
+    # ---- ingressi per nazionalità (opzionale: non blocca il documento se manca)
+    out["serie"]["ingressi_italiani"] = out["serie"]["ingressi_stranieri"] = None
+    if "ingressi_ns" in tabs:
+        ig = parse_ingressi_ns(tabs["ingressi_ns"]["body"])
+        if ig is not None:
+            ok = (ig[0] + ig[3] == ig[6] and ig[1] + ig[4] == ig[7] and ig[2] + ig[5] == ig[8]
+                  and ig[0] + ig[1] == ig[2] and ig[3] + ig[4] == ig[5] and ig[6] + ig[7] == ig[8]
+                  and (tot["ing_esclusi"] is None or ig[8] == tot["ing_esclusi"]))
+            chk("ingressi_naz", "ingressi per nazionalità: coerenza m+f, it+st e totale = ingressi esclusi i trasferimenti", ok, str(ig))
+            if ok:
+                out["serie"]["ingressi_italiani"], out["serie"]["ingressi_stranieri"] = ig[2], ig[5]
 
     # ---- delitti (parte separata)
     if "delitti" in tabs:

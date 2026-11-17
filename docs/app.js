@@ -224,7 +224,8 @@
       var ctx = chart.ctx, ca = chart.chartArea, xs = chart.scales.x;
       opts.items.forEach(function (it) {
         if (it.type !== "band") return;
-        var x0 = xs.getPixelForValue(it.x0), x1 = xs.getPixelForValue(it.x1);
+        var x0 = Math.max(ca.left, xs.getPixelForValue(it.x0)), x1 = Math.min(ca.right, xs.getPixelForValue(it.x1));
+        if (x1 <= x0) return;
         ctx.save(); ctx.fillStyle = css("--ink"); ctx.globalAlpha = .08;
         ctx.fillRect(x0, ca.top, x1 - x0, ca.bottom - ca.top); ctx.restore();
       });
@@ -232,15 +233,15 @@
     afterDatasetsDraw: function (chart, args, opts) {
       if (!opts || !opts.items) return;
       var ctx = chart.ctx, ca = chart.chartArea, xs = chart.scales.x, ys = chart.scales.y, small = window.innerWidth < 600;
-      function txt(t, x, y, align, color, bold) {
-        ctx.save(); ctx.font = (bold ? "600 " : "") + "italic " + (small ? 11 : 12.5) + "px " + FONT; ctx.textAlign = align; ctx.textBaseline = "middle";
+      function txt(t, x, y, align, color, bold, plain) {
+        ctx.save(); ctx.font = (bold ? "600 " : "") + (plain ? "" : "italic ") + (small ? 11 : 12.5) + "px " + FONT; ctx.textAlign = align; ctx.textBaseline = "middle";
         ctx.strokeStyle = css("--surface"); ctx.lineWidth = 4; ctx.lineJoin = "round"; ctx.strokeText(t, x, y);
         ctx.fillStyle = color; ctx.fillText(t, x, y); ctx.restore();
       }
       opts.items.forEach(function (it) {
         if (it.type === "band") {
-          var xm = (xs.getPixelForValue(it.x0) + xs.getPixelForValue(it.x1)) / 2;
-          txt(it.text, xm, ca.top + 10, "center", css("--ink2"), false);
+          var b0 = Math.max(ca.left, xs.getPixelForValue(it.x0)), b1 = Math.min(ca.right, xs.getPixelForValue(it.x1));
+          if (b1 > b0) txt(it.text, (b0 + b1) / 2, ca.top + 10, "center", css("--ink2"), false, true);
         } else if (it.type === "vline") {
           var x = xs.getPixelForValue(it.at);
           ctx.save(); ctx.strokeStyle = css("--ink"); ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
@@ -331,6 +332,16 @@
     return sc;
   }
   var DAY = 864e5;
+  /* banda grigia 2020-2021: kind = "anno" (asse in anni), "data" (asse in millisecondi) */
+  function pandemia(kind) {
+    return kind === "data"
+      ? { type: "band", x0: Date.UTC(2020, 0, 1), x1: Date.UTC(2021, 11, 31), text: "Pandemia" }
+      : { type: "band", x0: 2019.5, x1: 2021.5, text: "Pandemia" };
+  }
+  function conPandemia(o, kind, extra) {
+    o.plugins.annot = { items: [pandemia(kind)].concat(extra || []) };
+    return o;
+  }
   /* asse x con anni (serie storica): etichette 1991, ogni 5 anni, e l’anno corrente */
   function yearScale(min, max, grid, muted, last) {
     return {
@@ -529,7 +540,7 @@
         var picco = ss.reduce(function (m, r) { return r.mt > m.mt ? r : m; }, ss[0]);
         var bassi = ss.filter(function (r) { return r.a === 2020 || r.a === 2021; });
         var ann = [{ type: "point", x: picco.a, y: picco.mt, text: "Picco: " + NF.format(picco.mt) + " nel " + picco.a }];
-        if (bassi.length) ann.push({ type: "band", x0: 2019.5, x1: 2021.5, text: "Covid" });
+        if (bassi.length) ann.unshift(pandemia("anno"));
         op.plugins.annot = { items: ann };
         op.plugins.tooltip.callbacks.label = function (it) {
           return it.datasetIndex === 1 ? it.parsed.x + ": " + NF1.format(it.parsed.y) + " (presenza media giornaliera da inizio anno, al " + fmtData(ultimo.d) + ")" : it.parsed.x + ": " + NF.format(it.parsed.y) + " (presenza media giornaliera)";
@@ -547,7 +558,7 @@
         var t0 = Date.UTC(ANNO_Q, 0, 1) - 10 * DAY, t1 = ultimo.t + 10 * DAY;
         render("c-presenze", {
           type: "line", data: { datasets: [lineDs("Presenti", pts, cat(0), { r: 4 })] },
-          options: baseOptions({ title: titleDate, scales: function (g, m) { return { x: dateScale(t0, t1, g, m), y: yScale(g, m, "presenti", { suggestedMax: 650 }) }; } })
+          options: conPandemia(baseOptions({ title: titleDate, scales: function (g, m) { return { x: dateScale(t0, t1, g, m), y: yScale(g, m, "presenti", { suggestedMax: 650 }) }; } }), "data")
         });
         head = ["Data di riferimento", "Presenti"];
         rows = rec.map(function (r) { return [fmtData(r.d), r.presenti]; });
@@ -593,6 +604,8 @@
           });
           o.datasets = { bar: { categoryPercentage: 0.9, barPercentage: 0.85 } };
           o.layout.padding.top = 22;
+          var p0 = rows.findIndex(function (r) { return r.a === 2020; }), p1 = rows.findIndex(function (r) { return r.a === 2021; });
+          if (p0 >= 0 && p1 >= 0) o.plugins.annot = { items: [{ type: "band", x0: p0 - 0.5, x1: p1 + 0.5, text: "Pandemia" }] };
           o.plugins.barLabels = { on: true, fmt: function (v, j) { var r = rows[j]; return (r === picco || r === ultimoChiuso) ? NF.format(v) : ""; } };
           return o;
         })()
@@ -625,13 +638,13 @@
       legend(cIN, []);
       render("c-ingressi-naz", {
         type: "line", data: { datasets: ds },
-        options: baseOptions({
+        options: conPandemia(baseOptions({
           endLabels: true, fmt: pct ? function (v) { return NF1.format(v) + "%"; } : null,
           title: function (it) { return it.parsed.x === ultimo.anno && parz ? "Anno " + it.parsed.x + " · dato parziale al " + fmtData(ultimo.d) : "Anno " + it.parsed.x; },
           scales: function (g, m) {
             return { x: yearScale(ssA0 - 0.5, ult + 0.5, g, m, ult), y: yScale(g, m, small ? "" : (pct ? "% sugli ingressi" : "ingressi nell’anno"), pct ? { max: 100, ticks: { color: m, callback: function (v) { return v + "%"; } } } : {}) };
           }
-        })
+        }), "anno")
       });
       tableView(cIN, ["Anno"].concat(defs.map(function (d) { return d[0] + (pct ? " (%)" : ""); })),
         base.map(function (r) { return [r.p ? r.a + " (parziale, al " + fmtData(ultimo.d) + ")" : String(r.a)].concat(defs.map(function (d) { return pct ? Math.round(1000 * d[1](r) / r.it) / 10 : d[1](r); })); }));
@@ -670,8 +683,11 @@
               }
             });
             o.layout.padding.top = 22; o.plugins.barLabels = { on: true };
-            var i23 = rows.findIndex(function (r) { return r.a === 2023; });
-            if (i23 >= 0 && i23 < rows.length - 1 && rows[i23 + 1].a === 2024) o.plugins.annot = { items: [{ type: "vline", at: i23 + 0.5, text: "Decreto Caivano (settembre 2023)" }] };
+            var i23 = rows.findIndex(function (r) { return r.a === 2023; }), q0 = rows.findIndex(function (r) { return r.a === 2020; }), q1 = rows.findIndex(function (r) { return r.a === 2021; });
+            var ann = [];
+            if (q0 >= 0 && q1 >= 0) ann.push({ type: "band", x0: q0 - 0.5, x1: q1 + 0.5, text: "Pandemia" });
+            if (i23 >= 0 && i23 < rows.length - 1 && rows[i23 + 1].a === 2024) ann.push({ type: "vline", at: i23 + 0.5, text: "Decreto Caivano (settembre 2023)" });
+            o.plugins.annot = { items: ann };
             return o;
           })()
         });
@@ -691,7 +707,7 @@
         $("#d-trasf").textContent = nota + ": totale cumulato da inizio anno a ciascuna data di riferimento";
         render("c-trasf", {
           type: "line", data: { datasets: [lineDs("Trasferiti da inizio anno", pts, cat(1), { r: 4 })] },
-          options: baseOptions({ title: titleDate, scales: function (g, m) { return { x: dateScale(t0, t1, g, m), y: yScale(g, m, "trasferiti da inizio anno", {}) }; } })
+          options: conPandemia(baseOptions({ title: titleDate, scales: function (g, m) { return { x: dateScale(t0, t1, g, m), y: yScale(g, m, "trasferiti da inizio anno", {}) }; } }), "data")
         });
         tableView(cTr, ["Data di riferimento", "Trasferiti da inizio anno"], recT.map(function (r) { return [fmtData(r.d), r.trasf_adulti]; }));
         $("#n-trasf").textContent = "Il dato è cumulato da inizio anno e riparte da zero a gennaio.";
@@ -714,12 +730,12 @@
       legend(cEta, []);
       render("c-eta", {
         type: "line", data: { datasets: ds },
-        options: baseOptions({
+        options: conPandemia(baseOptions({
           endLabels: true, title: titleDate, fmt: pct ? function (v) { return NF1.format(v) + "%"; } : null,
           scales: function (g, m) {
             return { x: dateScale(tMin, tMax, g, m), y: yScale(g, m, pct ? "% dei presenti" : "presenti", pct ? { suggestedMax: 60, ticks: { color: m, callback: function (v) { return v + "%"; } } } : {}) };
           }
-        })
+        }), "data")
       });
       tableView(cEta, ["Data di riferimento"].concat(ETA.map(function (e) { return e[1] + " anni" + (pct ? " (%)" : ""); })),
         rows.map(function (r) {
@@ -752,13 +768,13 @@
         legend(cChi, []);
         render("c-chi", {
           type: "line", data: { datasets: ds },
-          options: baseOptions({
+          options: conPandemia(baseOptions({
             endLabels: true, fmt: fmtP,
             title: function (it) { return it.parsed.x === ultimo.anno ? "Situazione al " + fmtData(ultimo.d) + " (presenti alla data)" : "Media del " + it.parsed.x + " (presenza media giornaliera)"; },
             scales: function (g, m) {
               return { x: yearScale(ssA0 - 0.5, ultimo.anno + 0.5, g, m, ultimo.anno), y: yScale(g, m, small ? "" : (pct ? "% dei presenti" : "presenti"), pct ? { max: 100, ticks: { color: m, callback: function (v) { return v + "%"; } } } : {}) };
             }
-          })
+          }), "anno")
         });
         tableView(cChi, ["Anno"].concat(defs.map(function (d) { return d[0] + (pct ? " (%)" : ""); })),
           ss.map(function (r) { return [String(r.a)].concat(defs.map(function (d) { return pct ? Math.round(1000 * d[1](r) / r.mt) / 10 : d[1](r); })); })
@@ -778,12 +794,12 @@
       legend(cChi, []);
       render("c-chi", {
         type: "line", data: { datasets: ds2 },
-        options: baseOptions({
+        options: conPandemia(baseOptions({
           endLabels: true, title: titleDate, fmt: fmtP,
           scales: function (g, m) {
             return { x: dateScale(tMin, tMax, g, m), y: yScale(g, m, pct ? "% dei presenti" : "presenti", pct ? { max: 100, ticks: { color: m, callback: function (v) { return v + "%"; } } } : {}) };
           }
-        })
+        }), "data")
       });
       tableView(cChi, ["Data di riferimento"].concat(defs2.map(function (d) { return d[0] + (pct ? " (%)" : ""); })),
         rows.map(function (r) { return [fmtData(r.d)].concat(defs2.map(function (d) { return pct ? Math.round(1000 * d[1](r) / tot(r)) / 10 : d[1](r); })); }));
@@ -844,6 +860,8 @@
           });
           o.datasets = { bar: { categoryPercentage: 0.8, barPercentage: 0.9 } };
           o.layout.padding.top = 22;
+          var d0 = anniDel.indexOf(2020), d1 = anniDel.indexOf(2021);
+          if (d0 >= 0 && d1 >= 0) o.plugins.annot = { items: [{ type: "band", x0: d0 - 0.5, x1: d1 + 0.5, text: "Pandemia" }] };
           if (ds.length === 1 || window.innerWidth >= 600) o.plugins.barLabels = { on: true };
           return o;
         })()

@@ -208,7 +208,7 @@
         chart.getDatasetMeta(i).data.forEach(function (bar, j) {
           var v = ds.data[j]; if (v === null || v === undefined || isNaN(v)) return;
           var t = opts.fmt ? opts.fmt(v, j, i) : NF.format(v);
-          ctx.strokeStyle = css("--card"); ctx.lineWidth = 4; ctx.lineJoin = "round";
+          ctx.strokeStyle = css("--surface"); ctx.lineWidth = 4; ctx.lineJoin = "round";
           if (horiz) { ctx.textAlign = "left"; ctx.textBaseline = "middle"; ctx.strokeText(t, bar.x + 6, bar.y); ctx.fillText(t, bar.x + 6, bar.y); }
           else { ctx.textAlign = "center"; ctx.textBaseline = "bottom"; ctx.strokeText(t, bar.x, bar.y - 5); ctx.fillText(t, bar.x, bar.y - 5); }
         });
@@ -216,7 +216,46 @@
       ctx.restore();
     }
   };
-  Chart.register(crosshair, endLabels, ref100, barLabels);
+  /* annotazioni scritte a mano: bande, linee verticali, punti evidenziati */
+  var annot = {
+    id: "annot",
+    beforeDatasetsDraw: function (chart, args, opts) {
+      if (!opts || !opts.items) return;
+      var ctx = chart.ctx, ca = chart.chartArea, xs = chart.scales.x;
+      opts.items.forEach(function (it) {
+        if (it.type !== "band") return;
+        var x0 = xs.getPixelForValue(it.x0), x1 = xs.getPixelForValue(it.x1);
+        ctx.save(); ctx.fillStyle = css("--ink"); ctx.globalAlpha = .08;
+        ctx.fillRect(x0, ca.top, x1 - x0, ca.bottom - ca.top); ctx.restore();
+      });
+    },
+    afterDatasetsDraw: function (chart, args, opts) {
+      if (!opts || !opts.items) return;
+      var ctx = chart.ctx, ca = chart.chartArea, xs = chart.scales.x, ys = chart.scales.y, small = window.innerWidth < 600;
+      function txt(t, x, y, align, color, bold) {
+        ctx.save(); ctx.font = (bold ? "600 " : "") + "italic " + (small ? 11 : 12.5) + "px " + FONT; ctx.textAlign = align; ctx.textBaseline = "middle";
+        ctx.strokeStyle = css("--surface"); ctx.lineWidth = 4; ctx.lineJoin = "round"; ctx.strokeText(t, x, y);
+        ctx.fillStyle = color; ctx.fillText(t, x, y); ctx.restore();
+      }
+      opts.items.forEach(function (it) {
+        if (it.type === "band") {
+          var xm = (xs.getPixelForValue(it.x0) + xs.getPixelForValue(it.x1)) / 2;
+          txt(it.text, xm, ca.top + 10, "center", css("--ink2"), false);
+        } else if (it.type === "vline") {
+          var x = xs.getPixelForValue(it.at);
+          ctx.save(); ctx.strokeStyle = css("--ink"); ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
+          ctx.beginPath(); ctx.moveTo(x, ca.top); ctx.lineTo(x, ca.bottom); ctx.stroke(); ctx.restore();
+          txt(it.text, x - 6, ca.top + 10, "right", css("--ink"), true);
+        } else if (it.type === "point") {
+          var px = xs.getPixelForValue(it.x), py = ys.getPixelForValue(it.y);
+          ctx.save(); ctx.strokeStyle = "#D9482B"; ctx.lineWidth = 1.5;
+          ctx.beginPath(); ctx.arc(px, py, 8, 0, 2 * Math.PI); ctx.stroke(); ctx.restore();
+          txt(it.text, px + 14, py - 2, "left", css("--ink"), true);
+        }
+      });
+    }
+  };
+  Chart.register(crosshair, endLabels, ref100, barLabels, annot);
   Chart.defaults.font.family = FONT;
 
   function baseOptions(o) {
@@ -245,8 +284,8 @@
   }
   function yScale(grid, muted, title, extra) {
     var s = {
-      beginAtZero: true, grid: { color: grid }, border: { display: false },
-      ticks: { color: muted, callback: function (v) { return NF.format(v); } },
+      beginAtZero: true, grid: { color: grid, lineWidth: 1, borderDash: [1, 4], drawTicks: false }, border: { display: false },
+      ticks: { color: muted, padding: 8, callback: function (v) { return NF.format(v); } },
       title: { display: !!title, text: title, color: muted }
     };
     for (var k in extra) s[k] = extra[k];
@@ -263,7 +302,7 @@
     return {
       label: label, data: pts, borderColor: color, backgroundColor: color,
       borderWidth: o.w || 2, pointRadius: o.r !== undefined ? o.r : (zoomPeriodo ? 4 : (window.innerWidth < 600 ? 2 : 3)), pointHoverRadius: 6,
-      pointBackgroundColor: color, pointBorderColor: css("--card"), pointBorderWidth: zoomPeriodo ? 2 : 1,
+      pointBackgroundColor: color, pointBorderColor: css("--surface"), pointBorderWidth: zoomPeriodo ? 2 : 1,
       pointHitRadius: 14, tension: 0, spanGaps: false, order: o.order || 0
     };
   }
@@ -487,6 +526,11 @@
           scales: function (g, m) { return { x: yearScale(ssA0 - 0.5, ultimo.anno + 0.5, g, m, ultimo.anno), y: yScale(g, m, "presenza media giornaliera", { suggestedMax: 650 }) }; }
         });
         op.plugins.tooltip.filter = function (it) { return it.datasetIndex !== 2; };
+        var picco = ss.reduce(function (m, r) { return r.mt > m.mt ? r : m; }, ss[0]);
+        var bassi = ss.filter(function (r) { return r.a === 2020 || r.a === 2021; });
+        var ann = [{ type: "point", x: picco.a, y: picco.mt, text: "Picco: " + NF.format(picco.mt) + " nel " + picco.a }];
+        if (bassi.length) ann.push({ type: "band", x0: 2019.5, x1: 2021.5, text: "Covid" });
+        op.plugins.annot = { items: ann };
         op.plugins.tooltip.callbacks.label = function (it) {
           return it.datasetIndex === 1 ? it.parsed.x + ": " + NF1.format(it.parsed.y) + " (presenza media giornaliera da inizio anno, al " + fmtData(ultimo.d) + ")" : it.parsed.x + ": " + NF.format(it.parsed.y) + " (presenza media giornaliera)";
         };
@@ -578,7 +622,7 @@
         }
         return x;
       });
-      legend(cIN, ds.map(function (d) { return { label: d.label, color: d.borderColor }; }));
+      legend(cIN, []);
       render("c-ingressi-naz", {
         type: "line", data: { datasets: ds },
         options: baseOptions({
@@ -626,6 +670,8 @@
               }
             });
             o.layout.padding.top = 22; o.plugins.barLabels = { on: true };
+            var i23 = rows.findIndex(function (r) { return r.a === 2023; });
+            if (i23 >= 0 && i23 < rows.length - 1 && rows[i23 + 1].a === 2024) o.plugins.annot = { items: [{ type: "vline", at: i23 + 0.5, text: "Decreto Caivano (settembre 2023)" }] };
             return o;
           })()
         });
@@ -665,7 +711,7 @@
           return { x: r.t, y: pct ? 100 * r[e[0]] / tot : r[e[0]] };
         }), col);
       });
-      legend(cEta, ds.map(function (d) { return { label: d.label, color: d.borderColor }; }));
+      legend(cEta, []);
       render("c-eta", {
         type: "line", data: { datasets: ds },
         options: baseOptions({
@@ -703,7 +749,7 @@
           }
           return x;
         });
-        legend(cChi, ds.map(function (d) { return { label: d.label, color: d.borderColor }; }));
+        legend(cChi, []);
         render("c-chi", {
           type: "line", data: { datasets: ds },
           options: baseOptions({
@@ -729,7 +775,7 @@
       var ds2 = defs2.map(function (d, i) {
         return lineDs(d[0], rows.map(function (r) { return { x: r.t, y: pct ? 100 * d[1](r) / tot(r) : d[1](r) }; }), cat(i));
       });
-      legend(cChi, ds2.map(function (d) { return { label: d.label, color: d.borderColor }; }));
+      legend(cChi, []);
       render("c-chi", {
         type: "line", data: { datasets: ds2 },
         options: baseOptions({

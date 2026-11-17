@@ -172,6 +172,7 @@ footer, footer a { font-weight: 700; }
 .share { gap: 4px 18px; }
 header { position: relative; }
 header::before { content: ""; position: absolute; z-index: -1; right: -120px; top: -60px; width: 640px; height: 640px; background: url(curve.svg) no-repeat center / contain; pointer-events: none; }
-.wrap { position: relative; overflow-x: clip; }
+.wrap { position: relative; }
+html, body { overflow-x: clip; }
 @media (prefers-color-scheme: dark) { header::before { opacity: .55; } }
 @media (max-width: 560px) { header::before { width: 420px; height: 420px; right: -160px; top: -30px; } .topnav-in { gap: 18px; } }

@@ -241,7 +241,7 @@
       opts.items.forEach(function (it) {
         if (it.type === "band") {
           var b0 = Math.max(ca.left, xs.getPixelForValue(it.x0)), b1 = Math.min(ca.right, xs.getPixelForValue(it.x1));
-          if (b1 > b0) txt(it.text, (b0 + b1) / 2, ca.top + 10, "center", css("--ink2"), false, true);
+          if (b1 > b0) txt(it.text, (b0 + b1) / 2, ca.top + 10 + (it.row || 0) * 18, "center", css("--ink2"), false, true);
         } else if (it.type === "vline") {
           var x = xs.getPixelForValue(it.at);
           ctx.save(); ctx.strokeStyle = css("--ink"); ctx.lineWidth = 1.2; ctx.setLineDash([4, 3]);
@@ -680,13 +680,13 @@
               scales: function (g, m) {
                 return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false, font: { size: small ? 10 : 12 },
                   callback: function (v, i) { return small && rows[i].a % 4 !== 3 && !rows[i].corrente ? "" : String(rows[i].a); } } },
-                  y: yScale(g, m, small ? "" : "detenuti trasferiti nell’anno", {}) };
+                  y: yScale(g, m, small ? "" : "detenuti trasferiti nell’anno", { suggestedMax: Math.ceil(1.12 * Math.max.apply(null, rows.map(function (r) { return r.v; })) / 20) * 20 }) };
               }
             });
             o.layout.padding.top = 22; o.plugins.barLabels = { on: true };
             var i23 = rows.findIndex(function (r) { return r.a === 2023; }), q0 = rows.findIndex(function (r) { return r.a === 2020; }), q1 = rows.findIndex(function (r) { return r.a === 2021; });
             var ann = [];
-            if (q0 >= 0 && q1 >= 0) ann.push({ type: "band", x0: q0 - 0.5, x1: q1 + 0.5, text: "Pandemia" });
+            if (q0 >= 0 && q1 >= 0) ann.push({ type: "band", x0: q0 - 0.5, x1: q1 + 0.5, text: "Pandemia", row: 1 });
             if (i23 >= 0 && i23 < rows.length - 1 && rows[i23 + 1].a === 2024) ann.push({ type: "vline", at: i23 + 0.5, text: "Decreto Caivano (settembre 2023)" });
             o.plugins.annot = { items: ann };
             return o;

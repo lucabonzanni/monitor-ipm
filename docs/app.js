@@ -6,6 +6,7 @@
   var MESI_LUNGHI = ["gennaio", "febbraio", "marzo", "aprile", "maggio", "giugno", "luglio", "agosto", "settembre", "ottobre", "novembre", "dicembre"];
   var DOY_MESI = [1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
   var NF = new Intl.NumberFormat("it-IT", { useGrouping: "always" });
+  var NF1F = new Intl.NumberFormat("it-IT", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   var NF1 = new Intl.NumberFormat("it-IT", { maximumFractionDigits: 1, useGrouping: "always" });
 
   var FONT = '"Rethink Sans", -apple-system, "Segoe UI", Roboto, sans-serif';
@@ -488,14 +489,14 @@
     var postiTot = capRaw.reduce(function (s, r) { return s + (num(r.posti) || 0); }, 0);
     kpi("Presenti negli Ipm", fmtN(ultimo.presenti), [
       "al " + fmtData(ultimo.d)
-    ].concat(postiTot > 0 ? ["(" + NF1.format(100 * ultimo.presenti / postiTot) + "% su " + fmtN(postiTot) + " posti teorici totali)"] : []), notaAnno("presenti", "detenuto", "detenuti"));
+    ].concat(postiTot > 0 ? ["(" + NF1F.format(100 * ultimo.presenti / postiTot) + "% su " + fmtN(postiTot) + " posti teorici totali)"] : []), notaAnno("presenti", "detenuto", "detenuti"));
     /* stesso metro della serie storica: ingressi esclusi i trasferimenti tra istituti (se il documento non li distingue, totale) */
     var ingK = ultimo.ingressi_esclusi_trasf !== null ? "ingressi_esclusi_trasf" : "ingressi_totale";
     kpi("Ingressi da inizio " + ultimo.anno, fmtN(ultimo[ingK]), [
       "al " + fmtData(ultimo.d) + (ingK === "ingressi_esclusi_trasf" ? ", esclusi i trasferimenti (" + fmtN(ultimo.ingressi_totale) + " con i trasferimenti)" : ", compresi i trasferimenti")
     ], notaAnno(ingK, "ingresso", "ingressi"));
     var str = ultimo.stranieri_m + ultimo.stranieri_f, tot = str + ultimo.italiani_m + ultimo.italiani_f;
-    kpi("Stranieri tra i presenti", NF1.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + ", al " + fmtData(ultimo.d)], notaQuota());
+    kpi("Stranieri tra i presenti", NF1F.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + ", al " + fmtData(ultimo.d)], notaQuota());
 
     ["c-presenze", "c-ingressi", "c-ingressi-naz", "c-trasf", "c-eta", "c-chi", "c-delitti", "c-ipm-conf", "c-ipm-one"].forEach(function (id) { wireTableBtn(document.getElementById(id)); });
 

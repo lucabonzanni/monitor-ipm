@@ -485,16 +485,17 @@
       if (conf) { var f = document.createElement("div"); f.className = "note conf"; f.textContent = conf; k.appendChild(f); }
       kp.appendChild(k);
     }
+    var postiTot = capRaw.reduce(function (s, r) { return s + (num(r.posti) || 0); }, 0);
     kpi("Presenti negli Ipm", fmtN(ultimo.presenti), [
-      "al " + fmtData(ultimo.d),
-    ], notaAnno("presenti", "detenuto", "detenuti"));
+      "al " + fmtData(ultimo.d)
+    ].concat(postiTot > 0 ? ["(" + NF1.format(100 * ultimo.presenti / postiTot) + "% su " + fmtN(postiTot) + " posti teorici totali)"] : []), notaAnno("presenti", "detenuto", "detenuti"));
     /* stesso metro della serie storica: ingressi esclusi i trasferimenti tra istituti (se il documento non li distingue, totale) */
     var ingK = ultimo.ingressi_esclusi_trasf !== null ? "ingressi_esclusi_trasf" : "ingressi_totale";
     kpi("Ingressi da inizio " + ultimo.anno, fmtN(ultimo[ingK]), [
       "al " + fmtData(ultimo.d) + (ingK === "ingressi_esclusi_trasf" ? ", esclusi i trasferimenti (" + fmtN(ultimo.ingressi_totale) + " con i trasferimenti)" : ", compresi i trasferimenti")
     ], notaAnno(ingK, "ingresso", "ingressi"));
     var str = ultimo.stranieri_m + ultimo.stranieri_f, tot = str + ultimo.italiani_m + ultimo.italiani_f;
-    kpi("Stranieri tra i presenti", NF1.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + " · al " + fmtData(ultimo.d)], notaQuota());
+    kpi("Stranieri tra i presenti", NF1.format(100 * str / tot) + "%", [fmtN(str) + " su " + fmtN(tot) + ", al " + fmtData(ultimo.d)], notaQuota());
 
     ["c-presenze", "c-ingressi", "c-ingressi-naz", "c-trasf", "c-eta", "c-chi", "c-delitti", "c-ipm-conf", "c-ipm-one"].forEach(function (id) { wireTableBtn(document.getElementById(id)); });
 
@@ -593,7 +594,7 @@
         options: (function () {
           var o = baseOptions({
             mode: "index", vAxis: "y", nullText: "non disponibile",
-            title: function (it) { var r = rows[it.dataIndex]; return r.corrente ? "Anno " + r.a + " · dato parziale al " + fmtData(ultimo.d) : "Anno " + r.a; },
+            title: function (it) { var r = rows[it.dataIndex]; return r.corrente ? "Anno " + r.a + ", dato parziale al " + fmtData(ultimo.d) : "Anno " + r.a; },
             scales: function (g, m) {
               return {
                 x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false, font: { size: small ? 11 : 12 },
@@ -640,7 +641,7 @@
         type: "line", data: { datasets: ds },
         options: conPandemia(baseOptions({
           endLabels: true, fmt: pct ? function (v) { return NF1.format(v) + "%"; } : null,
-          title: function (it) { return it.parsed.x === ultimo.anno && parz ? "Anno " + it.parsed.x + " · dato parziale al " + fmtData(ultimo.d) : "Anno " + it.parsed.x; },
+          title: function (it) { return it.parsed.x === ultimo.anno && parz ? "Anno " + it.parsed.x + ", dato parziale al " + fmtData(ultimo.d) : "Anno " + it.parsed.x; },
           scales: function (g, m) {
             return { x: yearScale(ssA0 - 0.5, ult + 0.5, g, m, ult), y: yScale(g, m, small ? "" : (pct ? "% sugli ingressi" : "ingressi nell’anno"), pct ? { max: 100, ticks: { color: m, callback: function (v) { return v + "%"; } } } : {}) };
           }
@@ -675,7 +676,7 @@
           options: (function () {
             var o = baseOptions({
               mode: "index", vAxis: "y",
-              title: function (it) { var r = rows[it.dataIndex]; return r.corrente ? "Anno " + r.a + " · dato parziale al " + fmtData(trUlt.d) : "Anno " + r.a; },
+              title: function (it) { var r = rows[it.dataIndex]; return r.corrente ? "Anno " + r.a + ", dato parziale al " + fmtData(trUlt.d) : "Anno " + r.a; },
               scales: function (g, m) {
                 return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false, font: { size: small ? 10 : 12 },
                   callback: function (v, i) { return small && rows[i].a % 4 !== 3 && !rows[i].corrente ? "" : String(rows[i].a); } } },
@@ -853,7 +854,7 @@
         options: (function () {
           var o = baseOptions({
             mode: "index", vAxis: "y",
-            title: function (it) { return "Anno " + anniDel[it.dataIndex] + " · dati al " + fmtData(ultimoPerAnno[anniDel[it.dataIndex]]); },
+            title: function (it) { return "Anno " + anniDel[it.dataIndex] + ", dati al " + fmtData(ultimoPerAnno[anniDel[it.dataIndex]]); },
             scales: function (g, m) {
               return { x: { grid: { display: false }, border: { color: g }, ticks: { color: m, maxRotation: 0, autoSkip: false, font: { size: window.innerWidth < 600 ? 11 : 12 } } }, y: yScale(g, m, window.innerWidth < 600 ? "" : "reati degli ingressi", {}) };
             }
